@@ -8,3 +8,8 @@
 
 ## 30.05.2026
 - auf https://learngitbranching.js.org/ weiter gemacht
+
+## 01.06.2026
+- beschäftigt mit Sendebetrieb/Sendeabwicklung
+- beschäftigt mit makalu & clipbox
+- broadcast_context erstellt
