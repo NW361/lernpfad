@@ -13,3 +13,6 @@
 - beschäftigt mit Sendebetrieb/Sendeabwicklung
 - beschäftigt mit makalu & clipbox
 - broadcast_context erstellt
+
+## 02.06.2026
+- Lernkarten für FiAe AP1 erstellt (265 Fragen + Lösungen)
