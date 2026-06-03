@@ -1,2 +1,2 @@
-<<<<<<< HEAD
+
 Lies mich bitte.
