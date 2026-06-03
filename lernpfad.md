@@ -18,5 +18,5 @@
 - Lernkarten für FiAe AP1 erstellt (265 Fragen + Lösungen)
 
 ## 03.06.2026
-- das Level "Haupt" von https://learngitbranching.js.org/ geschafft als nächstes kommt "Remote" dran
+- das Level "Haupt" von https://learngitbranching.js.org/ geschafft
 - IHK AP1 & AP2 rausgesucht und zum lernen bereit gemacht
