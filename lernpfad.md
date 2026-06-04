@@ -20,3 +20,6 @@
 ## 03.06.2026
 - das Level "Haupt" von https://learngitbranching.js.org/ geschafft
 - IHK AP1 & AP2 rausgesucht und zum lernen bereit gemacht
+
+## 04.06.2026
+- https://learngitbranching.js.org/ abgeschlossen
