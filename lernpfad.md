@@ -27,5 +27,5 @@
 ## 08.06.2026
 - 3h Tutorial zu C# geschaut
 - MS Visual Studio auf Linux installiert
-- Datei first_Try angelegt und "Hello World" Programm geschrieben
+- Datei first_Try angelegt und "Hello World" Programm in C# geschrieben
 - mit AnkiDroid gelernt
