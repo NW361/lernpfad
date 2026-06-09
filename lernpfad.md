@@ -25,7 +25,13 @@
 - https://learngitbranching.js.org/ abgeschlossen
 
 ## 08.06.2026
-- 3h Tutorial zu C# geschaut
+- 3h von 6h Tutorial zu C# geschaut
 - MS Visual Studio auf Linux installiert
 - Datei first_Try angelegt und "Hello World" Programm in C# geschrieben
+- mit AnkiDroid gelernt
+## 09.06.2026
+- Tutorial Video weiter geschaut
+- Microsoft Visual Studio + D# Dev Kit installiert
+- meinProgramm.cs angelegt
+- Variablen.cs Datei angelegt
 - mit AnkiDroid gelernt
