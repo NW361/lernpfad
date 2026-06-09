@@ -5,12 +5,6 @@ namespace first_Try
         static void Main(string[] args)
         {
             System.Console.WriteLine("Hello World!");
-            int esel = 0 ;
-            while( esel != 10 )
-            {
-                esel++;
-            }
-
             
         }
     }
