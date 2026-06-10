@@ -35,3 +35,7 @@
 - meinProgramm.cs angelegt
 - Variablen.cs Datei angelegt
 - mit AnkiDroid gelernt
+## 10.06.20226
+- Bedingungen.cs angelegt
+- Tutorial weiter geschaut
+- mit AnkiDroid gelernt
