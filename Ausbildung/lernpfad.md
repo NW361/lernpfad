@@ -29,13 +29,26 @@
 - MS Visual Studio auf Linux installiert
 - Datei first_Try angelegt und "Hello World" Programm in C# geschrieben
 - mit AnkiDroid gelernt
+ 
 ## 09.06.2026
 - Tutorial Video weiter geschaut
 - Microsoft Visual Studio + D# Dev Kit installiert
 - meinProgramm.cs angelegt
 - Variablen.cs Datei angelegt
 - mit AnkiDroid gelernt
-## 10.06.20226
+
+## 10.06.2026
 - Bedingungen.cs angelegt
 - Tutorial weiter geschaut
 - mit AnkiDroid gelernt
+
+## 11.06.2026
+- C# Tutorial Video beendet
+- Schleifen.cs angelegt
+- arrays.cs angelegt
+- Funktionen_Methoden.cs angelegt
+- Klassen.cs angelegt
+
+## 12.06.2026
+- Ordner-Struktur eingeführt
+- Planung kleiner Projekte in C#
