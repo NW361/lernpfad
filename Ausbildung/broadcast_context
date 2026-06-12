@@ -1,0 +1,78 @@
+Broadcast-Workflow
+
+1. Kameras im Studio/vor Ort nehmen Bild und Ton auf. Der Rohdatenstrom (SDI) kommt als Signal oder als Datei an.
+
+clipbox fungiert hier als Ingest-Server: Es nimmt das eingehende Signal entgegen, kodiert es in ein speicherbares Format und legt es auf dem zentralen Speicher ab.
+Dabei kann es gleichzeitig eine niedrig aufgelöste Proxy-Kopie erzeugen, die Redakteure sofort sichten und schneiden können, noch während die hochaufgelöste Datei geschrieben wird.
+
+Fachbegriffe:
+Ingest - Aufnahme des Rohmaterials ins System
+SDI (Serial Digital Interface) - Traditionelles Übertragungsprotkoll für Video
+Codec (z.B. H.264, ProRes) - Verlustbehaftetes Kompressionsverfahren
+Container (z.B. MXF/.mxf, MOV/.mov) - "Hülle", die Video, Audio, Timecode und Metadaten vereint
+
+2. Das aufgenommene Material wird automatisch auf technische Fehler geprüft (Bildaussetzer, Tonpegel) und mit beschreibenden Informationen angereichert.
+
+clipbox erfasst bereits beim Ingest technische Metadaten (Timecode, Format, Dauer) und erlaubt das Anhängen redaktioneller Metadaten. Diese landen in der zentralen Datenbank.
+
+Fachbegriffe:
+QC (Quality Control) – Automatisierte technische Prüfung
+Metadata – Alle beschreibenden Informationen (Titel, Datum, Rechte, Timecode)
+Timecode – Präzise Adressierung jedes Einzelbildes (Format hh:mm:ss:ff(frames))
+
+3. Redakteure greifen auf das Material zu, sichten es (oft über die Proxy-Kopie), schneiden Beiträge, fügen Grafiken und Texte ein. Das Ergebnis ist ein fertiges Sendestück.
+
+Hier agiert clipbox im Studio-Umfeld als zentrale Materialquelle: Redakteure können auf die Proxy-Dateien zugreifen, Clips schneiden und direkt für die Sendung vorbereiten.
+Im Hintergrund läuft die Synchronisation mit dem übergeordneten MAM-System.
+
+Fachbegriffe:
+MAM (Media Asset Management) – Zentrale Inhalteverwaltung
+Proxy – Niedrig aufgelöste Arbeitskopie
+NLE (Non-Linear Editing) – Nicht-lineares Schnittsystem
+
+4. Der Sendeablauf wird festgelegt: Welcher Beitrag kommt wann? Welche Grafiken werden eingeblendet? In welcher Reihenfolge laufen die Clips?
+
+makalu kommt jetzt ins Spiel: Als Cloud Playout Automation übernimmt es die gesamte Planung.
+Der Redakteur oder Automation-Editor erstellt einen Rundown (Sendeplan), der sekundengenau festlegt, was gesendet wird – inklusive Überblendeffekten und Grafikeinblendungen.
+
+Fachbegriffe:
+Rundown / Sendeplan – Zeitlich durchgeplante Abfolge aller Sendeelemente
+CG / Lower Third – Grafikeinblendungen, z.B. Namensbauchbinden (z.B Name, Titel, Ort)
+Automation – Automatisches Abarbeiten des Sendeplans
+
+5. Der geplante Sendeablauf wird abgefahren: Die einzelnen Clips, Grafiken und Live-Schalten werden zum exakten Zeitpunkt an das Sendesignal übergeben.
+
+makalu übernimmt das Playout: Es steuert vollautomatisch die Ausgabe des Sendesignals entsprechend des Rundowns – inklusive Echtzeit-Rendering von Grafiken und Crossfades.
+Das läuft Cloud-basiert und kann parallel mehrere Kanäle bedienen.
+
+Fachbegriffe:
+Playout – Ausspielung des fertigen Sendesignals
+Vision Mixer – Bildmischer für Live-Übergänge (bei makalu softwarebasiert integriert)
+Transcoding – Echtzeit-Umwandlung für verschiedene Ausspielwege
+
+6. Das fertige Sendesignal wird über verschiedene Wege an die Zuschauer verteilt: Klassisch via Satellit, Kabel oder Antenne (DVB-T/S/C) und modern via Internet (Streaming).
+
+makalu deckt diesen Teil ebenfalls ab:
+Es verpackt das Signal für Broadcast (SDI/IP-Ausgabe an Satelliten-Uplink oder Kabelnetzbetreiber) und gleichzeitig für OTT/Streaming (HLS, DASH) in Mediatheken oder Social-Media-Plattformen.
+
+Fachbegriffe: 
+OTT (Over-The-Top) – Streaming über Internet, z.B. Mediathek
+IPTV – Fernsehen über geschlossene IP-Netze
+SDI vs. IP – Klassische vs. netzwerkbasierte Signalübertragung
+Redundanz / Failover / RAID(Redundant Array of Independent Disks) – Automatisches Umschalten auf Ersatzwege bei Ausfall
+
+7. Du siehst die Nachrichten auf deinem Endgerät – ob Fernseher, Smartphone oder Tablet.
+
+Beide Systeme haben ihren Job erledigt: clipbox hat das Material aufgenommen und bereitgestellt, makalu hat es geplant, ausgespielt und verbreitet.
+
+Fachbegriffe:
+End-to-End-Workflow – Der komplette Weg von Aufnahme bis Wiedergabe
+Latenz – Minimale Verzögerung zwischen Ausspielung und Wiedergabe (wichtig für Live-Sendungen)
+
+
+Kurzformel zum Merken:
+
+clipbox = das lokale Arbeitspferd im Studio (Aufnahme und erste Bearbeitung)
+
+makalu = das Cloud-Gehirn für den gesamten Sendeablauf (Planung, Playout, Verbreitung)
+Gemeinsam bilden sie die komplette Broadcast Content Supply Chain – von der Kamera bis zum Zuschauer.
