@@ -52,3 +52,8 @@
 ## 12.06.2026
 - Ordner-Struktur eingeführt
 - Planung kleiner Projekte in C#
+
+## 15.06.2026
+- mehrere Projekte angelegt
+- per Videos über C# gelernt
+- mit AnkiDroid gelernt
