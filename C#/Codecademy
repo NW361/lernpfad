@@ -1,0 +1,137 @@
+##### Operator Shortcut #####
+
+using System;
+
+namespace MakingProgress
+{
+  class Program
+  {
+    static void Main(string[] args)
+    {
+      // Collectively, +=, -=, *=, and /= are known as compound assignment operators.
+
+      // Declare steps variable
+      int steps = 0;
+      
+      // Two steps forward 
+      steps += 2;
+
+      // One step back 
+      steps--;
+
+      // Print result to the console
+      Console.WriteLine( steps );
+    }
+  }
+}
+
+
+##### Modulo #####
+
+using System;
+
+namespace ClassTeams
+{
+  class Program
+  {
+    static void Main(string[] args)
+    {
+      // Number of students
+      int students = 18;
+
+      // Number of students in a group
+      int groupSize = 3;
+
+      // Does groupSize go evenly into students?
+      Console.WriteLine( students % groupSize );
+
+    }
+  }
+}
+
+
+##### Built-In Methods #####
+
+Math.Abs() — Finds the absolute value of a number. Example: Math.Abs(-5) returns 5.
+
+Math.Sqrt() — Finds the square root of a given double. Example: Math.Sqrt(16) returns 4.
+
+Math.Floor() — Rounds the given double or decimal down to the nearest whole number. Example: Math.Floor(8.65) returns 8.
+
+Math.Ceiling() — The counterpart of Math.Floor(), rounds a given double or decimal up to the nearest whole number. Example: Math.Ceiling(8.65) returns 9.
+
+Math.Min() — Returns the smaller of two numbers of the same type. Example: Math.Min(39, 12) returns 12.
+
+Math.Max() — The counterpart of Math.Min(), returns the larger of two numbers of the same type. Example: Math.Max(39, 12) returns 39.
+
+using System;
+
+namespace LowestNumber
+{
+  class Program
+  {
+    static void Main(string[] args)
+    {
+      // Starting variables 
+      double numberOne = 12932;
+      int numberTwo = -2828472;
+
+      // Use built-in methods and save to variable 
+      double numberOneSqrt = Math.Floor(Math.Sqrt(Math.Abs(numberOne)));
+
+      // Use built-in methods and save to variable 
+      double numberTwoSqrt = Math.Floor(Math.Sqrt(Math.Abs(numberTwo)));
+
+      // Print the lowest number
+      Console.WriteLine( Math.Min(numberTwoSqrt, numberOneSqrt) );
+
+    }
+  }
+}
+
+
+##### Money Maker #####
+
+using System;
+
+namespace MoneyMaker
+{
+  class MainClass
+  {
+    public static void Main(string[] args)
+    {
+      string number = "0";
+      double goldCoin = 10;
+      double silverCoin = 5;
+
+      Console.WriteLine("Welcome to Money Maker!");
+      Console.WriteLine("Enter a whole number u want the computer to convert into to smallest amount of coins!");
+
+      number = Console.ReadLine();
+      Convert.ToDouble(number);
+      Console.Write( number );
+
+      Console.WriteLine(" cents is equal to...");
+
+      double totalAmount = number / goldCoin;
+      double goldCoins = Math.Floor(totalAmount);
+    }
+  }
+}
+
+Bei diesem Code kommt die Fehlermeldung:
+/home/ccuser/Workspace/csharp-money-maker_v2/Program.cs(23,28) : error CS0019: Operator '/' cannot be applied to operands of type 'string' and 'double' [/home/ccuser/Workspace/csharp-money-maker_v2/MoneyMaker.csproj]#
+
+Ich wundere mich warum es diese Fehlermeldung ausspuckt...weil die Variable "number" wird ja vor der Rechnung in eine double Datentyp convertiert, ABER nicht gespeichert.
+Daher speichere ich die umgewandelte Variable in einer neuen Variable "number1":
+
+      number = Console.ReadLine();
+      double number1 = Convert.ToDouble(number);
+
+      Console.WriteLine(number1 + " cents is equal to...");
+
+      double totalAmount = number1 / goldCoin;
+      double goldCoins = Math.Floor(totalAmount);
+
+Finaler Code:
+
