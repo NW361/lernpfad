@@ -57,3 +57,11 @@
 - mehrere Projekte angelegt
 - per Videos über C# gelernt
 - mit AnkiDroid gelernt
+
+## 16.06.2026
+- Learn C# Course gestartet
+- mit AnkiDroid gelernt
+
+## 17.06.2026
+- Learn C# Kurs weiter bearbeitet
+- mit AnkiDroid gelernt
