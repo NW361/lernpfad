@@ -100,38 +100,38 @@ namespace MoneyMaker
   {
     public static void Main(string[] args)
     {
-      string number = "0";
-      double goldCoin = 10;
-      double silverCoin = 5;
-
       Console.WriteLine("Welcome to Money Maker!");
-      Console.WriteLine("Enter a whole number u want the computer to convert into to smallest amount of coins!");
-
-      number = Console.ReadLine();
-      Convert.ToDouble(number);
-      Console.Write( number );
-
-      Console.WriteLine(" cents is equal to...");
-
-      double totalAmount = number / goldCoin;
-      double goldCoins = Math.Floor(totalAmount);
+      Console.WriteLine("Enter an amount to convert to coins:");
+      
+      // 1. Input erfassen
+      string input = Console.ReadLine();
+      
+      // 2. String in Zahl umwandeln
+      double totalAmount = Convert.ToDouble(input);
+      
+      // 3. Ausgabe vor der Berechnung
+      Console.WriteLine(totalAmount + " cents is equal to...");
+      
+      // 4. Münzwerte definieren
+      double goldValue = 10;
+      double silverValue = 5;
+      
+      // 5. Goldmünzen berechnen
+      double goldCoins = Math.Floor(totalAmount / goldValue);
+      
+      // 6. Rest nach Goldmünzen berechnen
+      double remainder = totalAmount % goldValue;
+      
+      // 7. Silbermünzen berechnen
+      double silverCoins = Math.Floor(remainder / silverValue);
+      
+      // 8. Rest nach Silbermünzen berechnen
+      remainder = remainder % silverValue;
+      
+      // 9. Alle Münzen ausgeben
+      Console.WriteLine("Gold coins: " + goldCoins);
+      Console.WriteLine("Silver coins: " + silverCoins);
+      Console.WriteLine("Bronze coins: " + remainder);
     }
   }
 }
-
-Bei diesem Code kommt die Fehlermeldung:
-/home/ccuser/Workspace/csharp-money-maker_v2/Program.cs(23,28) : error CS0019: Operator '/' cannot be applied to operands of type 'string' and 'double' [/home/ccuser/Workspace/csharp-money-maker_v2/MoneyMaker.csproj]#
-
-Ich wundere mich warum es diese Fehlermeldung ausspuckt...weil die Variable "number" wird ja vor der Rechnung in eine double Datentyp convertiert, ABER nicht gespeichert.
-Daher speichere ich die umgewandelte Variable in einer neuen Variable "number1":
-
-      number = Console.ReadLine();
-      double number1 = Convert.ToDouble(number);
-
-      Console.WriteLine(number1 + " cents is equal to...");
-
-      double totalAmount = number1 / goldCoin;
-      double goldCoins = Math.Floor(totalAmount);
-
-Finaler Code:
-
