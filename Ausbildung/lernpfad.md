@@ -63,5 +63,9 @@
 - mit AnkiDroid gelernt
 
 ## 17.06.2026
-- Learn C# Kurs weiter bearbeitet
+- Learn C# weiter bearbeitet
+- mit AnkiDroid gelernt
+
+## 24.06.2026
+- Learn C# weiter bearbeitet
 - mit AnkiDroid gelernt
