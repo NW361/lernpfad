@@ -162,3 +162,101 @@ namespace MoneyMaker
       }
     }
 
+
+using System;
+
+namespace StoryTime
+{
+  class Program
+  {
+    static void Main(string[] args)
+    {
+      // Declare the variables
+      string beginning = "Once upon a time, ";
+      string middle = "there was a flower ";
+      string end = "it got picked up, end.";
+
+      // Concatenate the string and the variables
+      string story = beginning + middle + end ;
+
+      // Print the story to the console 
+      Console.WriteLine( story ) ;
+    }
+  }
+}
+
+
+using System;
+
+namespace StoryTime
+{
+  class Program
+  {
+    static void Main(string[] args)
+    {
+      // Declare the variables
+      string beginning = "Once upon a time,";
+      string middle = "The kid climbed a tree";
+      string end = "Everyone lived happily ever after.";
+
+      // Interpolate the string and the variables
+      string story = $"{beginning} {middle} {end}";
+
+      // Print the story to the console 
+      Console.WriteLine(story);
+    }
+  }
+}
+
+
+using System;
+
+namespace PasswordCheck
+{
+  class Program
+  {
+    static void Main(string[] args)
+    {
+      // Create password
+      string password = "a92301j2add";
+
+      // Get password length
+      int passwordLength = password.Length;
+
+      // Check if password uses symbol
+      int passwordCheck = password.IndexOf("!");
+
+      // Print results
+      Console.WriteLine($"The user password is {password}. Its length is {passwordLength} and it receives a {passwordCheck} check.");
+
+    }
+  }
+}
+
+
+using System;
+
+namespace DNA
+{
+  class Program
+  {
+    static void Main(string[] args)
+    {
+      // dna strand
+      string startStrand = "ATGCGATGAGCTTAC";
+
+      // find location of "tga"
+      int tga = startStrand.IndexOf("TGA");
+
+      // start point and stop point variables
+      int startPoint = 0;
+      int length = tga + 3;
+
+      // define final strand
+      string dna = startStrand.Substring(startPoint, length);
+
+      // DNA mutation search
+      Console.WriteLine( dna[3 - 1] );
+    }
+  }
+}
