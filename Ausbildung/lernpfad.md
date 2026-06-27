@@ -69,3 +69,8 @@
 ## 24.06.2026
 - Learn C# weiter bearbeitet
 - mit AnkiDroid gelernt
+
+## 27.06.2026
+- Learn C# weiter bearbeitet
+- mit AnkiDroid gelernt
+- ZahlenRaten Spiel erstellt
