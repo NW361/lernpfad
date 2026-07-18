@@ -419,3 +419,190 @@ namespace EqualityOperators
 }
 
 
+using System;
+
+namespace ComparisonOperators
+{
+  class Program
+  {
+    static void Main(string[] args)
+    {
+      double timeToDinner = 4;
+      double distance = 95;
+      double rate = 30;
+      double tripDuration = distance / rate;
+      bool answer = tripDuration <= timeToDinner;
+      Console.WriteLine(answer);
+    }
+  }
+}
+
+
+using System;
+
+namespace LogicalOperators
+{
+  class Program
+  {
+    static void Main(string[] args)
+    {
+      bool beach = true;
+      bool hiking = false;
+      bool city = true;
+      
+      bool yourNeeds = beach && city;
+      bool friendNeeds = beach || hiking;
+      bool tripDecision = yourNeeds && friendNeeds;
+
+      Console.WriteLine(tripDecision);
+    }
+  }
+}
+
+
+using System;
+
+namespace Review
+{
+  class Program
+  {
+    static void Main(string[] args)
+    {
+      /* use this space to write your own short program! 
+      Here's what you learned:
+
+      BOOL TYPE: bool variableName
+      COMPARISON OPERATORS: ==, <, >, <=, >=
+      LOGICAL OPERATORS: &&, ||, !
+
+      Good luck! */
+
+
+    }
+  }
+}
+
+
+using System;
+
+public class SpaceExpedition
+{
+  public static void Main(string[] args){
+    // Your code goes here
+    bool isAtmosphereBreathable = true;
+    bool isGravityStable = false;
+    bool resourcesSufficient = true;
+    bool isHabitable = isAtmosphereBreathable && isGravityStable;
+    Console.WriteLine(isHabitable);
+    bool suitableForExpansion = isGravityStable || resourcesSufficient;
+    Console.WriteLine(suitableForExpansion);
+    int currentCrew = 5;
+    int maxCrewCapacity = 10;
+    bool canAcceptMoreCrew = currentCrew < maxCrewCapacity;
+    Console.WriteLine(canAcceptMoreCrew);
+
+  }
+}
+
+
+using System;
+
+namespace IfElseStatement
+{
+  class Program
+  {
+    static void Main(string[] args)
+    {
+      int people = 10;
+      string weather = "nice";
+      
+      if (people <= 10 && weather == "nice")
+      {
+        Console.WriteLine("SaladMart");
+      }
+      else 
+      {
+        Console.WriteLine("Soup N Sandwich");
+      }
+
+    }
+  }
+}
+
+
+using System;
+
+namespace ElseIfStatement
+{
+  class Program
+  {
+    static void Main(string[] args)
+    {
+      double ph = 7.0;
+      if (ph < 7)
+      {
+        Console.WriteLine("Acidic");
+      }
+      else if (ph > 7)
+      {
+        Console.WriteLine("Basic");
+      }
+      else
+      {
+        Console.WriteLine("Neutral");
+      }
+      
+    }
+  }
+}
+
+
+using System;
+
+namespace SwitchStatement
+{
+  class Program
+  {
+    static void Main(string[] args)
+    {
+      double ph = 14.0;
+
+
+      /*
+      if (ph < 7)
+      {
+        Console.WriteLine("Acidic");
+      }
+      else if (ph > 7)
+      {
+        Console.WriteLine("Basic");
+      }
+      else 
+      {
+        Console.WriteLine("Neutral");
+      }
+      */
+      switch (ph)
+      {
+        case <= 3:
+            Console.WriteLine("Very Acidic");
+            break;
+        case < 7:
+            Console.WriteLine("Acidic");
+            break;
+        case >= 11:
+            Console.WriteLine("Very Basic");
+            break;
+        case > 7:
+            Console.WriteLine("Basic");
+            break;
+        default:
+           Console.WriteLine("Neutral");
+           break;
+      }
+
+    }
+  }
+}
+
+
