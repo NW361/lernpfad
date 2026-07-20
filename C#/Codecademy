@@ -606,3 +606,116 @@ namespace SwitchStatement
 }
 
 
+ using System;
+
+namespace TernaryOperator
+{
+  class Program
+  {
+    static void Main(string[] args)
+    {
+      double pepperLength = 3.2;
+      string message;
+
+      if (pepperLength >= 3.5) {
+        message = "ready!";
+      } else {
+        message = "wait a little longer";
+      }
+
+      Console.WriteLine(message);
+    }
+  }
+}
+
+
+using System;
+
+namespace TernaryOperator
+{
+  class Program
+  {
+    static void Main(string[] args)
+    {
+      double pepperLength = 4;
+
+      string message = (pepperLength >= 3.5)  ? "ready!" : "wait a little longer";
+
+      Console.WriteLine(message);
+    }
+  }
+}
+
+
+Projekt Passwort Tester:
+
+using System;
+
+namespace PasswordChecker
+{
+  class Program
+  {
+    public static void Main(string[] args)
+    {
+      int minLength = 8;
+      int passwordlaenge;
+      int score = 0;
+      string uppercase;
+      string lowercase;
+      string digits;
+      string specialChars;
+      string password;
+
+      Console.WriteLine("We would like to test your Password, please enter now.");
+
+      password = Console.ReadLine();
+      passwordlaenge = password.Length;
+
+      if (passwordlaenge >= minLength)
+      {
+        score++;
+      }
+
+      if (Tools.Contains(password, "ABCDEFGHIJKLMNOPQRSTUVWXYZ"))
+      {
+        score++;
+      }
+
+      if (Tools.Contains(password, "abcdefghijklmnopqrstuvwxyz"))
+      {
+        score++;
+      }
+
+      if (Tools.Contains(password, "0123456789"))
+      {
+        score++;
+      }
+
+      if (Tools.Contains(password, ",;.:-_<>|#'+*~`"))
+      {
+        score++;
+      }
+
+      switch (score)
+      {
+        case 5:
+        case 4:
+          Console.WriteLine("your password is extremely strong");
+          break;
+        case 3:
+          Console.WriteLine("your password is strong");
+          break;
+        case 2:
+          Console.WriteLine("your password is medium");
+          break;
+        case 1:
+          Console.WriteLine("your password is weak");
+          break;
+        default:
+          Console.WriteLine("your password doesn’t meet any of the standards");
+          break;
+
+      }
+    }
+  }
+}
