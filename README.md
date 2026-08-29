@@ -62,8 +62,7 @@
 ## 📫 Kontakt
 
 - 📧 walter_niklas@web.de
-- 📱 +49 1525 9903565
-- 🔗 [LinkedIn-Profil (folgt)]
+- 🔗 [LinkedIn-Profil (www.linkedin.com/in/niklas-walter-37b136305)]
 
 ---
 
