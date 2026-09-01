@@ -78,3 +78,6 @@
 ## 02.07.2026
 - Learn C# weiter bearbeitet
 - mit AnkiDroid gelernt
+
+## 01.09.2026
+- CompTIA A+ learning gestartet
