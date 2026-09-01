@@ -1,0 +1,69 @@
+Key Computer Hardware Components
+
+    The Role of the Motherboard
+  
+    - Facilitates communication between all components
+    - Houses CPU socket, RAM slots, expansion slots and storage connectors
+    - Several types
+      - ATX (Advanced Technoligy eXtended)
+      - MicroATX
+      - Mini-ITX
+    - Must match CPU socket and RAM type
+    - Choose based on the number of PCIe (Peripheral Component Interconnect express) slots required
+  
+   Central Processing Unit (CPU)
+  
+    - Executes instructions from software and hardware
+    - Speed measured in hertz (GHz)
+      - Instructions/Second = Clock Frequency x IPC (Instructions Per Cycle)
+      - 1 Cycle/Second = 1Hz
+      - Today the average CPU does at 3GHz tens of billions Instructions
+    - Key features - cores and threads, clock speed, cache memory
+    - Ensure compatibility with the motherboard socket type
+    - Check power and cooling requirements
+  
+  Random Access Memory (RAM)
+  
+    - Temporarily stores data for active applications
+    - Faster than storage devices but volatile (erased on shutdown)
+    - Types
+      - DIMM (Dual Inline Memory Module)
+      - SODIMM (Small Outline Dual Inline Memory Module) for laptops
+      - DDR (Double Data Rate)
+      - ECC (Error Correction Code)
+      - non-ECC (non Error Correction Code)
+    - Must match motherboard specifications
+    - More RAM improves multitaksing and speed
+  
+  Storage Devices - HDD vs. SSD
+  
+    - M.2 NVMe (Non Volatile Memory) SSDs - high-speed storage directly connected to the motherboard      fastest
+    - Solid-state drives (SSDs) - faster, more durable, but more expensive                                fast
+    - Hard disk drives (HDDs) - magnetic storage, slower, but cost-effective for large capacity           slow
+  
+  Power Supply Units (PSUs)
+  
+    - Converts electrical power from the wall outlet into usable power for components
+    - Measured in watts (W) and efficiency rating (80 Plus standard)
+  
+  Cooling Systems
+  
+    - Air cooling
+    - Liquid cooling
+    - Thermal paste
+  
+  Expansion Cards
+  
+    - Graphics precessing unit (GPU)
+    - Network interface card (NIC)
+    - Sound card
+  
+  Peripherals
+  
+    - Monitors, keyboards, mice, printers, and external storage, webcam, ...
+    - Input/output devices for user interaction and functionality
+
+
+Key Laptop Components
+
+  
