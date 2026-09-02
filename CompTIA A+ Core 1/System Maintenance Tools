@@ -1,0 +1,37 @@
+📘 System Maintenance Tools – Quick Summary
+
+1. Hardware Tools
+
+  - Tool	Purpose
+  - Screwdrivers (Phillips & Flathead)	Open computer cases
+  - Anti-static wrist strap	Prevent ESD damage
+  - Compressed air	Remove dust from components
+  - Thermal paste & applicator	Improve heat transfer (CPU/cooler)
+  - Multimeter	Check connectivity/continuity
+
+2. Network Tools
+
+  - Tool	Purpose
+  - Crimper	Attach connectors to cables
+  - Cable stripper	Remove cable insulation
+  - Toner probe	Trace cables through walls
+  - Punchdown tool	Wire connections at the rack
+  - Loopback plug	Test interface connectivity
+
+3. Software Tools
+
+  - Tool	Purpose
+  - Task Manager	Monitor system performance
+  - Disk Clean-up	Free up disk space
+  - Check Disk (chkdsk)	Check hard drive health
+  - MemTest86	Test RAM for errors
+  - BIOS/UEFI utilities	Configure hardware settings
+  - Note: Task Manager, Disk Clean-up, and chkdsk are Windows utilities.
+
+4. Preventative Maintenance Best Practices
+
+  - Regular dust cleaning – especially fans and vents
+  - Keep drivers and firmware up-to-date
+  - Check system logs for errors
+  - Backup data regularly – and test recovery!
+  - Monitor system performance
