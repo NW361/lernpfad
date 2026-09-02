@@ -1,0 +1,64 @@
+📘 Integrated Peripherals – Key Points (Study Overview)
+
+1. Common Integrated Peripherals
+
+  - Webcams
+  - Microphones
+  - Speakers
+  - Wi-Fi modules
+  - Bluetooth modules
+  - Availability depends on make and model – not all devices include all peripherals.
+
+2. Webcam Features
+
+  - Feature	Details
+  - Resolution	720p, 1080p, or higher
+  - Frame Rate	Standard: 30 fps; Higher: 60 fps (smoother video)
+  - Privacy Shutter	Physical cover for security (prevents spying)
+
+3. Microphone Types
+
+  - Type	Best For	Quality
+  - Unidirectional	Single speaker (better quality)	Clearer audio
+  - Omnidirectional	Group conferences	Picks up sound from all directions
+  - Audio Enhancements:
+  - Noise canceling – reduces background noise
+  - Beamforming – uses multiple mics to focus on the best signal
+
+4. Integrated Speakers
+
+  - Small size – limits bass and overall quality
+  - Enhancements: Dolby Atmos, DTS (spatial audio) – require headphones/external speakers
+  - AI noise suppression – filters background noise (depends on model)
+
+5. Laptop Screen Inverters
+
+  - Display Type	Inverter Needed?
+  - Older LCD (CCFL backlight)	Yes – converts DC to AC
+  - LED-backlit	No – uses direct DC power
+  - Upgrade to LED: Improves efficiency and reduces flickering.
+
+6. Wireless Antennas & Connectivity
+
+  - Built-in Antennas:
+  - Wi-Fi (standard)
+  - Bluetooth (standard)
+  - Cellular/LTE/5G (optional – tablets, some laptops)
+  
+  - Range & Interference:
+
+    - Issue	Solution
+    - Weak Wi-Fi	Move closer to router
+    - Interference (2.4 GHz)	Switch to 5 GHz band (less crowded)
+    - Limited Bluetooth range	Stay within ~30 feet (10 meters)
+
+  - External Antennas:
+
+    - Can be added if Wi-Fi signal is weak
+
+7. Common Problems & Fixes
+
+  - Problem	Solution
+  - Webcam not detected	Check drivers, enable/reconfigure camera settings
+  - Microphone not working	Adjust input levels, reinstall drivers
+  - Weak Wi-Fi signal	Update network drivers, move closer to router
