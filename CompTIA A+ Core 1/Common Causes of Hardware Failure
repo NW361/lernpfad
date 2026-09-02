@@ -1,0 +1,64 @@
+📘 Common Causes of Hardware Failure – Quick Summary
+
+1. Mechanical Causes
+
+  - Wear and tear of moving parts (HDDs, fans)
+  - Physical damage (dropping, impact)
+  - Improper installation (forcing components, misaligned cables)
+
+  Prevention:
+
+    - Switch to SSDs (no moving parts)
+    - Handle devices carefully
+    - Regularly check cable connections
+
+2. Electrical Causes
+
+  - Power surges/spikes
+  - Overheating (dust buildup)
+  - Short circuits
+
+  Prevention:
+  
+    - Use surge protectors
+    - Use UPS (Uninterruptible Power Supply)
+    - Clean dust regularly
+    - Keep liquids away from electronics
+
+3. Environmental Causes
+
+  - Extreme temperatures
+  - High humidity/moisture
+  - Dust and debris
+
+  - Prevention:
+  
+    - Keep systems in climate-controlled environments
+    - Clean regularly
+    - Use humidity-controlled storage for sensitive components
+
+4. Manufacturing Defects
+
+  - Cannot be prevented – only detected
+  - Detection: Monitoring tools (e.g., Check Disk for drives)
+  - Solution: Replacement (hopefully under warranty)
+
+5. Software-Induced Failures (Rare)
+
+  - Usually caused by faulty monitoring software
+  - Example: CPU temperature monitoring fails → CPU overheats
+  
+  - Prevention:
+  
+    - Monitor system temperatures
+    - Check system logs
+    - Perform regular backups
+
+6. Best Practices for Longevity
+
+  - Measure	Purpose
+  - Regular backups	Data safety
+  - Monitor temperatures	Prevent overheating
+  - Check system logs	Detect errors early
+  - Replace aging components	Prevent failures
+  - Keep systems up-to-date	Ensure stability
