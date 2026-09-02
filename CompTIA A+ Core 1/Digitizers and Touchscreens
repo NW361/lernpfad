@@ -1,0 +1,29 @@
+📘 Digitizers and Touchscreens
+
+1. What is a Digitizer?
+
+  - Converts analog touch/pen input into digital signals
+  - Found in touchscreens, drawing tablets, stylus devices
+  - Essential for graphic design, note-taking, professional use
+
+2. Touchscreen Types
+
+  - Type	Technology	Multi-Touch	Best For
+  - Capacitive	Conductive layer Yes (pinch-to-zoom)	Smartphones, tablets, modern laptops
+  - Resistive	Pressure-sensitive No (single-touch)	ATMs, industrial, gloves/any object
+  - Infrared/SAW	Specialized	Varies	Specialized applications
+
+3. Stylus Types
+
+  - Type	Features	Use Case
+  - Active	Pressure-sensitive, internal electronics	Digital art, drawing
+  - Passive	No pressure sensitivity, like finger touch	General navigation
+  - EMR	Electromagnetic resonance, high accuracy	Professional graphics tablets
+
+4. Common Touchscreen Issues
+
+  - Problem	Solution
+  - Unresponsive screen	Restart, clean, update drivers, recalibrate
+  - Ghost touches	Recalibrate or check for physical damage
+  - Stylus not recognized	Check battery, update firmware/drivers
+  - Delayed response	Overheating, insufficient memory, driver conflict
