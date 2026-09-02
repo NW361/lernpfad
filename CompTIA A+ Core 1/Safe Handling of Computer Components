@@ -1,0 +1,51 @@
+📘 Safe Handling of Computer Components – Quick Summary
+
+1. Why Safe Handling Matters
+
+  - Prevent ESD (Electrostatic Discharge) – can damage microvolt-level components
+  - Avoid personal injury – sharp edges, electrical hazards
+  - Ensure longevity and stability of components
+
+2. ESD Protection
+
+  - Method	Purpose
+  - Anti-static wrist strap	Grounds you to prevent discharge
+  - Anti-static mat	Dissipates static charge
+  - Touch metal before handling	Pre-discharge built-up static
+  - Anti-static bags	Store/transport components safely
+
+3. Handling Specific Components
+
+  - Component	How to Handle
+  - Motherboard	Hold by edges; avoid circuitry/pins
+  - CPU	Hold by sides; avoid pins/connectors
+  - RAM	Insert firmly but don't force; ensure proper alignment
+  - HDD/SSD	Avoid dropping; avoid pressure on sensitive parts
+
+4. Power Supply Safety
+
+  - Always unplug before working inside
+  - Use a power supply tester before installation
+  - Never handle connectors with wet/damp hands
+
+5. Cable Management Tips
+
+  - Keep cables organized for better airflow and cooling
+  - Use cable ties or Velcro straps
+  - Ensure proper grounding to prevent shorts
+
+6. Workspace Best Practices
+
+  - Work on clean, flat surface
+  - Avoid heavy objects on delicate components
+  - Ensure components are properly seated before powering on
+  - Maintain optimal room temperature
+  - Avoid excessive humidity (condensation/corrosion)
+  - Keep food and drinks away from workstation
+
+7. Common Mistakes
+
+  - Forgetting to ground yourself
+  - Handling components too roughly
+  - Forcing parts into place (damages pins/connectors)
+  - Ignoring cooling (e.g., running with a broken fan)
