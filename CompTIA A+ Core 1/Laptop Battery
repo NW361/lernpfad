@@ -1,0 +1,63 @@
+📘 Laptop Battery Health – Quick Summary
+
+1. Battery Types
+
+  - Li-Ion: Liquid electrolyte, cylindrical shape
+  - Li-Po: Gel/solid electrolyte, flexible shape
+  - Shape differs, battery life is similar.
+
+2. Signs of Battery Degradation
+
+  - Shorter battery life
+  - Overheating
+  - Swelling (may cause cracks)
+  - Sudden shutdowns (even when charged)
+  - Won't hold a charge
+
+3. Check Battery Health
+
+  - OS	Command/Tool
+  - Windows	powercfg /batteryreport (HTML file)
+  - Mac	About This Mac → System Report → Power
+  - Third-party	BatteryInfoView (Win), coconutBattery (Mac)
+
+4. Factors Draining Battery
+
+  - High brightness
+  - Background processes
+  - Full charge/discharge cycles (0% → 100%)
+  - Heat exposure
+  - High performance settings
+
+5. Best Practices for Longer Battery Life
+
+  - Keep charge between 20–80% (never fully drain)
+  - Lower screen brightness
+  - Close unused apps/processes
+  - Use power-saving modes
+  - Store in cool, dry place
+  - Avoid full discharges (0%)
+  - Avoid constant 100% charging
+
+6. When to Replace Battery
+
+  - Health below 50% capacity
+  - Cycle count exceeds manufacturer limit
+  - Sudden shutdowns or swelling
+  - Won't hold a charge at all
+
+7. Replacement Steps
+
+  - Verify correct battery model
+  - Power off and unplug device
+  - External: Use slide-release lock
+  - Internal: Open case to access battery
+  - Remove old, insert new, secure
+
+8. Post-Replacement Calibration
+
+  - Only time to fully charge and discharge!
+  - Charge to 100%
+  - Discharge to 5–10%
+  - Recharge to 100%
+  - Why: Helps system track battery status accurately
