@@ -78,6 +78,100 @@ Key Laptop Components
         like for the RAM type is the SODIMM and the PSU is build outside with just a cable that will be
         plugged in the laptop.
 
-    Display
+    Display Technologies and Graphics
+      
+      - LCD (liquid crystal display)
+      - IPS (in-plane switching)
+      - OLED (organic light-emitting diode)
 
-         
+      - GPU
+        - Integrated GPUs (Intel UHD, AMD Radeon Vega) - built into the CPU, energy-efficient
+        - Dedicated GPUs ( NVIDIA GeForce, AMD Radeon) - enhanced performance for gaming and professional applications
+
+    Battery and Power 
+
+      - Measured in watt-hours (Wh) - higher capacity = longer battery life
+      - lithium ion (Li-ion) and lithium polymer (LiPo) are the most common types
+      - CPU and GPU power consumption 
+      - Display brightness and resolution
+      - Background processes and power managment settings
+      - Avoid deep discharge; keep charge levels between 20% and 80%
+      - Reduce screen brightness and disable unused hardware
+
+    Expansion Ports
+
+      - USB (Type-A. Type-C)
+      - HDMI and DisplayPort
+      - Thunderbolt 3 / 4
+      - Ethernet (RJ45) RJ = Radio Jack / 45 = Type
+      - 3.5mm audio jack
+
+    Wireless Connectivity
+
+      - Wi-Fi standards: 
+        - Wi-Fi 5 (802.11ac)
+        - Wi-Fi 6 (802.11ax) for faster speeds
+
+      - Bluetooth
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
