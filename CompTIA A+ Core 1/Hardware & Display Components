@@ -27,8 +27,8 @@ Key Computer Hardware Components
     - Temporarily stores data for active applications
     - Faster than storage devices but volatile (erased on shutdown)
     - Types
-      - DIMM (Dual Inline Memory Module)
-      - SODIMM (Small Outline Dual Inline Memory Module) for laptops
+      - DIMM (Dual In-line Memory Module)
+      - SODIMM (Small Outline Dual In-line Memory Module) for laptops
       - DDR (Double Data Rate)
       - ECC (Error Correction Code)
       - non-ECC (non Error Correction Code)
@@ -66,4 +66,18 @@ Key Computer Hardware Components
 
 Key Laptop Components
 
-  
+        - Motherboard
+        - Central Processing Unit (CPU)
+        - Random access memory (RAM)
+        - Storage Devices
+        - Cooling Systems
+        - Display and graphics processor
+        - Battery
+
+        all of these components are build much smaller, more energy effective and even build external 
+        like for the RAM type is the SODIMM and the PSU is build outside with just a cable that will be
+        plugged in the laptop.
+
+    Display
+
+         
