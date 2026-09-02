@@ -1,0 +1,60 @@
+📘 Cleaning Hardware Components – Quick Summary
+
+1. Why Clean Hardware?
+
+  - Prevents overheating by improving airflow
+  - Reduces risk of component failure
+  - Enhances system efficiency and reliability
+  - Extends hardware lifespan
+
+2. Cleaning Tools
+
+  - Tool	Purpose
+  - Compressed air (cans or compressor)	Remove dust from fans, heatsinks, PSU
+  - Microfiber cloth	Clean surfaces without leaving residue
+  - Isopropyl alcohol (90%+)	Remove thermal paste, clean components (evaporates quickly)
+  - Anti-static brush	Clean delicate components without ESD risk
+  - Vacuum cleaner (ESD-safe)	Collect dust while blowing
+
+3. Cleaning Steps
+
+  - Exterior:
+
+    Keyboard, mouse, case vents, display (with alcohol/screen cleaner)
+  
+  - Internal Components:
+
+    - Component	Cleaning Method
+    - Fans & heatsinks	Compressed air (use vacuum nearby)
+    - RAM modules & slots	Anti-static brush
+    - Power Supply Unit (PSU)	Compressed air (keep distance from coils!)
+    - Motherboard & expansion slots	Anti-static brush or compressed air
+
+4. Thermal Paste Replacement
+
+  - Remove old paste with isopropyl alcohol and lint-free cloth
+  - Apply pea-sized amount of new paste on CPU
+  - Secure cooler evenly to spread paste
+  - Monitor CPU temperatures in BIOS/UEFI
+
+5. Other Peripherals
+
+  - Printers: Use built-in cleaning cycles; clean paper trays/rollers
+  - Speakers/headphones: Keep dust-free
+  - External drives/ports: Dust is the biggest enemy
+
+6. Maintenance Schedule
+
+  - Task	Frequency
+  - Clean external components	Weekly
+  - Internal dust removal (desktop)	Every 3–6 months
+  - Replace thermal paste	Every 1–2 years
+  - Check/clean printers	Monthly
+
+7. Precautions
+
+  - Unplug PC before cleaning
+  - Wear anti-static wrist strap
+  - Use plastic nozzles on compressed air/vacuum
+  - Keep distance from PSU coils (can hold charge!)
+  - Avoid excessive pressure on components
