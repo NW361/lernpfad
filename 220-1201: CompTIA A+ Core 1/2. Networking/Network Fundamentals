@@ -73,6 +73,7 @@ TCP (Transmission Control Protocol) vs UDP (User Datagram Protocol)
     - Securing UDP: rate limiting and packet filtering (against DoS attacks), plus DNSSEC for DNS specifically
     - For both: monitoring via intrusion detection systems or traffic-analysis tools like Wireshark
 
+
 Switches and Routers
   
   
@@ -113,21 +114,142 @@ Switches and Routers
     - Segment traffic with VLANs; use QoS to prioritize bandwidth for demanding applications
     - Monitor via SNMP or syslog-based tools; keep firmware updated
     - Back up device configuration to a file so it can be restored after a factory reset
+
+
+Access Points, Repeaters & Extenders:
+
+    - Access Points (APs): extend an existing wired network into a wireless one
+    - Repeaters: boost/rebroadcast an existing Wi-Fi signal to extend coverage
+    - Extenders: also extend Wi-Fi coverage, but can use a wired backhaul connection
+  
+  Access Points
+  
+    - Connect to the existing wired network via cable, then transmit/receive wirelessly so Wi-Fi devices join the
+      same network as the wired one
+    - Modern APs support dual-band (2.4/5 GHz) or tri-band (incl. 6 GHz)
+    - Managed locally via browser/IP address, or centrally via a cloud service for many APs at once
+    - No bandwidth/performance degradation, since the AP connects to the switch like any other wired device
+    - Typical use: large offices, enterprise environments, public Wi-Fi hotspots (airports, hotels)
+    - Requires a wired (Ethernet) connection to set up
+  
+  Repeaters
+  
+    - Receive the existing Wi-Fi signal and rebroadcast it wirelessly only – no wired backhaul option
+    - Reduces bandwidth/speed, since the signal has to be received, boosted, and retransmitted
+    - Plug-and-play – just connects to the existing Wi-Fi
+    - Typical use: small homes/offices with minor dead zones
+  
+  Extenders
+  
+    - Can connect back to the original signal via a wired connection ("backhaul") or wirelessly
+    - With a wired Ethernet backhaul: extends coverage without reducing speed
+    - With a wireless backhaul: functionally the same as a repeater
+    - Typical use: larger buildings or areas with significant interference, where running a cable is possible
+    
+  Comparison
+  
+  	                      Access Point	           Repeater	            Extender
+  Connection to source	  wired	                  wireless only	        wired or wireless
+  Speed impact	          none	                  reduces speed	        none (if wired), same as repeater (if wireless)
+  Setup	                  requires Ethernet	      plug-and-play	        wired setup if using backhaul
+  Typical use	            offices/enterprise	    small homes/offices	  larger offices, weak-signal areas
+  
+  Best practices
+    
+    - Place the primary Wi-Fi source as centrally as possible
+    - Always secure the wireless signal with a password (not needed for wired backhaul connections)
+    - Change default device passwords/credentials – defaults are often weak and well-known
+    - Keep firmware updated
+    - Monitor device logs/configuration to catch unauthorized changes and see which devices are connecting
+
+
+Patch Panels
+
+  Core function
+
+    - Patch panels are centralized connection points for network cables – every office/room's cable run terminates there, simplifying
+      cable management and troubleshooting
+    - The patch panel is essentially "the other end" of the cable from each office; short cables then connect the patch panel to the
+      switches, so all devices can communicate
+  
+  Types
+
+    - Copper patch panels: standard Ethernet/copper wiring, terminated with RJ45 connectors on the front
+    - Fiber optic patch panels: same concept, using fiber cabling instead
+    - Shielded vs. unshielded: shielded is only needed where interference is a concern (e.g. nearby high-power cables);
+      unshielded is standard in most environments
+
+  Benefits
+  
+    - Simplifies maintenance – one central place to check/fix connections instead of chasing cables through the building
+    - Improves flexibility and scalability – more patch panels can be added as the environment grows, as long as cabling
+      can physically be run
+  
+  Installation & best practices
+  
+    - Label every connection on both ends (e.g. floor + office location) so you always know where the other end is
+    - Terminate connections properly and plug each patch panel port into its associated switch
+    - Keep cables tied together neatly, avoid kinks (can cause breaks), leave a bit of slack, and consider color-coding by section
+  
+  Use cases
+  
+    - Common in large data centers, enterprise networks, and office buildings with enough connections to justify one
+    - Occasionally used in home networking too (e.g. new-build homes wired with Ethernet in every room), though Wi-Fi has made
+      this less common there
+
+
+Firewalls
+
+  Core function
+  
+    - A firewall is a security barrier between a trusted network (home/office) and an untrusted one (typically the internet,
+      or any outside network)
+    - Filters incoming/outgoing traffic based on predefined rules, deciding what's allowed and what's blocked
+    - Main purpose: prevent unauthorized access, malware infiltration, and data breaches
+  
+  Inspection methods (basic → advanced)
+  
+    - Packet filtering: inspects at the network layer, allows/blocks based on IP address and port – simple, fast, easy to set up,
+      but limited security
+    - Stateful inspection: only allows traffic from an already-established, authenticated session – better security than plain packet
+      filtering
+    - Next-generation firewall (NGFW): built-in intrusion detection/prevention, deep packet inspection (examines actual packet
+      contents, not just IP/port), advanced malware filtering using known signatures – used in larger enterprise environments
+  
+  Deployment types
+  
+    - Network-based: a physical hardware device (e.g. rack-mounted, alongside routers/switches), protects the entire network
+    - Host-based: software installed on an individual computer, usually protects just that one system (though it can protect a
+      network if placed at the network edge)
+    - Cloud-based (Firewall as a Service / FWaaS): subscription service configured through a browser, protects systems behind it
+      (typically cloud-based systems)
+  
+  Best practices
+  
+    - Principle of least privilege: limit who can access the firewall device/config software
+    - Review and adjust rules regularly, since new applications/services keep appearing
+    - Enable intrusion detection/prevention if available (NGFW models)
+  
+  Use cases
+  
+    - Enterprise networks: virtually always have a firewall — without one, outside access would be wide open
+    - Home/small business: home routers include basic firewall functionality by default (e.g. blocking unsolicited inbound
+      connections, unless you explicitly configure remote access)
+    - Cloud/remote work: firewall rules need to be configured to allow legitimate remote connections (e.g. admins accessing cloud
+      VMs, employees connecting back to the office) while still blocking everything else
   
   
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
