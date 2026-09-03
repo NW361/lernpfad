@@ -1,0 +1,133 @@
+Core principle
+  
+    - IP address → gets you to the server; port → tells it which service you want; protocol → defines the rules of communication
+    - Runs mostly over the TCP/IP model
+  
+  Key ports
+  
+    - FTP (file transfer) – port 20/21
+    - SSH (encrypted remote access) – port 22
+    - SMTP (sending email) – port 25
+    - DNS (domain name → IP address) – port 53
+    - HTTP (web browsing, unencrypted) – port 80
+    - HTTPS (web browsing, encrypted via SSL/TLS) – port 443
+    - RDP (Microsoft remote administration) – port 3389
+  
+  Port security
+  
+    - Firewalls should only leave the ports open that are actually needed (e.g. close 80/443 if there's no web server)
+    - Ports should only be open when in use, not permanently
+    - Unencrypted protocols can be encapsulated inside encrypted ones (data stays protected even so)
+  
+  Authentication & monitoring
+  
+    - Kerberos as an example of an authentication protocol (identity verification)
+    - Intrusion detection/prevention systems learn the normal traffic pattern per port/protocol and 
+      flag anomalies (e.g. sudden traffic spikes)
+  
+  Future trends
+  
+    - IPv6: much larger address space than IPv4, but longer/less user-friendly
+    - Zero Trust: every request is always verified, nothing is assumed secure by default
+    - Quantum-safe encryption: encryption via quantum computers, based on quantum physics rather than math — theoretically
+      unbreakable
+
+
+TCP (Transmission Control Protocol) vs UDP (User Datagram Protocol)
+  
+    - OSI model (Open System Interconnect)
+  
+  Core principle
+  
+    - TCP and UDP are the two core transport-layer protocols (Layer 4 of the OSI model) – responsible for actually
+      moving packets from one place to another
+    - Both balance reliability, speed, and efficiency differently; only one is used per given communication
+  
+  TCP (Transmission Control Protocol)
+  
+    - Connection-oriented: three-way handshake (SYN → SYN-ACK → ACK) before any data flows
+    - Reliable, ordered, error-checked – via checksums (error detection) and acknowledgments (confirms receipt, otherwise retransmits)
+    - Analogy: like a phone call – you dial, wait for an answer, and ask the other person to repeat something you missed
+    - Typical uses: web browsing (HTTP/HTTPS), email (SMTP, IMAP, POP3), file transfer (FTP, SFTP)
+    - Downside: slower due to error checking and acknowledgments
+  
+  UDP (User Datagram Protocol)
+  
+    - Connectionless: no handshake, packets are just sent
+    - No delivery guarantee, no retransmission of lost packets → in exchange, lower latency
+    - Analogy: like giving a speech to an audience – no one interrupts to ask for a repeat, missed info is simply lost
+    - Typical uses: streaming, voice-over-IP, video calls, gaming, DNS lookups, IoT communication
+    - Advantage: faster, since there's no error checking or acknowledgments
+  
+  Comparison
+  
+  	                TCP	                            UDP
+  Connection	      connection-oriented	            connectionless
+  Reliability	      high	                          low
+  Speed	            slower	                        faster
+  Typical for	      web, email, file transfer	      streaming, VoIP, DNS, IoT
+  
+  Security
+  
+    - Securing TCP: TLS encryption (e.g. HTTPS), firewall rules allowing only trusted TCP traffic
+    - Securing UDP: rate limiting and packet filtering (against DoS attacks), plus DNSSEC for DNS specifically
+    - For both: monitoring via intrusion detection systems or traffic-analysis tools like Wireshark
+
+Switches and Routers
+  
+  
+  - Switches connect devices within a LAN
+  - Routers connect multiple different LANs/networks together (including your LAN to the internet)
+  
+  Switches
+  
+    - Operate at Layer 2 (Data Link Layer) – address and forward traffic using MAC addresses
+    - Unmanaged: plug-and-play, no configuration
+    - Managed: advanced config options, notably VLAN (Virtual LAN) support and extra security settings
+    - Layer 3 switches exist too – they can both switch and route (e.g. a typical home router is technically a layer 3 switch:
+      it routes between your LAN and your ISP's network, but also has ports so your own devices can talk to each other)
+    - Common use cases: data centers, enterprise networks, VoIP – anywhere there's a LAN; used with VLANs for network
+      segmentation and to reduce congestion
+  
+  Routers
+  
+    - Operate at Layer 3 (Network Layer) – forward packets using IP addresses, not MAC addresses
+    - Connect separate networks together and direct traffic between them
+    - Static routing: paths configured manually
+    - Dynamic routing: protocols like OSPF, BGP, and EIGRP automatically pick the best path (and can reroute around congestion)
+    - Types: home/small-business routers (Wi-Fi, firewall, basic networking), enterprise routers (multi-LAN, multi-site environments),
+      core routers (Internet backbone, ISP-scale)
+  
+  Comparison
+  
+  	              Switch	                      Router
+  OSI Layer	      2 (or 3 for L3 switches)	    3
+  Addressing	    MAC address	                  IP address
+  Connects	      devices within one LAN	      multiple networks/LANs
+  Typical use	    LAN traffic management	      internet access, inter-network routing
+  
+  Best practices for both
+  
+    - Change default admin credentials, enable firewall rules
+    - Use role-based access control for who can configure the device
+    - Segment traffic with VLANs; use QoS to prioritize bandwidth for demanding applications
+    - Monitor via SNMP or syslog-based tools; keep firmware updated
+    - Back up device configuration to a file so it can be restored after a factory reset
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
