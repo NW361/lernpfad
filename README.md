@@ -42,6 +42,7 @@
 
 | Kurs/Pfad | Status | Ziel |
 |-----------|--------|------|
+| **220-1201: CompTIA A+ Core 1** | 🔄 in Arbeit | IT-Grundlagen |
 | **Computer Science Career Path** | 🔄 in Arbeit | Algorithmen & Datenstrukturen |
 | **Learn C#** | 🔄 in Arbeit | C#-Grundlagen vertiefen |
 | **Fundamentals of Cybersecurity** | 🔄 in Arbeit | IT-Security-Grundlagen |
