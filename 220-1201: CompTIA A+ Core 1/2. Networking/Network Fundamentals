@@ -239,17 +239,114 @@ Firewalls
       VMs, employees connecting back to the office) while still blocking everything else
   
   
+Power over Ethernet (PoE)
+
+  Core function
+  
+    - Power over Ethernet (PoE) delivers both data and electrical power over a single network cable, eliminating the
+      need for a separate power adapter
+    - Common in enterprise networks, smart homes, and IoT environments – especially devices like IP cameras,
+      wireless access points, and VoIP phones
+    
+  Standards (IEEE 802.3 family)
+  
+    - 802.3af (PoE): up to 15.4 watts per port
+    - 802.3at (PoE+): up to 30 watts per port
+    - 802.3bt (PoE++): up to 60–100 watts per port
+    - Limitation: the copper wire inside standard Ethernet cable is thin, capping how much power can realistically be
+      delivered regardless of standard
+  
+  Setup
+  
+    - Requires a PoE-capable switch (clearly labeled as such) — mostly plug-and-play
+    - Higher-end PoE switches offer management software: remote power cycling, power-consumption monitoring
+    - PoE injectors let you retrofit PoE onto legacy (non-PoE) Ethernet setups by converting a standard connection into a powered one
+  
+  Troubleshooting
+  
+    - Verify the device's power requirements don't exceed what PoE can deliver
+    - Check for firmware updates on the PoE switch
+    - Monitor power budgets on managed switches to avoid overloading them
+  
+  Advantages
+  
+    - Simplifies installation (no separate power source/wiring needed)
+    - Enables centralized remote management and power-consumption monitoring
+    - Improves scalability — easier to add devices without electrical rewiring
+  
+  Limitations
+  
+    - Not suited for high-power devices (wire can't carry much current)
+    - Standard Ethernet cable runs are capped at 100 meters — may need extenders for longer distances
+    - Compatibility varies — not all Ethernet cables/hardware support PoE, so equipment needs to be PoE-compliant end to end
+  
+  Use cases
+  
+    - Smart building infrastructure: IP security cameras, lighting, sensors
+    - Enterprise Wi-Fi deployments: easier coverage in hard-to-reach spots without needing power on-site
+    - Industrial IoT: factories/warehouses with many low-power sensors that still need connectivity
+  
+  
+Cable and Digital Subscriber Line (DSL) Modems
+
+  Core function
+  
+    - Cable and DSL modems are both network gateway devices – essentially layer 3 switches that route your home network to the
+      internet while also providing ports/Wi-Fi so your own devices can talk to each other locally
+    - "Modem" = modulate/demodulate: converts analog electrical signals on the line into the digital signals computers use, and back
+  
+  Cable modems
+  
+    - Use coaxial cable (originally for cable TV) as the connection type
+    - Shared bandwidth technology – can experience congestion during peak usage since multiple subscribers share the same line
+    - Use the DOCSIS standard; the latest version supports speeds up to 10 Gbps – comparable to fiber, much faster than DSL
+    - Well suited for high-bandwidth activities: streaming, online gaming, large downloads
+    - More common in urban areas
+  
+  DSL modems
+  
+    - Use standard telephone lines
+    - Dedicated bandwidth per subscriber – less congestion than cable, but lower top speeds
+    - Two variants: ADSL (asymmetric – prioritizes download speed over upload, since that's what most users need) and VDSL (very high bit rate – faster, supports HD streaming, but still slower than cable)
+    - Max speeds around 100 Mbps (VDSL) – far below cable/fiber
+    - Useful in rural areas where cable/fiber isn't available, or when only basic browsing/email/streaming is needed (cheaper option)
+  
+  Comparison
+  
+    	            Cable	                          DSL
+    Connection	  coaxial cable	                  telephone line
+    Max speed	    up to 10 Gbps (DOCSIS 4)	      up to ~100 Mbps (VDSL)
+    Bandwidth	    shared (congestion possible)	  dedicated per subscriber
+    Best for	    high-bandwidth use	            basic browsing/streaming
+  
+  Best practices
+  
+    - Place the modem away from heat sources (e.g. furnace rooms) and electronic interference (microwaves, cordless phones)
+    - Change default login credentials; enable firewall/encryption settings
+    - For connectivity issues, a simple restart resolves most problems; note any status light codes before contacting support
   
   
   
   
   
-  
-  
-  
-  
-  
-  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   
   
   
