@@ -7,15 +7,15 @@
 - Troubleshooting: check signal strength/interference, try switching frequency band; enable WPA3 for Wi-Fi, disable Bluetooth auto-pairing for security
 
 ## Wireless Standards (802.11 family)
-| Standard | Band | Max Speed | Notes |
-|---|---|---|---|
-| 802.11b | 2.4 GHz | 11 Mbps | Longer range, more interference |
-| 802.11a | 5 GHz | 54 Mbps | Less interference, shorter range — **not** compatible with b |
-| 802.11g | 2.4 GHz | 54 Mbps | Backward compatible with b |
-| 802.11n (Wi-Fi 4) | 2.4 or 5 GHz | 600 Mbps | Introduced MIMO |
-| 802.11ac (Wi-Fi 5) | 5 GHz | 6.9 Gbps | Beamforming, MU-MIMO |
-| 802.11ax (Wi-Fi 6) | 2.4 or 5 GHz | 9.6 Gbps | Higher capacity/efficiency |
-| 802.11be (Wi-Fi 7) | 2.4, 5, or 6 GHz | 46 Gbps | MLO — multiple bands at once |
+| Standard           | Band             | Max Speed  | Notes                                                        |
+|--------------------|------------------|------------|--------------------------------------------------------------|
+| 802.11b            | 2.4 GHz          | 11 Mbps    | Longer range, more interference                              |
+| 802.11a            | 5 GHz            | 54 Mbps    | Less interference, shorter range — **not** compatible with b |
+| 802.11g            | 2.4 GHz          | 54 Mbps    | Backward compatible with b                                   |
+| 802.11n (Wi-Fi 4)  | 2.4 or 5 GHz     | 600 Mbps   | Introduced MIMO                                              |
+| 802.11ac (Wi-Fi 5) | 5 GHz            | 6.9 Gbps   | Beamforming, MU-MIMO                                         |
+| 802.11ax (Wi-Fi 6) | 2.4 or 5 GHz     | 9.6 Gbps   | Higher capacity/efficiency                                   |
+| 802.11be (Wi-Fi 7) | 2.4, 5, or 6 GHz | 46 Gbps    | MLO — multiple bands at once                                 |
 
 - Encryption evolution: **WEP** (outdated/weak) → **WPA2** (AES) → **WPA3** (strongest, anti-brute-force)
 - Security basics: change default SSID/password, disable WPS, MAC filtering (extra layer, but spoofable)
@@ -33,11 +33,11 @@
 - Config: log into router via its IP (find via `ipconfig` → default gateway), enable WPA3; use **mixed WPA2/WPA3 mode** for legacy device compatibility
 
 ## Wireless Frequencies
-| Band | Range | Speed | Interference | Best for |
-|---|---|---|---|---|
-| 2.4 GHz | Longer, better penetration | Lower | High (shared with Bluetooth, microwaves, cordless phones) | IoT, wide coverage |
-| 5 GHz | Shorter | Faster | Lower | Streaming, gaming, video calls |
-| 6 GHz | Shortest | Ultra-high | Lowest (few devices support it yet) | Enterprise, newest devices (Wi-Fi 6E/7) |
+| Band      | Range                       | Speed      | Interference                                              | Best for                                |
+|-----------|-----------------------------|------------|-----------------------------------------------------------|-----------------------------------------|
+| 2.4 GHz   | Longer, better penetration  | Lower      | High (shared with Bluetooth, microwaves, cordless phones) | IoT, wide coverage                      |
+| 5 GHz     | Shorter                     | Faster     | Lower                                                     | Streaming, gaming, video calls          |
+| 6 GHz     | Shortest                    | Ultra-high | Lowest (few devices support it yet)                       | Enterprise, newest devices (Wi-Fi 6E/7) |
 
 - Licensed spectrum (cellular, government) vs. unlicensed (Wi-Fi, Bluetooth) — regulated by FCC (US), ETSI (EU), MIC (Japan)
 - Trends: 6 GHz going global, **MLO** (use multiple bands simultaneously), private 5G, AI-driven dynamic frequency selection
@@ -72,13 +72,13 @@
 - Future: **5G FWA** (Fixed Wireless Access), millimeter wave (24/39 GHz, licensed), AI-driven self-healing networks
 
 ## NFC vs. RFID
-| | NFC | RFID |
-|---|---|---|
-| Range | ≤4 cm | Up to 100 m (active tags) |
-| Communication | Two-way | One-way (tag → reader only) |
-| Power | Always passive (device-powered) | Passive or active (battery) |
-| Typical use | Payments, access control, mobile interactions | Asset tracking, logistics, security badges |
-| Security risk | Relay attacks | Cloning |
+|               | NFC                                           | RFID                                       |
+|---------------|-----------------------------------------------|--------------------------------------------|
+| Range         | ≤4 cm                                         | Up to 100 m (active tags)                  |
+| Communication | Two-way                                       | One-way (tag → reader only)                |
+| Power         | Always passive (device-powered)               | Passive or active (battery)                |
+| Typical use   | Payments, access control, mobile interactions | Asset tracking, logistics, security badges |
+| Security risk | Relay attacks                                 | Cloning                                    |
 
 ## Jitter & Latency
 - **Latency** = delay in data transmission (congestion, routing, distance)
