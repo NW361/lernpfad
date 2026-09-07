@@ -1,0 +1,120 @@
+# Wireless Networking & Services — Cheat Sheet
+
+## Wireless Adapters
+- Form factors: PCIe card (desktop), USB adapter, integrated (laptops/mobile — most common today)
+- **Bluetooth**: range up to 100 m (v5.4), speed 1–3 Mbps, peripherals/audio/IoT
+- **NFC**: range ≤4 cm, speed ~0.5 Mbps, payments/access/authentication
+- Troubleshooting: check signal strength/interference, try switching frequency band; enable WPA3 for Wi-Fi, disable Bluetooth auto-pairing for security
+
+## Wireless Standards (802.11 family)
+| Standard | Band | Max Speed | Notes |
+|---|---|---|---|
+| 802.11b | 2.4 GHz | 11 Mbps | Longer range, more interference |
+| 802.11a | 5 GHz | 54 Mbps | Less interference, shorter range — **not** compatible with b |
+| 802.11g | 2.4 GHz | 54 Mbps | Backward compatible with b |
+| 802.11n (Wi-Fi 4) | 2.4 or 5 GHz | 600 Mbps | Introduced MIMO |
+| 802.11ac (Wi-Fi 5) | 5 GHz | 6.9 Gbps | Beamforming, MU-MIMO |
+| 802.11ax (Wi-Fi 6) | 2.4 or 5 GHz | 9.6 Gbps | Higher capacity/efficiency |
+| 802.11be (Wi-Fi 7) | 2.4, 5, or 6 GHz | 46 Gbps | MLO — multiple bands at once |
+
+- Encryption evolution: **WEP** (outdated/weak) → **WPA2** (AES) → **WPA3** (strongest, anti-brute-force)
+- Security basics: change default SSID/password, disable WPS, MAC filtering (extra layer, but spoofable)
+
+## Wi-Fi Authentication Methods
+- **Open**: no password — low security, public hotspots only
+- **PSK** (shared password, WPA2/WPA3-Personal): typical home/small business
+- **802.1X/EAP**: enterprise-grade, centralized server, authenticates *both* the user **and** the device — not found at home
+
+## Securing Wi-Fi with WPA3
+- **SAE** (Simultaneous Authentication of Equals) replaces the old PSK handshake — mutually authenticates client and access point, preventing "evil twin" clone networks
+- **Forward secrecy**: past traffic stays safe even if a future key is exposed
+- **WPA3-Enterprise**: 192-bit encryption for business/government
+- Protects against **KRACK** attacks (a known WPA2 weakness)
+- Config: log into router via its IP (find via `ipconfig` → default gateway), enable WPA3; use **mixed WPA2/WPA3 mode** for legacy device compatibility
+
+## Wireless Frequencies
+| Band | Range | Speed | Interference | Best for |
+|---|---|---|---|---|
+| 2.4 GHz | Longer, better penetration | Lower | High (shared with Bluetooth, microwaves, cordless phones) | IoT, wide coverage |
+| 5 GHz | Shorter | Faster | Lower | Streaming, gaming, video calls |
+| 6 GHz | Shortest | Ultra-high | Lowest (few devices support it yet) | Enterprise, newest devices (Wi-Fi 6E/7) |
+
+- Licensed spectrum (cellular, government) vs. unlicensed (Wi-Fi, Bluetooth) — regulated by FCC (US), ETSI (EU), MIC (Japan)
+- Trends: 6 GHz going global, **MLO** (use multiple bands simultaneously), private 5G, AI-driven dynamic frequency selection
+
+## Wireless Channels
+- 2.4 GHz range (2.401–2.485 GHz) split into 14 channels, each 20 MHz wide but only 5 MHz apart → overlap
+- **Non-overlapping 2.4 GHz channels: 1, 6, 11** (memorize this)
+- 5 GHz: wider channels, more of them, less overlap; supports **DFS** (Dynamic Frequency Selection)
+- 6 GHz: even more channels, higher speed, more simultaneous connections (Wi-Fi 6E/7 only)
+- Auto channel selection is fine for most homes; manual + analysis tools for dense/enterprise environments
+
+## Wi-Fi Antennas
+- **Omni-directional**: radiates equally in all directions — standard for home/office
+- **Directional**: focuses signal one way, longer range — point-to-point links, outdoor
+- **Panel**: medium range, controlled focus
+- **Yagi**: external/tracking use
+- Placement: central + vertical for omni; aimed at target devices for directional
+- **Gain (dBi)**: logarithmic scale, 0 dBi = omni reference; higher dBi = more focused + farther, but narrower coverage
+- Use mesh networks/repeaters to fix dead zones
+
+## Wireless Networking vs. Bluetooth
+- Wi-Fi/cellular = internet access; **Bluetooth = direct short-range device-to-device only** (no internet access itself)
+- Both can share the 2.4 GHz band → potential interference
+- Bluetooth 5.0+: longer range, faster, better IoT support; **Bluetooth LE** for wearables (sensors, smartwatches)
+- Security: WPA3 for Wi-Fi; disable Bluetooth when not in use, use secure pairing to avoid "bluejacking"
+
+## Long-Range Fixed Wireless
+- Point-to-point (building-to-building) or scaled-up Wi-Fi (city-wide), using radio/microwave signals
+- Direct links: unlicensed 2.4/5 GHz; wide-area coverage: licensed cellular-type frequencies (24/60 GHz)
+- Requires line of sight for point-to-point; weather (rain/fog) degrades performance
+- Cost-effective, fast-to-deploy alternative to fiber/DSL in rural or hard-to-wire areas
+- Future: **5G FWA** (Fixed Wireless Access), millimeter wave (24/39 GHz, licensed), AI-driven self-healing networks
+
+## NFC vs. RFID
+| | NFC | RFID |
+|---|---|---|
+| Range | ≤4 cm | Up to 100 m (active tags) |
+| Communication | Two-way | One-way (tag → reader only) |
+| Power | Always passive (device-powered) | Passive or active (battery) |
+| Typical use | Payments, access control, mobile interactions | Asset tracking, logistics, security badges |
+| Security risk | Relay attacks | Cloning |
+
+## Jitter & Latency
+- **Latency** = delay in data transmission (congestion, routing, distance)
+- **Jitter** = variability/inconsistency in packet arrival times
+- Causes: network congestion, physical distance, router/switch processing delays, dynamic routing changes, wireless interference
+- Acceptable thresholds: latency **<150 ms**, jitter **<30 ms**, packet loss **<1%** (especially for VoIP)
+- Tools: `ping` (round-trip time), `traceroute`/`tracert` (path delays), **iPerf** (jitter/packet loss/bandwidth), **Wireshark** (packet timing analysis)
+- Mitigation: QoS (prioritize traffic), network segmentation, reduce wireless interference, shortest possible routes
+
+## Wireless Interference
+- Symptoms: intermittent connectivity, slow speeds, high latency, VoIP quality issues
+- Causes: physical barriers, other 2.4 GHz devices (baby monitors, cordless phones, Bluetooth, microwaves), neighboring Wi-Fi networks
+- Identify with: Wi-Fi analyzer tools, bandwidth usage monitoring
+- Reduce by: switching to 5/6 GHz, using wired connections where possible, central/open router placement
+- Future-proof with newer standards (Wi-Fi 6/6E/7)
+
+## Common Network Configuration Concepts
+- **Access Points**: extend a wired network into wireless; need SSID + password; place centrally
+- **Guest networks**: isolated via VLAN segmentation, separate SSID, still use WPA3, can restrict bandwidth/device count, rotate credentials periodically
+- Non-overlapping 2.4 GHz channels: **1, 6, 11**
+- Use QoS to prioritize important traffic
+- Security: MAC filtering (secure but high overhead) vs. VLAN/guest network (better for dynamic environments), regular audits, firmware updates
+
+## Troubleshooting Wi-Fi Signals
+- Symptoms: intermittent connectivity, slow speeds despite being connected, high latency
+- Causes: physical obstructions, device interference, poor placement, overcrowded channels
+- Fixes: central/open placement, non-overlapping channels (1/6/11), extenders/repeaters/APs for coverage gaps, reduce congestion, use wired where possible
+- Trade-off reminder: 2.4 GHz = better range/penetration but more interference and slower; 5/6 GHz = faster and less interference but shorter range
+
+## Troubleshooting Network Configurations (Windows)
+- `ipconfig` — basic IP info (your IP, default gateway)
+- `ipconfig /all` — detailed info incl. DHCP server, DNS servers
+- `ping <target>` — tests connectivity and round-trip time
+- `tracert <target>` — shows the routing path taken
+- **Windows Network Troubleshooter** ("Diagnose network problems") — auto-detects issues and suggests fixes
+- Example: a manually-set invalid DNS server caused a `DNS_PROBE_FINISHED_BAD_CONFIG` error → fixed by switching DNS assignment back to **Automatic (DHCP)**
+
+## Course Summary
+Wireless adapters & standards (Bluetooth/NFC) → Wi-Fi authentication & WPA3 → frequency/channel/interference management → jitter & latency → troubleshooting signals and connectivity (ipconfig, ping, tracert, Windows troubleshooter).
