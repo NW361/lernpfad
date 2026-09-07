@@ -1,351 +1,115 @@
-Core principle
-  
-    - IP address → gets you to the server; port → tells it which service you want; protocol → defines the rules of communication
-    - Runs mostly over the TCP/IP model
-  
-  Key ports
-  
-    - FTP (file transfer) – port 20/21
-    - SSH (encrypted remote access) – port 22
-    - SMTP (sending email) – port 25
-    - DNS (domain name → IP address) – port 53
-    - HTTP (web browsing, unencrypted) – port 80
-    - HTTPS (web browsing, encrypted via SSL/TLS) – port 443
-    - RDP (Microsoft remote administration) – port 3389
-  
-  Port security
-  
-    - Firewalls should only leave the ports open that are actually needed (e.g. close 80/443 if there's no web server)
-    - Ports should only be open when in use, not permanently
-    - Unencrypted protocols can be encapsulated inside encrypted ones (data stays protected even so)
-  
-  Authentication & monitoring
-  
-    - Kerberos as an example of an authentication protocol (identity verification)
-    - Intrusion detection/prevention systems learn the normal traffic pattern per port/protocol and 
-      flag anomalies (e.g. sudden traffic spikes)
-  
-  Future trends
-  
-    - IPv6: much larger address space than IPv4, but longer/less user-friendly
-    - Zero Trust: every request is always verified, nothing is assumed secure by default
-    - Quantum-safe encryption: encryption via quantum computers, based on quantum physics rather than math — theoretically
-      unbreakable
+# Networking Fundamentals — Cheat Sheet
 
+## Ports & Protocols
+- IP address → reaches the server; **Port** → identifies the specific service; **Protocol** → defines the communication rules
+- Runs mostly over the TCP/IP model
 
-TCP (Transmission Control Protocol) vs UDP (User Datagram Protocol)
-  
-    - OSI model (Open System Interconnect)
-  
-  Core principle
-  
-    - TCP and UDP are the two core transport-layer protocols (Layer 4 of the OSI model) – responsible for actually
-      moving packets from one place to another
-    - Both balance reliability, speed, and efficiency differently; only one is used per given communication
-  
-  TCP (Transmission Control Protocol)
-  
-    - Connection-oriented: three-way handshake (SYN → SYN-ACK → ACK) before any data flows
-    - Reliable, ordered, error-checked – via checksums (error detection) and acknowledgments (confirms receipt, otherwise retransmits)
-    - Analogy: like a phone call – you dial, wait for an answer, and ask the other person to repeat something you missed
-    - Typical uses: web browsing (HTTP/HTTPS), email (SMTP, IMAP, POP3), file transfer (FTP, SFTP)
-    - Downside: slower due to error checking and acknowledgments
-  
-  UDP (User Datagram Protocol)
-  
-    - Connectionless: no handshake, packets are just sent
-    - No delivery guarantee, no retransmission of lost packets → in exchange, lower latency
-    - Analogy: like giving a speech to an audience – no one interrupts to ask for a repeat, missed info is simply lost
-    - Typical uses: streaming, voice-over-IP, video calls, gaming, DNS lookups, IoT communication
-    - Advantage: faster, since there's no error checking or acknowledgments
-  
-  Comparison
-  
-  	                TCP	                            UDP
-  Connection	      connection-oriented	            connectionless
-  Reliability	      high	                          low
-  Speed	            slower	                        faster
-  Typical for	      web, email, file transfer	      streaming, VoIP, DNS, IoT
-  
-  Security
-  
-    - Securing TCP: TLS encryption (e.g. HTTPS), firewall rules allowing only trusted TCP traffic
-    - Securing UDP: rate limiting and packet filtering (against DoS attacks), plus DNSSEC for DNS specifically
-    - For both: monitoring via intrusion detection systems or traffic-analysis tools like Wireshark
+| Protocol |     Purpose                         |   Port |
+|---|---|---|
+| FTP      |   File transfer                     | 20 / 21 |
+| SSH      |   Encrypted remote access           | 22 |
+| SMTP     |   Sending email                     | 25 |
+| DNS      |   Domain name → IP resolution       | 53 |
+| HTTP     |   Web browsing (unencrypted)        | 80 |
+| HTTPS    |   Web browsing (encrypted, SSL/TLS) | 443 |
+| RDP      |   Windows remote administration     | 3389 |
 
+- Firewalls: only open the ports actually needed, and only when needed (not permanently)
+- Kerberos = common authentication protocol (identity verification)
+- IDS/IPS: learn the normal traffic pattern per port/protocol, flag anomalies (e.g. sudden spikes)
+- Future trends: IPv6 expansion, Zero Trust (every request always verified), quantum-safe encryption (physics-based, not math-based)
 
-Switches and Routers
-  
-  
-  - Switches connect devices within a LAN
-  - Routers connect multiple different LANs/networks together (including your LAN to the internet)
-  
-  Switches
-  
-    - Operate at Layer 2 (Data Link Layer) – address and forward traffic using MAC addresses
-    - Unmanaged: plug-and-play, no configuration
-    - Managed: advanced config options, notably VLAN (Virtual LAN) support and extra security settings
-    - Layer 3 switches exist too – they can both switch and route (e.g. a typical home router is technically a layer 3 switch:
-      it routes between your LAN and your ISP's network, but also has ports so your own devices can talk to each other)
-    - Common use cases: data centers, enterprise networks, VoIP – anywhere there's a LAN; used with VLANs for network
-      segmentation and to reduce congestion
-  
-  Routers
-  
-    - Operate at Layer 3 (Network Layer) – forward packets using IP addresses, not MAC addresses
-    - Connect separate networks together and direct traffic between them
-    - Static routing: paths configured manually
-    - Dynamic routing: protocols like OSPF, BGP, and EIGRP automatically pick the best path (and can reroute around congestion)
-    - Types: home/small-business routers (Wi-Fi, firewall, basic networking), enterprise routers (multi-LAN, multi-site environments),
-      core routers (Internet backbone, ISP-scale)
-  
-  Comparison
-  
-  	              Switch	                      Router
-  OSI Layer	      2 (or 3 for L3 switches)	    3
-  Addressing	    MAC address	                  IP address
-  Connects	      devices within one LAN	      multiple networks/LANs
-  Typical use	    LAN traffic management	      internet access, inter-network routing
-  
-  Best practices for both
-  
-    - Change default admin credentials, enable firewall rules
-    - Use role-based access control for who can configure the device
-    - Segment traffic with VLANs; use QoS to prioritize bandwidth for demanding applications
-    - Monitor via SNMP or syslog-based tools; keep firmware updated
-    - Back up device configuration to a file so it can be restored after a factory reset
+## TCP vs. UDP
+Both are Layer 4 (Transport Layer) protocols — only one is used per given communication.
 
+|               | TCP                                                           | UDP |
+|---|---|---|
+| Connection    | Connection-oriented (3-way handshake: SYN → SYN-ACK → ACK)     | Connectionless |
+| Reliability   | High — checksums + acknowledgments, retransmits lost packets   | Low — no retransmission |
+| Speed         | Slower (error checking overhead)                               | Faster |
+| Typical use   | Web (HTTP/S), email (SMTP/IMAP/POP3), file transfer (FTP/SFTP) | Streaming, VoIP, video calls, gaming, DNS, IoT |
+| Security      | TLS (HTTPS), firewall rules for trusted traffic                | Rate limiting, packet filtering, DNSSEC (for DNS) |
 
-Access Points, Repeaters & Extenders:
+- Which protocol an app uses is hard-coded into the application itself — not something the end user chooses
 
-    - Access Points (APs): extend an existing wired network into a wireless one
-    - Repeaters: boost/rebroadcast an existing Wi-Fi signal to extend coverage
-    - Extenders: also extend Wi-Fi coverage, but can use a wired backhaul connection
-  
-  Access Points
-  
-    - Connect to the existing wired network via cable, then transmit/receive wirelessly so Wi-Fi devices join the
-      same network as the wired one
-    - Modern APs support dual-band (2.4/5 GHz) or tri-band (incl. 6 GHz)
-    - Managed locally via browser/IP address, or centrally via a cloud service for many APs at once
-    - No bandwidth/performance degradation, since the AP connects to the switch like any other wired device
-    - Typical use: large offices, enterprise environments, public Wi-Fi hotspots (airports, hotels)
-    - Requires a wired (Ethernet) connection to set up
-  
-  Repeaters
-  
-    - Receive the existing Wi-Fi signal and rebroadcast it wirelessly only – no wired backhaul option
-    - Reduces bandwidth/speed, since the signal has to be received, boosted, and retransmitted
-    - Plug-and-play – just connects to the existing Wi-Fi
-    - Typical use: small homes/offices with minor dead zones
-  
-  Extenders
-  
-    - Can connect back to the original signal via a wired connection ("backhaul") or wirelessly
-    - With a wired Ethernet backhaul: extends coverage without reducing speed
-    - With a wireless backhaul: functionally the same as a repeater
-    - Typical use: larger buildings or areas with significant interference, where running a cable is possible
-    
-  Comparison
-  
-  	                      Access Point	           Repeater	            Extender
-  Connection to source	  wired	                  wireless only	        wired or wireless
-  Speed impact	          none	                  reduces speed	        none (if wired), same as repeater (if wireless)
-  Setup	                  requires Ethernet	      plug-and-play	        wired setup if using backhaul
-  Typical use	            offices/enterprise	    small homes/offices	  larger offices, weak-signal areas
-  
-  Best practices
-    
-    - Place the primary Wi-Fi source as centrally as possible
-    - Always secure the wireless signal with a password (not needed for wired backhaul connections)
-    - Change default device passwords/credentials – defaults are often weak and well-known
-    - Keep firmware updated
-    - Monitor device logs/configuration to catch unauthorized changes and see which devices are connecting
+## Switches & Routers
+- **Switch**: connects devices *within* one LAN, uses MAC addresses, operates at Layer 2
+  - Unmanaged = plug-and-play; Managed = supports VLANs + advanced security config
+- **Router**: connects *different* networks/LANs together, uses IP addresses, operates at Layer 3
+  - Static routing = manually configured paths; Dynamic routing = protocols like OSPF, BGP, EIGRP auto-select the best path
+- A **Layer 3 switch** does both switching and routing (e.g. a typical home router)
+- Best practices: change default credentials, role-based access control, VLANs for segmentation, QoS for bandwidth priority, SNMP/syslog monitoring, keep firmware updated, back up configs
 
+## Access Points, Repeaters, Extenders
+- **Access Point (AP)**: extends an existing *wired* network into wireless; needs an Ethernet connection; no bandwidth loss; used in offices/enterprise/public hotspots
+- **Repeater**: rebroadcasts an existing Wi-Fi signal wirelessly only; reduces speed; plug-and-play; small homes/offices with minor dead zones
+- **Extender**: extends coverage via wired backhaul (no speed loss) or wireless backhaul (same limitation as a repeater); larger buildings/areas with interference
+- Always secure the wireless signal with a password; change default device credentials; keep firmware updated
 
-Patch Panels
+## Patch Panels
+- Centralized termination point for all cable runs (e.g. one per office) → then short cables connect the panel to the switches
+- Types: copper (RJ45 connectors) or fiber optic; shielded (interference-prone areas) or unshielded (standard)
+- Benefits: simplified troubleshooting/maintenance from one central point, easy scalability
+- Best practice: label both ends of every connection, avoid kinks, leave slack, consider color-coding by section
 
-  Core function
+## Firewalls
+- A barrier between a trusted network and an untrusted one (e.g. the internet); filters traffic based on rules
+- Inspection levels (basic → advanced):
+  1. **Packet filtering** — IP/port only, simple and fast, limited security
+  2. **Stateful inspection** — only allows traffic from an established/authenticated session
+  3. **Next-gen (NGFW)** — deep packet inspection, built-in IDS/IPS, malware signature filtering
+- Deployment types: **Network-based** (hardware, protects the whole network), **Host-based** (software, protects one system), **Cloud-based/FWaaS** (subscription, protects cloud systems)
+- Best practices: least-privilege access to the firewall/config, review rules regularly, enable IDS/IPS where available
 
-    - Patch panels are centralized connection points for network cables – every office/room's cable run terminates there, simplifying
-      cable management and troubleshooting
-    - The patch panel is essentially "the other end" of the cable from each office; short cables then connect the patch panel to the
-      switches, so all devices can communicate
-  
-  Types
+## Power over Ethernet (PoE)
+- Delivers data *and* power over a single Ethernet cable — no separate power adapter needed
+- Standards: **802.3af** (PoE, ≤15.4 W) → **802.3at** (PoE+, ≤30 W) → **802.3bt** (PoE++, ≤60–100 W)
+- Needs a PoE-capable switch (or a PoE injector to retrofit a legacy setup)
+- Limits: thin copper wiring caps deliverable power; standard Ethernet runs capped at 100 m
+- Use cases: IP cameras, wireless access points, VoIP phones, smart buildings, industrial IoT sensors
 
-    - Copper patch panels: standard Ethernet/copper wiring, terminated with RJ45 connectors on the front
-    - Fiber optic patch panels: same concept, using fiber cabling instead
-    - Shielded vs. unshielded: shielded is only needed where interference is a concern (e.g. nearby high-power cables);
-      unshielded is standard in most environments
+## Cable & DSL Modems
+Both are technically Layer 3 switches — they route your home network to the internet while also providing local switching ports/Wi-Fi.
 
-  Benefits
-  
-    - Simplifies maintenance – one central place to check/fix connections instead of chasing cables through the building
-    - Improves flexibility and scalability – more patch panels can be added as the environment grows, as long as cabling
-      can physically be run
-  
-  Installation & best practices
-  
-    - Label every connection on both ends (e.g. floor + office location) so you always know where the other end is
-    - Terminate connections properly and plug each patch panel port into its associated switch
-    - Keep cables tied together neatly, avoid kinks (can cause breaks), leave a bit of slack, and consider color-coding by section
-  
-  Use cases
-  
-    - Common in large data centers, enterprise networks, and office buildings with enough connections to justify one
-    - Occasionally used in home networking too (e.g. new-build homes wired with Ethernet in every room), though Wi-Fi has made
-      this less common there
+|             | Cable                                                   | DSL |
+|---|---|---|
+| Medium      | Coaxial cable                                           | Telephone line |
+| Standard    | DOCSIS (up to 10 Gbps)                                  | ADSL (asymmetric) / VDSL (up to ~100 Mbps) |
+| Bandwidth   | Shared — congestion possible at peak times              | Dedicated per subscriber |
+| Best for    | High-bandwidth use (streaming, gaming, large downloads) | Basic browsing/email; rural areas without cable/fiber |
 
+- Best practices: keep away from heat/electronic interference, change default credentials, enable firewall/encryption, restart to resolve most connectivity issues
 
-Firewalls
+## Optical Network Terminals (ONTs)
+- Converts the fiber optic signal into Ethernet — the key device for Fiber to the Premises/Home (FTTP/FTTH)
+- At home: the ONT is essentially built into your router; in business: a separate device feeding the existing routers/switches
+- Faster (Gigabit+) and more reliable than cable/DSL — uses light, so it's immune to electromagnetic interference
+- May include voice ports (RJ11) and PoE support, depending on the model
+- Best practices: secure default credentials, keep firmware updated; the provider typically handles activation/IP assignment
 
-  Core function
-  
-    - A firewall is a security barrier between a trusted network (home/office) and an untrusted one (typically the internet,
-      or any outside network)
-    - Filters incoming/outgoing traffic based on predefined rules, deciding what's allowed and what's blocked
-    - Main purpose: prevent unauthorized access, malware infiltration, and data breaches
-  
-  Inspection methods (basic → advanced)
-  
-    - Packet filtering: inspects at the network layer, allows/blocks based on IP address and port – simple, fast, easy to set up,
-      but limited security
-    - Stateful inspection: only allows traffic from an already-established, authenticated session – better security than plain packet
-      filtering
-    - Next-generation firewall (NGFW): built-in intrusion detection/prevention, deep packet inspection (examines actual packet
-      contents, not just IP/port), advanced malware filtering using known signatures – used in larger enterprise environments
-  
-  Deployment types
-  
-    - Network-based: a physical hardware device (e.g. rack-mounted, alongside routers/switches), protects the entire network
-    - Host-based: software installed on an individual computer, usually protects just that one system (though it can protect a
-      network if placed at the network edge)
-    - Cloud-based (Firewall as a Service / FWaaS): subscription service configured through a browser, protects systems behind it
-      (typically cloud-based systems)
-  
-  Best practices
-  
-    - Principle of least privilege: limit who can access the firewall device/config software
-    - Review and adjust rules regularly, since new applications/services keep appearing
-    - Enable intrusion detection/prevention if available (NGFW models)
-  
-  Use cases
-  
-    - Enterprise networks: virtually always have a firewall — without one, outside access would be wide open
-    - Home/small business: home routers include basic firewall functionality by default (e.g. blocking unsolicited inbound
-      connections, unless you explicitly configure remote access)
-    - Cloud/remote work: firewall rules need to be configured to allow legitimate remote connections (e.g. admins accessing cloud
-      VMs, employees connecting back to the office) while still blocking everything else
-  
-  
-Power over Ethernet (PoE)
+## Network Interface Cards (NICs)
+- Hardware that lets a device connect to a network, wired or wireless — integrated on most laptops/desktops, often a dedicated card on servers (better performance)
+- Config options: static or DHCP-assigned IP, NIC teaming/load balancing (more bandwidth + redundancy), Wake-on-LAN, MTU tuning, jumbo frames, QoS
+- Wired: faster (up to 100 Gbps), more stable, less interference/range issues — desktops, servers, gaming
+- Wireless: more convenient, up to ~10 Gbps (Wi-Fi 6E), susceptible to interference — laptops, mobile, IoT
+- Security: MAC address filtering, disable any unused interface
 
-  Core function
-  
-    - Power over Ethernet (PoE) delivers both data and electrical power over a single network cable, eliminating the
-      need for a separate power adapter
-    - Common in enterprise networks, smart homes, and IoT environments – especially devices like IP cameras,
-      wireless access points, and VoIP phones
-    
-  Standards (IEEE 802.3 family)
-  
-    - 802.3af (PoE): up to 15.4 watts per port
-    - 802.3at (PoE+): up to 30 watts per port
-    - 802.3bt (PoE++): up to 60–100 watts per port
-    - Limitation: the copper wire inside standard Ethernet cable is thin, capping how much power can realistically be
-      delivered regardless of standard
-  
-  Setup
-  
-    - Requires a PoE-capable switch (clearly labeled as such) — mostly plug-and-play
-    - Higher-end PoE switches offer management software: remote power cycling, power-consumption monitoring
-    - PoE injectors let you retrofit PoE onto legacy (non-PoE) Ethernet setups by converting a standard connection into a powered one
-  
-  Troubleshooting
-  
-    - Verify the device's power requirements don't exceed what PoE can deliver
-    - Check for firmware updates on the PoE switch
-    - Monitor power budgets on managed switches to avoid overloading them
-  
-  Advantages
-  
-    - Simplifies installation (no separate power source/wiring needed)
-    - Enables centralized remote management and power-consumption monitoring
-    - Improves scalability — easier to add devices without electrical rewiring
-  
-  Limitations
-  
-    - Not suited for high-power devices (wire can't carry much current)
-    - Standard Ethernet cable runs are capped at 100 meters — may need extenders for longer distances
-    - Compatibility varies — not all Ethernet cables/hardware support PoE, so equipment needs to be PoE-compliant end to end
-  
-  Use cases
-  
-    - Smart building infrastructure: IP security cameras, lighting, sensors
-    - Enterprise Wi-Fi deployments: easier coverage in hard-to-reach spots without needing power on-site
-    - Industrial IoT: factories/warehouses with many low-power sensors that still need connectivity
-  
-  
-Cable and Digital Subscriber Line (DSL) Modems
+## Network Topologies
+- **Bus**: devices connected in a line, terminator needed at the end (early coax networks)
+- **Ring**: devices connected in a loop; data circulates until it reaches its destination
+- **Star**: centralized device (e.g. a switch), everything connects to it — most common today, scales well
+- **Mesh**: every device connected to every other device — very high reliability, doesn't scale (used for small groups of critical servers)
+- **Hybrid**: a combination of two or more topologies — typical in enterprise networks
+- **Wireless**: no cabling at all
+- Future trends: Software-Defined Networking (reconfigure via software, common in cloud data centers), 5G-enabled topologies, AI-driven network management
 
-  Core function
-  
-    - Cable and DSL modems are both network gateway devices – essentially layer 3 switches that route your home network to the
-      internet while also providing ports/Wi-Fi so your own devices can talk to each other locally
-    - "Modem" = modulate/demodulate: converts analog electrical signals on the line into the digital signals computers use, and back
-  
-  Cable modems
-  
-    - Use coaxial cable (originally for cable TV) as the connection type
-    - Shared bandwidth technology – can experience congestion during peak usage since multiple subscribers share the same line
-    - Use the DOCSIS standard; the latest version supports speeds up to 10 Gbps – comparable to fiber, much faster than DSL
-    - Well suited for high-bandwidth activities: streaming, online gaming, large downloads
-    - More common in urban areas
-  
-  DSL modems
-  
-    - Use standard telephone lines
-    - Dedicated bandwidth per subscriber – less congestion than cable, but lower top speeds
-    - Two variants: ADSL (asymmetric – prioritizes download speed over upload, since that's what most users need) and VDSL (very high bit rate – faster, supports HD streaming, but still slower than cable)
-    - Max speeds around 100 Mbps (VDSL) – far below cable/fiber
-    - Useful in rural areas where cable/fiber isn't available, or when only basic browsing/email/streaming is needed (cheaper option)
-  
-  Comparison
-  
-    	            Cable	                          DSL
-    Connection	  coaxial cable	                  telephone line
-    Max speed	    up to 10 Gbps (DOCSIS 4)	      up to ~100 Mbps (VDSL)
-    Bandwidth	    shared (congestion possible)	  dedicated per subscriber
-    Best for	    high-bandwidth use	            basic browsing/streaming
-  
-  Best practices
-  
-    - Place the modem away from heat sources (e.g. furnace rooms) and electronic interference (microwaves, cordless phones)
-    - Change default login credentials; enable firewall/encryption settings
-    - For connectivity issues, a simple restart resolves most problems; note any status light codes before contacting support
-  
-  
-  
-  
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-  
-  
+## Subnetting
+- Splits a large network into smaller, more manageable sub-networks → better IP allocation, improved security/isolation, less congestion
+- IPv4 address = 32 bits; the **subnet mask** marks the network portion vs. the host portion (e.g. `/24` = 24 network bits, 8 host bits)
+- **CIDR notation** (e.g. `/26`) = number of bits allocated to the network portion
+- Formulas:
+  - Number of subnets = 2ⁿ (n = borrowed bits)
+  - Usable hosts per subnet = 2ʰ − 2 (h = remaining host bits)
+- In every subnet, the **first address** = network address and the **last address** = broadcast address — neither is assignable to a host
+- Private IP ranges (e.g. `192.168.x.x`) never touch the public internet directly — only the router's external interface has a public IP
+- IPv6: 128-bit addresses (vastly larger space), uses a "network prefix" instead of a subnet mask, supports **SLAAC** for self-configuration (no DHCP required)
