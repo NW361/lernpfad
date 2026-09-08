@@ -1,0 +1,83 @@
+IP Addressing – IPv4 vs. IPv6
+
+IPv4: 32-bit, dotted decimal notation (e.g., 192.168.1.10), ~4.3 billion addresses
+IPv6: 128-bit, hexadecimal notation, practically unlimited address space, IPSec built in by default (optional in IPv4)
+IPv6 configuration usually automatic via SLAAC (Stateless Address Autoconfiguration); IPv4 usually via DHCP
+Both versions can run in parallel on one device (dual-stack)
+
+IPv4 Specifics
+
+Public IP: globally unique, assigned by the ISP; private IP: internal use only (Class A: 10.x, Class B: 172.16.x, Class C: 192.168.x)
+Subnet mask/CIDR (e.g., /24 = 255.255.255.0) separates network from host portion; first address = network, last address = broadcast
+Static IP: manually assigned, for servers/routers; dynamic IP: automatically assigned via DHCP, for client devices
+APIPA (169.254.x.x): fallback address when no DHCP server is reachable – useful as a diagnostic clue for DHCP problems
+
+DNS
+
+Translates domain names into IP addresses; process: client → recursive resolver → root server → TLD server → authoritative server
+Key records: A (IPv4), AAAA (IPv6), CNAME (alias), MX (mail server), TXT (used for SPF/DKIM/DMARC email security)
+Zones: primary (master, writable), secondary (read-only copy), stub (essential records only)
+TTL controls how long an entry stays cached – balance between speed and accuracy
+DNSSEC protects against spoofing; troubleshooting tools: nslookup, dig
+
+DHCP
+
+Automatic IP assignment; process: Discover → Offer → Request → Acknowledge (DORA)
+Lease = temporary assignment; renewal attempts at 50% and 87.5% of the lease time, otherwise the address is released
+Server types: SOHO router (home/small office), dedicated server (enterprise), relay agent (forwards broadcasts across router boundaries),
+cloud DHCP
+Reservations bind a fixed IP to a MAC address
+
+File Servers
+
+Centralized, controlled file storage with authentication and permissions
+Protocols: SMB (Windows), NFS (Linux/Unix), FTP (internet transfer), CIFS (outdated)
+Important: backups/redundancy (RAID), since central data loss otherwise affects everyone
+
+Other Server Roles
+
+Print server: centralized queue, saves hardware, enables remote printing
+Mail server: SMTP (sending), POP3/IMAP (retrieval), includes spam filtering and archiving
+Syslog server: collects logs centrally; severity levels from 0 (Emergency) to 7 (Debug); important for security monitoring and compliance
+(GDPR, HIPAA)
+Web server: delivers content over HTTP/HTTPS; software includes Apache, nginx, IIS; scalable and more fault-tolerant through load balancing
+
+AAA (Authentication, Authorization, Accounting)
+
+Authentication = proving identity (password, biometrics, MFA); protocols: RADIUS (remote access/VPN), Kerberos (e.g., Active Directory),
+LDAP (directory services/apps)
+Authorization = permissions after successful authentication; models: role-based (RBAC), attribute-based (ABAC), policy-based (e.g.,
+depending on VPN/Wi-Fi connection)
+Accounting = accountability (logins, sessions, usage-based billing)
+Best practices: MFA, regular log audits, principle of least privilege
+
+Database Servers
+
+Relational DB (SQL, structured tables with relationships) vs. NoSQL (unstructured/semi-structured)
+Core components: database engine (transactions), storage, query processor, access control
+Performance: indexing, caching, load balancing
+Deployment: on-premises, cloud, hybrid with replication
+
+NTP (Network Time Protocol)
+
+Synchronizes clocks over UDP port 123, hierarchical stratum levels (0 = atomic clock/GPS, 1 = primary time servers, 2 = your own servers, etc.)
+Important for logs, audits, distributed systems, financial transactions
+Successor protocol for highest precision: PTP (Precision Time Protocol)
+
+Internet Appliances
+
+Firewall (protects network boundary), VPN gateway/concentrator (centralized remote access), content filter/proxy, load balancer, IoT gateway
+Increasingly available as a cloud service rather than physical hardware
+
+Legacy Embedded Systems
+
+Older, often fixed-purpose systems (e.g., in SCADA – control of industrial processes) with security risks from lack of updates and
+incompatibility
+Strategies: network segmentation, virtualization, patching where possible, phased migration
+
+IoT Devices
+
+Sensors/devices collect data, often pre-processed via edge computing, then sent to the cloud for analysis
+Connection types: Wi-Fi, Bluetooth/Zigbee (short range), cellular (4G/5G), LPWAN (LoRa, NB-IoT) for long range/low power
+Security risks: weak/default credentials, DDoS via botnets, outdated firmware
+Countermeasures: encryption (TLS/VPN), MFA where possible, regular updates
