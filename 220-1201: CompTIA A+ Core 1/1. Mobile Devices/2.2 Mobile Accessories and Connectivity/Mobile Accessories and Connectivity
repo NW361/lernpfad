@@ -1,0 +1,168 @@
+# CompTIA A+ Core 1 (220-1201) — Mobile Accessories & Connectivity Cheat Sheet
+
+## 1. USB
+
+| Version       | Year        | Max Speed  | Notes                                   |
+|---------------|-------------|------------|-----------------------------------------|
+| USB 1.0       | 1996        | 12 Mbps    | Basic peripherals (keyboard/mouse)      |
+| USB 2.0       | ~2000       | 480 Mbps   | Introduced USB hubs                     |
+| USB 3.0       | 2008        | 5 Gbps     | Better power efficiency                 |
+| USB 3.1 / 3.2 | 2013 / 2017 | 10–20 Gbps | Improved encoding                       |
+| USB4          | 2019        | 40 Gbps    | Unified standard, Thunderbolt 3 support |
+| USB4 v2.0     | 2022        | 80 Gbps    | Current standard                        |
+
+**Connector types:** USB-A (standard rectangular), USB-B (square, printers/scanners), Mini/Micro-USB (older mobiles/cameras), USB-C (reversible, data+power+display).
+
+**Power Delivery:** USB PD 3.1 supports up to **240 W**, with intelligent negotiation between devices. "Smart charging" often stops at ~80–85% instead of 100%.
+
+**USB-C vs. Thunderbolt:** Same physical connector/port, fully interchangeable. Only visual difference = the small lightning-bolt icon on Thunderbolt cables. TB3/TB4 = up to 40 Gbps; USB4 v2.0 over Thunderbolt = up to 80 Gbps.
+
+---
+
+## 2. Lightning Connector
+
+- Apple-proprietary, 8-pin, fully reversible (no "top/bottom").
+- Found on older iPhones/iPads (pre USB-C switch); newer Apple devices use USB-C.
+- **MFi certification** ("Made for iPhone/iPad") ensures full compatibility/performance — non-MFi cables may throw accessory errors.
+- Roughly matches USB 2.0 speeds.
+- **Troubleshooting:** clean port with compressed air/ESD-safe brush, use MFi cables, keep OS updated.
+
+---
+
+## 3. Serial Connections
+
+Transmits data **1 bit at a time** (vs. 8 bits/parallel) — simple, reliable, used in legacy/industrial/embedded systems, POS systems, networking config ports, medical devices.
+
+| Standard | Speed           | Range                    | Connector        | Use case                                             |
+|----------|-----------------|--------------------------|------------------|------------------------------------------------------|
+| RS-232   | 300–115,200 bps | ~50 ft                   | DB-9 / DB-25     | Legacy PCs, modems, printers                         |
+| RS-422   | up to 10 Mbps   | up to 4,000 ft (1,200 m) | —                | Point-to-point, industrial automation, telecom       |
+| RS-485   | (like RS-422)   | (like RS-422)            | —                | Multi-point bus, **SCADA**, HVAC, factory automation |
+
+- **Baud rate ≠ bit rate** unless purely digital (1 state change = 1 bit).
+- **USB-to-serial adapters** (incl. **FTDI** chipsets) bridge modern devices to legacy serial gear.
+- Modern alternatives: Ethernet, **CAN bus** (vehicle systems).
+
+---
+
+## 4. Bluetooth Pairing
+
+**Pairing process:** enable Bluetooth on both devices → set accessory to pairing mode → select device from list → confirm (PIN if required) → link key stored for future auto-reconnect.
+
+**Common issues:** device not found, repeated disconnects, PIN mismatch, interference (shares 2.4/5 GHz band with Wi-Fi).
+**Fixes:** restart devices, stay in range, clear paired-device history, reduce Wi-Fi interference.
+
+**Security risks:**
+- *Bluejacking* – unsolicited messages
+- *Bluesnarfing* – unauthorized data access
+- *Man-in-the-middle* – intercepted communication
+
+**Best practices:** disable Bluetooth when idle, use **Secure Simple Pairing (SSP)** (link-key based, no PIN), clear old pairings, keep firmware updated.
+
+| Version | Range          | Speed  | Notes                                                      |
+|---------|----------------|--------|------------------------------------------------------------|
+| 4.0     | ~10 m (30 ft)  | 1 Mbps | Basic security                                             |
+| 5.0     | ~40 m (130 ft) | 2 Mbps | Improved encryption/efficiency                             |
+| 5.4     | ~60 m (200 ft) | 2 Mbps | Low Energy Audio, periodic advertising, strongest security |
+
+---
+
+## 5. NFC vs. Bluetooth vs. Wi-Fi Hotspot
+
+**NFC:** 13.56 MHz, range ≤ 4 cm, speeds 106/212/424 kbps. Three modes: **peer-to-peer**, **reader/writer** (reads/writes NFC tags), **card emulation** (mobile payments).
+
+| Feature     | NFC                    | Bluetooth           | Wi-Fi                  |
+|-------------|------------------------|---------------------|------------------------|
+| Range       | ≤4 cm                  | 10–100 m            | 30–300 m               |
+| Speed       | 106–424 kbps           | 1–3 Mbps            | 100+ Mbps              |
+| Pairing     | Instant tap            | Pairing process     | Network authentication |
+| Power use   | Very low               | Moderate            | High                   |
+| Typical use | Payments, access, tags | Audio, file sharing | Internet access        |
+
+**NFC security risks:** eavesdropping, data corruption, relay attacks.
+**Mitigations:** enable secure NFC mode, use tokenization for payments, keep NFC apps/firmware updated.
+
+---
+
+## 6. Mobile Device Accessories
+
+- **Protective:** hard case (max protection), soft case (lighter), folio case (fold-over, card slots); screen protectors — glass (durable, clearer) vs. film (thin, less protective).
+- **Power:** chargers (match device type), power banks (check capacity/ports).
+- **Audio:** headphones/earbuds/speakers — wired (3.5 mm, USB-C, Lightning) vs. wireless (Bluetooth); check battery life & noise cancellation.
+- **Connectivity:** extra cables, port replicators (laptop expansion).
+- **Enhancement:** VR (fully digital) vs. AR (overlays digital onto real world) headsets, smartwatches, styluses, game controllers.
+
+---
+
+## 7. Troubleshooting Mobile App Connectivity
+
+**Common causes:** poor internet connection (Wi-Fi/cellular), misconfigured app settings, incorrect device settings (e.g., roaming off), server-side outages.
+
+**Troubleshooting steps:**
+1. Verify network settings (Wi-Fi/cellular)
+2. Check app permissions (e.g., camera/photo access)
+3. Clear cache
+4. Install available updates
+
+**Best practices:** keep OS/apps updated, monitor signal strength, use **secured networks** (corporate policies may block unsecured Wi-Fi), consider a cloud VPN for sensitive connections.
+
+---
+
+## 8. Updating Mobile Devices
+
+- **Major update** = new OS version (e.g., iOS 18, Android 14); **minor update** = point release with patches/fixes.
+- **Update types:** OS/system updates, security patches, app updates (managed by each app vendor independently).
+- **Process:** check for update → back up & plug in device → install (OS updates usually require restart).
+- **Common issues:** insufficient storage, battery drain mid-update, failed installs (device reverts to prior stable state).
+- **Best practices:** enable auto-updates, update over Wi-Fi (not cellular, to avoid data charges), confirm app auto-update is also enabled.
+
+---
+
+## 9. Mobile Security
+
+**Common threats:** phishing, malware (less common than on PCs — app stores restrict installs unless jailbroken/rooted), unauthorized network access, data interception (esp. over public Wi-Fi).
+
+**Best practices:**
+- Strong authentication: biometrics (face/fingerprint) > simple PIN; use MFA where possible
+- Keep OS/apps updated (patches vulnerabilities)
+- Enable **remote lock/wipe** (via account sign-in on another device)
+- Use apps with **encrypted communications** (e.g., WhatsApp, on by default)
+- Avoid unsecured public Wi-Fi; use a **VPN** when needed
+
+---
+
+## 10. Wired vs. Wireless Features
+
+**Charging:**
+- Wired: ~90–95% efficient, faster, most common (cable ships with device)
+- Wireless: ~75–85% efficient (energy lost as heat), needs a charging pad/cradle + correct alignment; case must allow magnetic field through
+- Fast charging (>50 W) speeds things up but generates more heat → more wear on Li-ion cells
+
+**Headphones:**
+- Wired: more stable, often better sound quality, but tethered
+- Wireless (Bluetooth): more convenient, but headphones need their own charge
+
+---
+
+## 11. Managing Battery Life
+
+- Li-ion batteries rated for **~300–500 charge cycles**.
+- **Ideal charging range: ~20–80%** — avoid full 0–100% cycles regularly.
+- **Smart charging** automatically caps charging around 80–85%.
+- Avoid extreme heat/cold exposure (degrades battery health).
+- Manage background apps/processes and connectivity (Wi-Fi/Bluetooth/roaming) to save power.
+- **Advanced tips:**
+  - Adaptive battery / AI optimization (device-dependent)
+  - Occasional full discharge ("battery calibration") to recalibrate usage stats
+  - Weigh cost of battery replacement vs. buying a new device on older hardware
+
+---
+
+### Quick Exam-Focus Reminders
+- Know USB version → speed mapping and connector shapes.
+- Lightning = Apple proprietary, 8-pin, MFi certified.
+- RS-232 (DB-9/DB-25) vs. RS-422 (differential, longer range) vs. RS-485 (multi-point/SCADA).
+- Bluetooth security terms: bluejacking, bluesnarfing, MITM, SSP.
+- NFC = short range (≤4 cm), 3 modes, used for payments/tags/access.
+- Wired charging/audio = more efficient & stable; wireless = more convenient.
+- Battery health = keep charge between 20–80%, avoid heat.
