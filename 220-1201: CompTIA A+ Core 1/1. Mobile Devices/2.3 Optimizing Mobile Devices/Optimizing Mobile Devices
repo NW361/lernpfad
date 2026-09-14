@@ -1,0 +1,175 @@
+1. Wireless & Cellular Data
+
+  Wi-Fi	Cellular
+  Range	Router range, usually <100 m	Many km per tower
+  Speed	~1 Gbps+ (faster)	Slower, though 5G approaches Wi-Fi under ideal conditions
+  Latency	Lower (local)	Higher (routing to tower/carrier)
+  Cost	Fixed subscription, unlimited use	Plan-based, may have data caps/overage
+  Mobility	Limited to router range	Available almost anywhere
+  Wi-Fi bands: 2.4 GHz (longer range, more interference, more devices use it), 5 GHz, and newer 6 GHz. Wi-Fi 6/6E = better speed/efficiency; Wi-Fi 7 = faster, lower latency, higher capacity; Wi-Fi 8 expected ~early 2028.
+  Cellular generations: 3G (obsolete) → 4G/LTE (LTE = a standard within 4G) → 5G (current standard: lower latency, higher speed) → 5G-Advanced (better spectral/energy efficiency).
+  Configuration: Wi-Fi = select network + enter password; cellular data = simple on/off toggle in device settings (plan already provisioned by carrier).
+
+2. Location Services
+
+  Determines device position via three methods:
+  
+  GPS – most common, works globally with satellite connectivity
+  WPS (Wi-Fi Positioning System) – based on nearby Wi-Fi source's public IP
+  Cellular triangulation – needs ≥3 towers in range
+  
+  Uses: navigation/maps, ride-sharing & delivery apps, emergency response, geofencing (perimeter alerts).
+  
+  Privacy considerations: apps may collect location history for analytics/ads. Controls include a master location-services toggle, per-app permissions, and using a VPN to shield location data.
+
+3. Mobile Device Management (MDM)
+
+  Lets IT admins remotely manage, monitor, and secure corporately-owned devices.
+  
+  Workflow: device enrollment (tied to user account) → policies pushed automatically (email, Wi-Fi, apps, etc.) → ongoing remote monitoring/management.
+  
+  Capabilities:
+  
+    Auto-configure Wi-Fi, enforce trusted-network-only policies, certificate-based authentication
+    Set data limits / bandwidth policies
+    Enforce device encryption
+    Restrict app sources (private app catalog, whitelist/blacklist)
+    Remote lock / remote wipe
+    Compliance monitoring & remediation
+
+4. Bring Your Own Device (BYOD)
+
+  Employees use personal devices for work.
+  
+  Benefits: lower organizational cost, user familiarity/productivity, flexibility. Challenges: security risk (less control than MDM), compliance concerns, complex administration (many device types/platforms).
+  
+  Security controls available (more limited than full MDM):
+  
+    Enrollment/authentication ties device to user
+    App-specific security/compliance policies (not full device control)
+    Network access control — can block connection to corporate network unless conditions met (e.g., secured connection, on-site)
+    Cannot typically remote lock/wipe a personal device
+  
+  Key risks: data leakage (e.g., screenshotting restricted data), malware/phishing via personal use, no remote wipe if lost/stolen.
+
+5. Mobile Device Synchronization
+
+  Keeps data (contacts, calendar, email, files) consistent across multiple devices.
+  
+  Methods:
+  
+    Cloud-based (Google Drive, iCloud, OneDrive, Dropbox) — most common; data may not even reside locally
+    Local network sync — devices on same Wi-Fi, or via direct USB transfer (faster, more secure/controlled)
+    App-specific sync — sync only one app's data (e.g., photos only)
+  
+  Setup: Android → Settings > Google Account Sync; iOS → Settings > Apple ID > iCloud.
+  
+  Security best practices: use end-to-end encryption, enable MFA for cloud accounts, restrict sync to trusted networks, back up before large sync operations, set conflict-resolution priority rules.
+
+6. Mobile Performance Optimization
+
+  Causes of slowdown: app bloat, excessive background processes, aging hardware vs. newer demanding apps.
+  
+  App/process management:
+  
+    Close unused apps and browser tabs
+    Disable background auto-refresh (e.g., social media)
+    Check battery/energy usage per app; uninstall rarely-used apps
+  
+  Storage & memory:
+  
+    Delete unused apps/old media; offload to cloud storage
+    Restart device periodically (clears memory leaks)
+    Consider "Lite" app versions (fewer resources, may include ads)
+    Use built-in optimizer tools (Android: Files by Google; iOS: Offload Unused Apps)
+  
+  Battery/display: lower brightness, disable unused radios (Bluetooth, etc.), use power-saving mode.
+  
+  Software/security: keep OS/apps updated; use lightweight AV only if needed (Windows already has built-in Defender — avoid redundant AV). If issues are severe → factory reset.
+
+7. Factory Resetting Devices
+
+  Restores device to out-of-box state. Used for: performance issues, malware removal, resale prep, persistent glitches.
+  
+  Process:
+  
+    Back up data first (reset typically wipes everything; some platforms allow data-preserving resets)
+    Perform reset (Settings > General/Maintenance > Reset)
+    Device reboots to welcome/setup screen
+  
+  After reset: restore data, update OS (reset reverts to originally-shipped version), reconfigure locks/biometrics, re-enable Find My Device/iPhone.
+  
+  Best practices: try lighter fixes first (clear cache, reboot, uninstall recent apps) before resetting; for resale/corporate devices, verify account sign-out and consider certified data-wiping tools for unrecoverable erasure.
+
+8. Backing Up & Restoring Data
+
+  Backup types:
+  
+    Cloud (iCloud, Google Drive, OneDrive) — can include photos/docs and device config/app list; automatic in many cases
+    Local — external drive/SD/flash drive (never same drive as OS)
+    Computer-based — e.g., iTunes backup of a phone (requires direct connection; not cloud-accessible remotely)
+  
+  Best practices:
+  
+    Maintain redundant backups (cloud + local)
+    Encrypt sensitive backups (e.g., BitLocker for local Windows drives)
+    Verify backups regularly
+    Restore via system settings, per-app restore, or management software (e.g., iTunes)
+
+9. Mobile Device Security
+
+  Threats: malware, spyware, phishing, unauthorized access, data interception (esp. public/unsecured Wi-Fi).
+  
+  Best practices:
+  
+    Strong/multi-factor authentication (PIN + biometric)
+    Keep OS/apps updated
+    Avoid unsecured Wi-Fi; use WPA2/WPA3
+    Disable Bluetooth/NFC when unused
+    Enable encryption/secure storage
+    Zero trust approach: continuous verification, nothing assumed
+  
+  Emerging trends: AI-powered security (behavioral anomaly detection), blockchain-based security (distributed/no single point of failure), quantum encryption (not yet mainstream).
+
+10. Malware Protection & Antivirus
+
+  Growing threats: mobile malware, phishing, unsecured Wi-Fi interception.
+  
+  Prevention: MFA, VPN for secure browsing, regular OS/app updates.
+  
+  AV software features: real-time threat detection & quarantine, safe browsing/phishing alerts, anti-theft/device tracking (Find My iPhone, etc.), app permission monitoring. Free vs. paid tiers — paid adds real-time monitoring/advanced features; heavier AV can impact performance.
+  
+  Why phones often lack default AV: locked app ecosystems (App Store/Play Store-only installs) + built-in OS encryption reduce risk — unlike jailbroken/rooted devices, which lose this protection. (Laptops, e.g. Windows, ship with built-in security — Microsoft Defender/Security Center.)
+  
+  Signs of infection: unusual battery drain, slow performance, unauthorized app installs, unexpected pop-ups, excessive background data use.
+  
+  Remediation: delete suspicious apps, run a security scan, boot in safe mode, or perform a factory reset as a last resort.
+  
+  Preventative habits: install only from official app stores, enable Google Play Protect / Apple security features, review app permissions, avoid public Wi-Fi for sensitive transactions.
+
+11. Troubleshooting Overheating
+
+  Why mobiles overheat more: compact design, minimal ventilation (vs. desktops with large cases/fans).
+  
+  Common causes: heavy processor load (gaming, streaming), charging (power flow generates heat), hot environments (direct sun, dark screens absorb heat), excessive background processes.
+  
+  Risks of prolonged overheating: shutdowns, touchscreen malfunction, battery degradation, potential fire hazard.
+  
+  Troubleshooting/prevention:
+  
+    Close unnecessary apps/processes
+    Keep battery charge in the 20–80% range; rely on smart charging (auto-stops ~80–85%)
+    Dim display, short screen-timeout, disable unused radios (Bluetooth/Wi-Fi)
+    Enable battery-saver/power-efficiency mode
+    Keep device in a cool environment; avoid direct sun
+    Monitor battery/CPU health; replace battery if it degrades quickly
+
+Quick Exam-Focus Reminders
+
+  MDM = corporate-owned device, full control (remote lock/wipe, app whitelisting). BYOD = personal device, limited control (app-level policies only, no full wipe).
+  Location: GPS (global), WPS (Wi-Fi-based), cellular triangulation (needs 3 towers).
+  Sync methods: cloud, local network/USB, app-specific.
+  Factory reset = out-of-box state; always back up first; OS reverts to original shipped version.
+  Backup types: cloud, local (external media), computer-based (e.g., iTunes) — best practice is redundancy.
+  Overheating: keep charge 20–80%, avoid heat exposure, close background apps.
+  Mobile AV often absent by default because official app stores + OS sandboxing reduce risk — jailbreaking removes that protection.
