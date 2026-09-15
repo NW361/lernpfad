@@ -98,10 +98,10 @@
   
   Type	Coverage	                      Speed	                    Common Use
   LAN	  Local (home/office/building)	  High, low latency	        Office/home networks
-  WAN	  Large/global	                  Medium (higher latency)	 Internet, multinational orgs (interconnects multiple LANs)
+  WAN	  Large/global	                  Medium (higher latency)	Internet, multinational orgs (interconnects multiple LANs)
   MAN	  City/metro-sized	              High	                    City Wi-Fi, university/large business networks
   PAN	  Very short range (few meters)	  Low speed, low power	    Bluetooth, smartwatch-to-phone
-  VPN	  Virtual/global (via internet)	  Varies	                 Secure remote access — not a standalone network type, it's an overlay onto another network
+  VPN	  Virtual/global (via internet)	  Varies	                Secure remote access — not a standalone network type, it's an overlay onto another network
 
 7. Network Address Translation (NAT)
   
