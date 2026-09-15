@@ -1,0 +1,193 @@
+1. Crimpers & Cable Strippers
+
+  -  Crimpers attach connectors to cable ends (e.g., RJ45 for Cat5e/Cat6 twisted pair — up to 1/10 Gbps; coax connectors for
+     TV/broadband; hydraulic crimpers for heavy industrial wire).
+  -  Cable strippers remove outer insulation without nicking the copper (adjustable, self-adjusting, coax-specific, or precision
+     strippers).
+  -  RJ45 crimping steps: strip jacket → arrange pairs per T568A/T568B standard → trim wires even → insert into connector → crimp
+     (ratchets until fully seated) → verify with a cable tester.
+  -  Common issues: loose connections (worn tool/cable stress), wire mismatches (wrong T568A/B), physical damage in high-traffic areas,
+     intermittent connectivity (try repositioning/substitution).
+
+2. Wi-Fi Analyzers
+  
+  Diagnose/optimize wireless networks — signal strength, interference, channel usage.
+  
+  Types: software-based (PC + antenna), hardware-based (portable, good for site surveys/heatmaps), cloud-based (leverages cloud
+  processing/AI).
+  
+  Key features: RSSI (signal strength) monitoring, channel analysis (congestion/overlap), bandwidth usage tracking, security auditing
+  (rogue AP detection).
+  
+  Interference sources: physical obstructions (walls/furniture), device overload (too many clients), other RF sources (Bluetooth,
+  microwaves, cordless phones).
+  
+  Metrics checked: channel overlap, SNR (Signal-to-Noise Ratio), rogue device detection.
+  
+  Example tools: NetSpot (heatmaps, software), Wireshark (packet capture, not RF measurement), AirCheck G3 (hardware + cloud),
+  Cisco Meraki (cloud, Cisco-proprietary, whole-network management).
+
+3. Toner Probes & Cable Testers
+  
+  -  Toner probe: generator sends a signal down a cable; a probe receiver emits an audible tone when near that cable — used to
+     trace/identify cables in walls/patch panels.
+ 
+  -  Cable tester types:
+    - Continuity tester – checks for an unbroken connection end-to-end
+    - Wire map tester – checks continuity and correct wiring standard (T568A/B)
+    - TDR (Time Domain Reflectometer) – locates the distance to a break by measuring signal reflection time
+    - Certifier – comprehensive: tests attenuation/quality against target transmission speeds
+  
+  Common cabling faults: open circuit (break), short circuit (wires touching), crossed pairs (miswiring).
+  Best practices: consistent cable labeling, use quality cabling/connectors (critical at 10 Gbps), calibrate/store test tools properly.
+
+4. Punch Down Tools & Network Taps
+  
+  Punch down tools: seat wires into patch panels/keystone jacks/terminal blocks (blade types: 66, 110, Chrome — matched to the block).
+  Best practice: consistent pressure, trim excess wire without untwisting pairs too far (avoids crosstalk).
+  
+  Network taps — monitor traffic without disrupting it:
+  
+  Type	        Description
+
+  Passive	      No power needed; splits/duplicates traffic (optical splitter for fiber)
+  Active	      Needs power; has fail-safe relays to keep traffic flowing if tap fails
+  Aggregation	  Merges multiple links into one monitoring port
+  
+  Tap vs. SPAN port: a tap is a dedicated hardware device with no performance impact, passive/undetectable; a SPAN port is a switch
+  software feature that mirrors traffic but adds CPU load and can drop packets or be misconfigured (security risk).
+  
+  Best practices: place taps at key aggregation points, encrypt captured data, review logs regularly, integrate with SIEM.
+
+5. Loopback Plugs
+  
+  Small device that redirects a sent signal back to the sender to test a port/interface without needing a live network connection.
+  
+  Types: Ethernet (RJ45, loops send↔receive pins), Serial (loops send/receive + control lines), Fiber optic (standard-specific),
+  T1 (isolates carrier vs. customer equipment issues).
+  
+  Use cases: testing new equipment before deployment ("known good" = personally verified working), remote-site troubleshooting,
+  isolating problems at the demarcation point (customer responsibility vs. ISP responsibility).
+  
+  Common results & meaning:
+
+    - No signal → faulty cable/port
+    - High packet loss → damaged connector/dirty contacts
+    - Incorrect results → misconfigured test tool
+    - Partial transmission → faulty NIC/transceiver
+
+6. Troubleshooting Methodologies by Symptom
+  
+  Intermittent Wireless Connectivity
+  
+  Causes: physical barriers, RF interference (e.g., microwaves in 2.4 GHz), channel congestion, poor AP placement, ISP issues.
+  Fixes: restart equipment, move closer (signal drops with the square of distance), check wired uplink, use non-overlapping channels
+  (jump every 3rd channel, e.g. 1→4→7... wait, use 1/6/11 in the 2.4 GHz band), switch 2.4↔5 GHz, update firmware, add extenders/mesh,
+  apply QoS.
+  
+  Slow Network Speeds
+  
+  Causes: congestion, weak signal, ISP throttling, outdated hardware, background app traffic, outdated drivers. Diagnose: run a
+  speed test, check for congestion (protocol analyzer), test latency (tracert), check packet loss, compare wired vs. wireless.
+  Fixes: upgrade hardware, site survey for AP placement, QoS, band steering (push clients to 5 GHz), reduce background traffic,
+  schedule heavy transfers off-peak, test with a VPN to detect throttling.
+  
+  Limited/No Connectivity
+  
+  Causes: wrong IP/gateway/subnet config, DHCP misconfiguration, weak signal, ISP outage, firewall rules, outdated drivers.
+  Fixes: restart modem/router, verify IP config against documentation, disconnect/reconnect, release/renew IP, check router logs,
+  refresh DNS cache, disable VPN/proxy to isolate the issue, test wired vs. wireless, check ISP status page.
+  
+  Network Jitter
+  
+  Variability in packet arrival time — hurts VoIP/video/real-time apps. Causes: congestion, poor/missing QoS, inconsistent routing
+  paths, hardware throughput limits, wireless interference. Diagnose: ping/tracert, network monitoring tools, VoIP test apps,
+  compare wired vs. wireless performance. Fixes: QoS prioritization for real-time traffic, upgrade outdated hardware, optimize AP
+  placement, jitter buffer tuning, traffic shaping, MPLS/VLANs for static paths, prefer wired connections, business-class internet
+  (better upload).
+  
+  Poor VoIP Quality
+  
+  Causes: congestion, jitter/latency, packet loss (VoIP does not retransmit lost packets — causes audio dropouts), insufficient
+  bandwidth. Diagnose: VoIP monitoring tools, speed test, ping/jitter tests, check packet loss. Fixes: QoS for voice traffic,
+  business-class connection (symmetric up/down), strong Wi-Fi signal or wired connection, adjust codec settings
+  (quality vs. bandwidth trade-off), jitter buffer, faster/closer DNS server.
+  
+  Port Flapping
+  
+  A port repeatedly goes up/down → intermittent connectivity, can corrupt MAC address tables (flooding traffic to all ports = security
+  risk). Causes: faulty cabling/loose connections, hardware failure, Spanning Tree Protocol (STP) misconfiguration/loop detection,
+  power fluctuations, port security misconfiguration. Diagnose: check physical layer/cable testers, review device logs, test
+  interference, swap to another port to isolate. Fixes: replace cables, upgrade hardware, correct STP config, review port security
+  settings, enable Storm Control, use Loop Guard/Root Guard, isolate flapping ports into their own VLAN, monitor via SNMP/Syslog.
+  
+  High Latency
+  
+  Delay in data transmission (measured in ms) — critical for financial transactions, streaming, remote work. Causes: congestion,
+  physical distance/hop count, insufficient bandwidth, inefficient routing, wireless interference. Diagnose: ping (overall delay),
+  tracert (per-hop delay), bandwidth monitoring, wired vs. wireless comparison, check ISP throttling. Fixes: QoS, replace outdated
+  equipment, use geographically closer servers/CDNs, load balancing, TCP window-size tuning, edge computing, MPLS for fixed paths,
+  faster DNS provider.
+  
+  External Interference
+  
+  Sources: neighboring Wi-Fi networks, microwaves, Bluetooth, cordless phones/baby monitors (all 2.4 GHz), physical barriers,
+  electrical equipment (motors/EMI). Diagnose: Wi-Fi analyzer tools, test channel switching, check signal strength at receiver.
+  Fixes: switch to 5 GHz/Wi-Fi 6E (less crowded, but shorter range through walls), prefer wired where possible, reposition APs,
+  use non-overlapping channels, DFS (Dynamic Frequency Selection, avoids radar interference in 5 GHz), mesh systems, enterprise
+  APs with VLAN/SSID management, signal boosters/repeaters.
+
+7. Network Troubleshooting Tools (Software & Hardware)
+  
+  Tool	                                  Purpose
+  
+  ping	                                  Tests connectivity via ICMP echo request/reply; shows round-trip time
+  tracert / traceroute	                  Uses ICMP with increasing TTL to map the path and per-hop delay to a destination
+  ipconfig / ifconfig	                    Shows/verifies network adapter configuration (Windows/Linux)
+  nslookup / dig	                        Tests DNS resolution (Windows/Linux respectively)
+  netstat	                                Shows active connections, open ports, routing table, interface stats
+  Wireshark	                              Packet capture/analysis — deep inspection of traffic (data link–session layers)
+  Nmap	                                  Network mapper — discovers open ports, services, OS info; used for audits/pen testing
+  SNMP	                                  Collects device info and pushes config remotely; stores data in a MIB
+  NetFlow (Cisco) / sFlow (open-source)	  Traffic analysis — NetFlow = full capture (detailed), sFlow = sampled (broader, lighter)
+  PathPing	                              Like tracert but adds packet-loss statistics per hop
+  
+  Hardware tools: cable testers, toner probes, loopback plugs, spectrum analyzer (tests cable performance at various
+  frequencies — important for gigabit+ links), multimeter (voltage/current/continuity).
+  
+  Troubleshooting workflow: identify symptoms → gather info with basic tools (ping, ipconfig, tracert) → analyze traffic
+  (Wireshark/NetFlow) if needed → isolate (hardware/software/ISP) → implement & test fix → verify stability → document findings.
+
+8. Traceroute in Practice
+  
+  -  Uses ICMP messages with increasing TTL values — each router along the path replies once its TTL hits 0, revealing the full path.
+  -  tracert (Windows) may default to IPv6 (fewer hops shown, less per-hop detail) — force IPv4 with tracert -4.
+  -  More hops with IPv4 is often due to NAT — every NAT boundary crossed (home router, ISP) adds a hop; IPv6 typically has fewer
+     hops since NAT usually isn't needed (large address space).
+  -  Response (* / "Request timed out") can mean the router is configured not to respond to ICMP (often a security setting),
+     not necessarily a failure.
+  -  Typical local (wired) LAN latency: under 10 ms, ideally ~5 ms; latency naturally increases with physical/geographic
+     distance (e.g., cross-ocean routes).
+  -  Results can be copied out (select, Ctrl+C) into a document/report for record-keeping.
+
+9. Wireshark in Practice
+  
+  -  Free, open-source packet capture/analysis tool.
+  -  Select the correct interface (e.g., Ethernet vs. Wi-Fi vs. Bluetooth) before capturing.
+  -  Encrypted traffic shows limited detail; unencrypted traffic can be fully decoded in the hex/detail pane.
+  -  Capture filters limit what's recorded (e.g., tcp port https for port 443 traffic) — set under Capture > Options / Capture Filters.
+  -  Display filters narrow down already-captured traffic (e.g., ip.addr == x.x.x.x to isolate one host's traffic) — set under
+     Analyze > Display Filters.
+  -  Useful for isolating VoIP call setup/teardown (Telephony menu), wireless/Bluetooth traffic, and identifying unknown IPs
+     via external lookups (geolocation/ownership).
+ 
+Quick Exam-Focus Reminders
+  -  Crimping standard: T568A vs. T568B — org policy determines which; a cable tester should verify every new termination.
+  -  Tap types: passive (no power, splits signal) vs. active (needs power, fail-open) vs. aggregation (merges links).
+  -  Cable testers: continuity → wire map → TDR (distance to fault) → certifier (full performance/frequency test).
+  -  VoIP does not retransmit lost packets — that's why packet loss = audible dropouts, not just delay.
+  -  Port flapping → check cabling first, then STP config, then port security settings.
+  -  tracert -4 forces IPv4; more hops in IPv4 vs IPv6 traceroutes usually = NAT boundaries.
+  -  Wireshark: capture filters limit what's recorded; display filters narrow what's shown from an existing capture.
+  -  Tool cheat-list: ping (connectivity) → tracert (path/hop delay) → ipconfig/ifconfig (local config) → nslookup/dig (DNS) → netstat
+     (ports/connections) → Wireshark/NetFlow/sFlow (deep traffic analysis).
