@@ -98,7 +98,7 @@
 
 6. Network Types
   
-  Type	Coverage	                      Speed	                    Common Use
+  Type	  Coverage	                     Speed	                   Common Use
 
   LAN	  Local (home/office/building)	  High, low latency	        Office/home networks
   WAN	  Large/global	                  Medium (higher latency)	Internet, multinational orgs (interconnects multiple LANs)
