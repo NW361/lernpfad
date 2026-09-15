@@ -87,7 +87,7 @@
   Type	                Speed	                        Availability	                Reliability	                  Cost
   Fiber	                Fastest (near-light speed)    Limited (esp. rural)	        High	                        High
   Cable	                Fast (shared bandwidth)	      Widespread	                  Medium	                      Medium
-  DSL	                  Moderate (uses phone lines)	  Widespread	                  Medium	                      Lower
+  DSL	                 Moderate (uses phone lines)	  Widespread	                  Medium	                      Lower
   5G/Cellular	          Fast, low latency	            Mostly urban	                Medium	                      Varies
   WISP (Wireless ISP)	  Varies	                      Rural-focused	                Varies	                      Varies
   Satellite	            Slow, high latency	          Global (even remote/ocean)	  Limited (weather-affected)	  High
