@@ -4,7 +4,7 @@
   NS (Name Server)	      Lists servers that perform DNS resolution (always have more than one)
   A (Address)	          Maps a name to an IPv4 address (core DNS record); AAAA = same for IPv6
   MX (Mail Exchanger)	  Identifies the mail server for a domain
-  TXT (Text)	           Stores SPF (Sender Policy Framework) / DKIM (DomainKeys Identified Mail) info — validates email authenticity, only needed if self-hosting email
+  TXT (Text)	          Stores SPF (Sender Policy Framework) / DKIM (DomainKeys Identified Mail) info — validates email authenticity, only needed if self-hosting email
   DMARC	                  Domain-Based Message Authentication, Reporting & Conformance — aligns SPF/DKIM, prevents spoofing, reports abuse; policies: reject/quarantine/monitor
   
   -  TTL (Time to Live): how long a resolution is cached — shorter TTL for frequently-changing records, longer for stable ones.
