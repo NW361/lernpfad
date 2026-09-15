@@ -1,162 +1,169 @@
-CompTIA A+ Core 1 (220-1201) — Internet Connection Types & Features Cheat Sheet
 1. DNS Configurations
-Record	Purpose
-NS (Name Server)	Lists servers that perform DNS resolution (always have more than one)
-A (Address)	Maps a name to an IPv4 address (core DNS record); AAAA = same for IPv6
-MX (Mail Exchanger)	Identifies the mail server for a domain
-TXT (Text)	Stores SPF (Sender Policy Framework) / DKIM (DomainKeys Identified Mail) info — validates email authenticity, only needed if self-hosting email
-DMARC	Domain-Based Message Authentication, Reporting & Conformance — aligns SPF/DKIM, prevents spoofing, reports abuse; policies: reject/quarantine/monitor
-TTL (Time to Live): how long a resolution is cached — shorter TTL for frequently-changing records, longer for stable ones.
-DNS load balancing: distributes traffic across multiple servers for redundancy.
-Propagation: changes can take up to 48 hours to fully propagate across the internet.
-Troubleshooting tools: nslookup, dig, online DNS checkers.
-Security: DNSSEC (prevents falsified DNS data), DoT (DNS over TLS), DoH (DNS over HTTPS) — encrypt DNS traffic.
+  
+  Record	              Purpose
+  NS (Name Server)	    Lists servers that perform DNS resolution (always have more than one)
+  A (Address)	          Maps a name to an IPv4 address (core DNS record); AAAA = same for IPv6
+  MX (Mail Exchanger)	  Identifies the mail server for a domain
+  TXT (Text)	          Stores SPF (Sender Policy Framework) / DKIM (DomainKeys Identified Mail) info — validates email authenticity, only needed if self-hosting email
+  DMARC	                Domain-Based Message Authentication, Reporting & Conformance — aligns SPF/DKIM, prevents spoofing, reports abuse; policies: reject/quarantine/monitor
+  
+  -  TTL (Time to Live): how long a resolution is cached — shorter TTL for frequently-changing records, longer for stable ones.
+  -  DNS load balancing: distributes traffic across multiple servers for redundancy.
+  -  Propagation: changes can take up to 48 hours to fully propagate across the internet.
+  -  Troubleshooting tools: nslookup, dig, online DNS checkers.
+  -  Security: DNSSEC (prevents falsified DNS data), DoT (DNS over TLS), DoH (DNS over HTTPS) — encrypt DNS traffic.
+
 2. DHCP Implementations
-
-Automates IP address assignment. Uses UDP port 67 (server) / UDP port 68 (client).
-
-Process — "DORA":
-
-Discover – client broadcasts request
-Offer – server offers an available address
-Request – client requests the offered address
-Acknowledge – server confirms/logs the lease
-
-Lease renewal timers:
-
-T1 at 50% of lease duration – client requests renewal
-T2 at 87.5% – retry if T1 failed
-If lease fully expires (e.g., device was away), a new address must be requested
-
-Reservations: map a specific IP to a device's MAC address — static assignment while still using DHCP (good for servers/printers).
-
-Scope: defines the address range, subnet mask, lease duration, default gateway; exclusions reserve certain addresses (e.g., for statically-configured devices) out of the pool.
-
-Pros: simplified management, fewer conflicts/errors, supports mobile devices. Cons: possible address exhaustion, dependency on DHCP server availability, risk of rogue DHCP servers (man-in-the-middle).
-
-Future: DHCPv6 (huge IPv6 address space), cloud-based DHCP, integration with Network Access Control (NAC) to block unauthorized devices.
+  
+  Automates IP address assignment. Uses UDP port 67 (server) / UDP port 68 (client).
+  
+  Process — "DORA":
+  
+  1.  Discover – client broadcasts request
+  2.  Offer – server offers an available address
+  3.  Request – client requests the offered address
+  4.  Acknowledge – server confirms/logs the lease
+  
+  Lease renewal timers:
+  
+  -  T1 at 50% of lease duration – client requests renewal
+  -  T2 at 87.5% – retry if T1 failed
+  -  If lease fully expires (e.g., device was away), a new address must be requested
+  
+  Reservations: map a specific IP to a device's MAC address — static assignment while still using DHCP (good for servers/printers).
+  
+  Scope: defines the address range, subnet mask, lease duration, default gateway; exclusions reserve certain addresses (e.g., for statically-configured devices) out of the pool.
+  
+  Pros: simplified management, fewer conflicts/errors, supports mobile devices. Cons: possible address exhaustion, dependency on DHCP server availability, risk of rogue DHCP servers (man-in-the-middle).
+  
+  Future: DHCPv6 (huge IPv6 address space), cloud-based DHCP, integration with Network Access Control (NAC) to block unauthorized devices.
 
 3. Virtual LANs (VLANs)
-
-Logically segments devices on a switch regardless of physical location — improves security, reduces broadcast traffic, improves manageability/performance.
-
-VLAN types:
-
-Default VLAN – all ports start here (usually VLAN 1); can't be deleted/renamed
-Data VLAN – carries regular data traffic
-Voice VLAN – prioritized for real-time voice/video traffic
-Management VLAN – used to configure/monitor the switch itself (often = default VLAN, but can be changed)
-Native VLAN – carries untagged traffic
-
-Tagging & trunking:
-
-802.1Q tagging – identifies which VLAN a frame belongs to for inter-VLAN traffic
-Trunking – carries multiple VLANs over a single physical link (between switches, routers, firewalls)
-
-Best practices: dedicate the management VLAN to management only, minimize VLAN spanning across switches, use VLAN ACLs, audit assignments regularly, use trunking only when necessary.
+  
+  Logically segments devices on a switch regardless of physical location — improves security, reduces broadcast traffic, improves manageability/performance.
+  
+  VLAN types:
+  
+  -  Default VLAN – all ports start here (usually VLAN 1); can't be deleted/renamed
+  -  Data VLAN – carries regular data traffic
+  -  Voice VLAN – prioritized for real-time voice/video traffic
+  -  Management VLAN – used to configure/monitor the switch itself (often = default VLAN, but can be changed)
+  -  Native VLAN – carries untagged traffic
+  
+  Tagging & trunking:
+  
+  -  802.1Q tagging – identifies which VLAN a frame belongs to for inter-VLAN traffic
+  -  Trunking – carries multiple VLANs over a single physical link (between switches, routers, firewalls)
+  
+  Best practices: dedicate the management VLAN to management only, minimize VLAN spanning across switches, use VLAN ACLs, audit assignments regularly, use trunking only when necessary.
 
 4. Virtual Private Networks (VPNs)
-
-Encrypted connection over the internet providing confidentiality, integrity, and authentication.
-
-Types:
-
-Remote access VPN – individual admin/user to internal network
-Site-to-site VPN – connects two networks/locations (network-to-network)
-Client-to-site VPN – individual user connects to one site
-SSL VPN – client-to-site via browser, no client software needed
-IPsec VPN – strong encryption, common in corporate use
-MPLS VPN – label-based (not IP-based) multi-site connectivity; needs specific hardware
-
-Protocols:
-
-Protocol	Notes
-OpenVPN	Open-source, highly secure
-IPsec	Encrypts at IP layer; often paired with L2TP (L2TP = tunneling/encapsulation only, no encryption; IPsec adds the encryption)
-WireGuard	Modern, fast, strong encryption
-PPTP	Older, less secure, but broadly compatible
-
-Risks: man-in-the-middle attacks, DNS leaks bypassing the VPN, poor configuration exposing real IP, free VPN services logging/selling data.
-
-Note: VPN only secures traffic from the connection point onward — traffic between the device and the local Wi-Fi access point is not protected by the VPN itself.
+  
+  Encrypted connection over the internet providing confidentiality, integrity, and authentication.
+  
+  Types:
+  
+  -  Remote access VPN – individual admin/user to internal network
+  -  Site-to-site VPN – connects two networks/locations (network-to-network)
+  -  Client-to-site VPN – individual user connects to one site
+  -  SSL VPN – client-to-site via browser, no client software needed
+  -  IPsec VPN – strong encryption, common in corporate use
+  -  MPLS VPN – label-based (not IP-based) multi-site connectivity; needs specific hardware
+  
+  Protocols:
+  
+  Protocol	  Notes
+  OpenVPN	    Open-source, highly secure
+  IPsec	      Encrypts at IP layer; often paired with L2TP (L2TP = tunneling/encapsulation only, no encryption; IPsec adds the encryption)
+  WireGuard	  Modern, fast, strong encryption
+  PPTP	      Older, less secure, but broadly compatible
+  
+  Risks: man-in-the-middle attacks, DNS leaks bypassing the VPN, poor configuration exposing real IP, free VPN services logging/selling data.
+  
+  Note: VPN only secures traffic from the connection point onward — traffic between the device and the local Wi-Fi access point is not protected by the VPN itself.
 
 5. Internet Connection Types
-Type	Speed	Availability	Reliability	Cost
-Fiber	Fastest (near-light speed)	Limited (esp. rural)	High	High
-Cable	Fast (shared bandwidth)	Widespread	Medium	Medium
-DSL	Moderate (uses phone lines)	Widespread	Medium	Lower
-5G/Cellular	Fast, low latency	Mostly urban	Medium	Varies
-WISP (Wireless ISP)	Varies	Rural-focused	Varies	Varies
-Satellite	Slow, high latency	Global (even remote/ocean)	Limited (weather-affected)	High
 
-Choose based on: required speed (streaming/gaming/remote work needs more), budget, location, and reliability needs.
+  Type	                Speed	                        Availability	                Reliability	                  Cost
+  Fiber	                Fastest (near-light speed)    Limited (esp. rural)	        High	                        High
+  Cable	                Fast (shared bandwidth)	      Widespread	                  Medium	                      Medium
+  DSL	                  Moderate (uses phone lines)	  Widespread	                  Medium	                      Lower
+  5G/Cellular	          Fast, low latency	            Mostly urban	                Medium	                      Varies
+  WISP (Wireless ISP)	  Varies	                      Rural-focused	                Varies	                      Varies
+  Satellite	            Slow, high latency	          Global (even remote/ocean)	  Limited (weather-affected)	  High
+  
+  Choose based on: required speed (streaming/gaming/remote work needs more), budget, location, and reliability needs.
 
 6. Network Types
-Type	Coverage	Speed	Common Use
-LAN	Local (home/office/building)	High, low latency	Office/home networks
-WAN	Large/global	Medium (higher latency)	Internet, multinational orgs (interconnects multiple LANs)
-MAN	City/metro-sized	High	City Wi-Fi, university/large business networks
-PAN	Very short range (few meters)	Low speed, low power	Bluetooth, smartwatch-to-phone
-VPN	Virtual/global (via internet)	Varies	Secure remote access — not a standalone network type, it's an overlay onto another network
+  
+  Type	Coverage	                      Speed	                    Common Use
+  LAN	  Local (home/office/building)	  High, low latency	        Office/home networks
+  WAN	  Large/global	                  Medium (higher latency)	  Internet, multinational orgs (interconnects multiple LANs)
+  MAN	  City/metro-sized	              High	                    City Wi-Fi, university/large business networks
+  PAN	  Very short range (few meters)	  Low speed, low power	    Bluetooth, smartwatch-to-phone
+  VPN	  Virtual/global (via internet)	  Varies	                  Secure remote access — not a standalone network type, it's an overlay onto another network
+
 7. Network Address Translation (NAT)
-
-Translates private IP addresses ↔ a public IP address, hiding internal addresses and conserving IPv4 space.
-
-Type	Description
-Static NAT	1-to-1 mapping (private ↔ public) — e.g., hosting an internal web server
-Dynamic NAT	Maps internal addresses to a pool of public addresses, temporarily assigned
-PAT (Port Address Translation)	Most common — many private IPs share one public IP, differentiated by port number
-
-Process: internal device → router replaces private source address with public address (and tracks the mapping, often via port) → external server responds to public address → router translates back to the original private address.
-
-Pros: hides internal addressing, conserves public IPv4 addresses, avoids internal address conflicts. Cons: can break end-to-end connectivity for some apps, adds latency/overhead, can complicate VoIP/gaming protocols.
-
-Future: NAT becomes unnecessary once IPv6 (vast address space) is fully adopted; hybrid IPv4/IPv6 networks are the current transition state.
+  
+  Translates private IP addresses ↔ a public IP address, hiding internal addresses and conserving IPv4 space.
+  
+  Type	                            Description
+  Static NAT	                      1-to-1 mapping (private ↔ public) — e.g., hosting an internal web server
+  Dynamic NAT	            q         Maps internal addresses to a pool of public addresses, temporarily assigned
+  PAT (Port Address Translation)	  Most common — many private IPs share one public IP, differentiated by port number
+  
+  Process: internal device → router replaces private source address with public address (and tracks the mapping, often via port) → external server responds to public address → router translates back to the original private address.
+  
+  Pros: hides internal addressing, conserves public IPv4 addresses, avoids internal address conflicts. Cons: can break end-to-end connectivity for some apps, adds latency/overhead, can complicate VoIP/gaming protocols.
+  
+  Future: NAT becomes unnecessary once IPv6 (vast address space) is fully adopted; hybrid IPv4/IPv6 networks are the current transition state.
 
 8. Port Forwarding
-
-Redirects external traffic (via a public IP + port) to a specific internal device — used for gaming, remote access, hosting servers, cameras, etc. Works alongside NAT.
-
-Key components: public IP, target private IP, port number (e.g., 80 = HTTP, 443 = HTTPS, 3389 = RDP).
-
-Process: external request to public IP:port → router checks forwarding rules → traffic forwarded to internal IP:port → internal device responds back through router.
-
-Risks: exposes internal services to the internet, misconfiguration = unauthorized access, more open ports = larger attack surface.
-
-Best practices: strong passwords on exposed services, restrict access by source IP where possible, disable/remove unused rules, monitor regularly.
-
-Troubleshooting: verify the rule/port is correct, check ISP or local firewall isn't blocking the port, watch for port conflicts (two internal servers can't share the same forwarded port — reconfigure one to listen on a different port, e.g., change RDP's listening port in the registry on a Windows server, then connect using publicIP:newport).
-
-Alternatives: VPN or SSH tunneling (no per-service port rules needed once connected), Zero Trust Network Access, UPnP (automatic but less secure). Port forwarding, like NAT, becomes unnecessary once IPv6 gives every device a public address.
+  
+  Redirects external traffic (via a public IP + port) to a specific internal device — used for gaming, remote access, hosting servers, cameras, etc. Works alongside NAT.
+  
+  Key components: public IP, target private IP, port number (e.g., 80 = HTTP, 443 = HTTPS, 3389 = RDP).
+  
+  Process: external request to public IP:port → router checks forwarding rules → traffic forwarded to internal IP:port → internal device responds back through router.
+  
+  Risks: exposes internal services to the internet, misconfiguration = unauthorized access, more open ports = larger attack surface.
+  
+  Best practices: strong passwords on exposed services, restrict access by source IP where possible, disable/remove unused rules, monitor regularly.
+  
+  Troubleshooting: verify the rule/port is correct, check ISP or local firewall isn't blocking the port, watch for port conflicts (two internal servers can't share the same forwarded port — reconfigure one to listen on a different port, e.g., change RDP's listening port in the registry on a Windows server, then connect using publicIP:newport).
+  
+  Alternatives: VPN or SSH tunneling (no per-service port rules needed once connected), Zero Trust Network Access, UPnP (automatic but less secure). Port forwarding, like NAT, becomes unnecessary once IPv6 gives every device a public address.
 
 9. Configuring Port Forwarding (practical steps)
-Log into router admin panel → find Port Forwarding section (often under Advanced/Networking settings)
-Create a new rule: give it a name, choose protocol (TCP/UDP/Both)
-Set internal port and external port (same value unless intentionally changing the internal listening port)
-Specify the internal/private IP address of the target device
-Save/activate — rule can typically be toggled ON/OFF without deleting it
-
-Example: RDP rule → port 3389, protocol TCP, forwards to internal IP e.g. 192.168.1.10. From anywhere externally, connect via the router's public IP.
+  
+  1.  Log into router admin panel → find Port Forwarding section (often under Advanced/Networking settings)
+  2.  Create a new rule: give it a name, choose protocol (TCP/UDP/Both)
+  3.  Set internal port and external port (same value unless intentionally changing the internal listening port)
+  4.  Specify the internal/private IP address of the target device
+  5.  Save/activate — rule can typically be toggled ON/OFF without deleting it
+  
+  Example: RDP rule → port 3389, protocol TCP, forwards to internal IP e.g. 192.168.1.10. From anywhere externally, connect via the router's public IP.
 
 10. Troubleshooting DHCP (Windows Server DHCP console)
-
-Checklist when a scope isn't handing out correct addresses:
-
-Address Pool – verify start/end IP range is correct
-Exclusions – confirm any statically-assigned addresses are properly excluded (prevents IP conflicts)
-Address Leases – view currently active leased/reserved addresses
-Reservations – verify name, IP, and MAC address are correct for any reserved device
-Scope Options – check default gateway (option 3), DNS servers, domain name for typos (a wrong gateway breaks internet access for every client in that scope)
-Scope Activation status – an inactive scope (flagged with a small icon) hands out nothing; right-click → Activate
-
-Applies conceptually across platforms (Windows, Linux/UNIX, routers) — interface differs, but scope range, exclusions, reservations, and options are the common elements to check.
+  
+  Checklist when a scope isn't handing out correct addresses:
+  
+    1.  Address Pool – verify start/end IP range is correct
+    2.  Exclusions – confirm any statically-assigned addresses are properly excluded (prevents IP conflicts)
+    3.  Address Leases – view currently active leased/reserved addresses
+    4.  Reservations – verify name, IP, and MAC address are correct for any reserved device
+    5.  Scope Options – check default gateway (option 3), DNS servers, domain name for typos (a wrong gateway breaks internet access for every client in that scope)
+    6.  Scope Activation status – an inactive scope (flagged with a small icon) hands out nothing; right-click → Activate
+  
+  Applies conceptually across platforms (Windows, Linux/UNIX, routers) — interface differs, but scope range, exclusions, reservations, and options are the common elements to check.
 
 Quick Exam-Focus Reminders
-DNS record types: A (address), MX (mail), TXT (SPF/DKIM), NS (name servers), DMARC (anti-spoofing).
-DHCP process = Discover → Offer → Request → Acknowledge; renewal at T1 (50%) / T2 (87.5%) of lease.
-NAT types: Static (1:1), Dynamic (pool), PAT (many:1 via ports — most common home use).
-VLAN tagging = 802.1Q; trunking carries multiple VLANs over one link.
-VPN protocols: OpenVPN, IPsec (+L2TP), WireGuard, PPTP (older/less secure).
-Port forwarding vs. VPN: port forwarding exposes specific services per port; VPN gives full internal network access through one encrypted tunnel.
-Network types by size: PAN < LAN < MAN < WAN; VPN is an overlay, not a size category.
-Internet types ranked by typical speed: Fiber > Cable > 5G ≈ DSL > Satellite (slowest but most available).
+  
+  -  DNS record types: A (address), MX (mail), TXT (SPF/DKIM), NS (name servers), DMARC (anti-spoofing).
+  -  DHCP process = Discover → Offer → Request → Acknowledge; renewal at T1 (50%) / T2 (87.5%) of lease.
+  -  NAT types: Static (1:1), Dynamic (pool), PAT (many:1 via ports — most common home use).
+  -  VLAN tagging = 802.1Q; trunking carries multiple VLANs over one link.
+  -  VPN protocols: OpenVPN, IPsec (+L2TP), WireGuard, PPTP (older/less secure).
+  -  Port forwarding vs. VPN: port forwarding exposes specific services per port; VPN gives full internal network access through one encrypted tunnel.
+  -  Network types by size: PAN < LAN < MAN < WAN; VPN is an overlay, not a size category.
+  -  Internet types ranked by typical speed: Fiber > Cable > 5G ≈ DSL > Satellite (slowest but most available).
