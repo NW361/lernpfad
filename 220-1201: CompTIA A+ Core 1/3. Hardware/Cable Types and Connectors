@@ -1,0 +1,257 @@
+1. Ethernet Cable Categories
+  
+  Cat5e:  up to 1 Gbps over 100 m. Basic home/office networks.
+  Cat6:   up to 10 Gbps, but reliable 10G only over shorter runs (~55 m).
+  Cat6a:  stable 10 Gbps at the full 100 m distance.
+  Cat7:   adds shielding, 10 Gbps+, good for noisy/high-EMI environments.
+  Cat8:   newest/fastest, up to 40 Gbps, but only over short runs — used in data centers.
+  
+  Connectors: RJ45 (8P8C, the standard), GG45 (RJ45-compatible, higher frequency/shielding), M12 (ruggedized, industrial/outdoor),
+  LC/SC/ST (used for fiber Ethernet).
+  
+  Choosing a cable: consider speed needed, distance, shielding (near EMI sources), and future-proofing.
+  Install best practices: avoid sharp bends, keep cables away from EMI sources, label everything clearly, use proper cable
+  management, and test with a cable tester after installation. Trend to know: PoE (Power over Ethernet) delivers data and power
+  over the same cable — used for cameras, VoIP phones, and access points.
+
+2. STP vs. UTP
+  
+  STP (Shielded Twisted Pair):
+  
+  - Adds metallic shielding (foil/braid) for strong protection against electromagnetic interference (EMI).
+  - More expensive and more rigid than UTP.
+  - Requires proper grounding — without it, the shielding can actually introduce more noise instead of reducing it.
+  - Best for industrial sites, data centers, and high-EMI areas (near machinery, RF equipment).
+  
+  UTP (Unshielded Twisted Pair):
+  
+  - Relies only on wire twisting to reduce EMI/crosstalk — no metallic shielding.
+  - Cheaper, lighter, and easier to install than STP.
+  - No special grounding needed.
+  - Best for homes, offices, and schools — the standard choice for Cat5e/Cat6/Cat6a setups.
+  
+  Best practice: don't run cabling parallel to power lines (cross at right angles if unavoidable); always test connections
+  with a cable tester.
+
+3. Optical Fiber
+  
+  Single-mode fiber (SMF):
+  
+  - Uses a single light path through a smaller core.
+  - Supports very long distances (up to ~100 km) with minimal signal loss.
+  - More expensive, requires precise equipment (laser-based transceivers).
+  - Used for telecom/ISP backbones, metropolitan area networks (MANs), and undersea cabling.
+  
+  Multi-mode fiber (MMF):
+  
+  - Uses multiple light paths through a larger core.
+  - Supports shorter distances (up to ~2 km), though still handles Gigabit+ speeds.
+  - Cheaper and easier to install than single-mode.
+  - Used in LANs, data centers, and office buildings.
+  
+  Fiber connectors: LC (compact, high-density, common in data centers), SC (push-pull locking, telecom),
+  ST (bayonet twist-lock, legacy/industrial), MTP/MPO (houses 12–24+ fibers, used in large-scale data centers).
+  
+  Advantages over copper: higher speed, longer distance without repeaters, immune to EMI, lower latency, highly scalable.
+  Install best practices: avoid sharp bends (can cause micro-cracks), keep connectors clean (dust degrades signal), use protective
+  conduits, and label both ends clearly.
+
+4. Speed & Transmission Factors
+  
+  Five key factors affect network performance:
+  
+  - Bandwidth – the maximum data rate
+  - Latency – the delay before data transfer begins
+  - Jitter – variation in that latency over time
+  - Packet loss – data that fails to reach its destination
+  - Interference – especially disruptive to wireless signals
+  
+  Wired (Ethernet) vs. Wireless (Wi-Fi):
+  
+  - Wired typically reaches 1–10 Gbps+ with low latency; wireless tops out around ~1.2 Gbps with Wi-Fi 6 and has higher latency.
+  - Wired connections are more stable and inherently more secure; wireless is more prone to interference and needs proper encryption.
+  - Wireless offers much greater mobility; wired requires physical cabling and limits device placement.
+  
+  Common causes of slow speeds: poor cable quality or excessive length, network congestion, wireless interference, protocol overhead,
+  and ISP throttling.
+
+5. T568A / T568B Wiring
+  
+  Defined by the TIA/EIA-568 standard. Both wiring schemes deliver identical electrical performance — the only difference is
+  which wire-pair colors sit in pins 1/2 vs. 3/6 (green and orange pairs are swapped between the two standards).
+  
+  - T568A is common in government and residential settings, and is compatible with legacy phone wiring.
+  - T568B is more common in commercial and enterprise installations.
+  
+  Rule of thumb: pick ONE standard and use it consistently across an entire network — mixing the two causes wiring mismatches.
+  
+  - A straight-through cable uses the same standard on both ends (e.g., PC to switch).
+  - A crossover cable uses a different standard on each end (e.g., PC to PC) — largely unnecessary with modern auto-sensing NICs,
+  but still worth knowing for the exam.
+  
+  Termination steps: strip the jacket → untwist and arrange wires per the chosen standard → trim ends evenly → insert into an
+  RJ45 connector → crimp → verify with a cable tester.
+
+6. Video Cables
+  
+  HDMI: carries both video and audio in one cable. HDMI 1.4 supports full HD (1080p); HDMI 2.0 supports 4K at 60 Hz; HDMI 2.1
+  supports up to 8K at 120 Hz. Includes ARC (audio return channel) and CEC (single-remote control of multiple devices).
+  The most common consumer AV standard.
+
+  DisplayPort: supports resolutions up to 16K (DP 2.0) and high refresh rates (144/240 Hz), making it the preferred choice for
+  gaming (supports FreeSync/G-Sync). Also carries audio and supports MST for daisy-chaining multiple monitors from one output.
+
+  DVI: video-only (no audio), max resolution 2560×1600 with dual-link. Comes in DVI-D (digital only), DVI-A (analog only), and
+  DVI-I (both). Largely replaced by HDMI/DisplayPort but still found on legacy hardware.
+
+  VGA: an older analog standard, technically supports up to 1920×1080 but image quality degrades over distance and lacks digital
+  clarity. Still found on legacy monitors and projectors.
+
+  USB-C (DisplayPort Alt Mode): carries video (up to 8K with Thunderbolt), data, and power all through one reversible
+  connector — very versatile for modern laptops and docking stations.
+  
+  Choosing a cable: gaming/high refresh rate → DisplayPort or HDMI 2.1; home theater → HDMI 2.0 or newer; professional/multi-monitor
+  work → DisplayPort or USB-C with Thunderbolt; legacy equipment → DVI or VGA (often via an adapter).
+
+7. USB Cables & Power Delivery
+  
+  USB 2.0: up to 480 Mbps; introduced USB-A, USB-B, Mini-USB, and Micro-USB connectors; delivers about 2.5 W of power.
+  USB 3.0: up to 5 Gbps; delivers about 4.5 W of power.
+  USB 3.1: up to 10 Gbps; introduced the USB-C connector.
+  USB 3.2: up to 20 Gbps using multi-lane communication over USB-C.
+  USB4: up to 40 Gbps, Thunderbolt 3 compatible, supports up to 100 W of Power Delivery.
+  USB4 v2.0: up to 80 Gbps, supports up to 240 W of Power Delivery.
+  
+  USB Power Delivery (PD): dynamically negotiates voltage and current with the connected device. Standard USB charging delivers
+  roughly 5–15 W, while USB PD scales all the way up to 240 W — enough to power laptops and monitors, not just phones.
+  
+  Connector types: USB-A, USB-B, Mini-USB, and Micro-USB are legacy formats; USB-C is the current standard — reversible, and capable
+  of carrying data, video (via DP Alt Mode), and power all through one cable.
+
+8. Peripheral Serial Cables & Thunderbolt
+  
+  RS-232: point-to-point communication, under 50 ft range, used in legacy industrial equipment, routers, and barcode scanners.
+
+  RS-485: supports longer distances and multiple devices on a shared bus — used in building automation and industrial control systems.
+
+  USB-to-serial adapters bridge legacy serial equipment to modern computers that no longer have serial ports.
+
+  Thunderbolt 4 (released 2020): up to 40 Gbps, supports dual 4K or a single 8K display, and 100 W of Power Delivery.
+
+  Thunderbolt 5 (released 2023): up to 120 Gbps with dynamic bandwidth boosting, dual 8K display support, 100 W Power Delivery,
+  and full backward compatibility with Thunderbolt 3/4.
+
+  Thunderbolt 5 vs. USB4 v2.0: Thunderbolt 5 offers faster video output and dynamic bandwidth (better for professional video/3D work),
+  while USB4 v2.0 offers up to 240 W of power delivery (better for charging large devices) and broader USB-C accessory compatibility.
+
+9. Hard Disk Drive (HDD) Cables
+
+  SATA (III): up to 6 Gbps; used for internal HDDs, SSDs, and optical drives; requires a separate 15-pin power connector (not powered
+  through the data cable itself).
+
+  eSATA: also up to 6 Gbps; used for external drives with a shielded connector, but still needs a separate power source; largely
+         superseded today by USB 3.x and Thunderbolt.
+  NVMe over PCIe: far exceeds SATA speeds; runs through a PCIe slot or M.2 connector rather than a traditional cable; the go-to choice
+                  for modern high-performance gaming, video editing, and enterprise storage.
+  
+  SATA replaced the older PATA standard, offering smaller connectors, faster speeds, and better airflow in cases.
+
+10. Common Adapter Types
+  
+  Video adapters: HDMI↔DisplayPort, USB-C↔HDMI, DVI↔VGA, Thunderbolt↔DisplayPort.
+
+  USB/peripheral adapters: USB-A↔USB-C, USB-C↔Ethernet, USB↔Serial (RS-232), USB↔3.5mm audio jack.
+
+  Networking adapters: RJ45↔Fiber, USB Wi-Fi adapters, Powerline Ethernet (uses a building's existing electrical wiring), and PoE
+                       injectors (add power to switches that don't natively support PoE).
+
+  Audio adapters: 3.5mm↔USB-C, Optical Audio↔HDMI ARC, RCA↔3.5mm.
+
+  Power adapters: USB-C PD adapters (up to 240 W), universal laptop adapters with interchangeable tips, and DC-to-AC inverters.
+
+  11. RJ11 vs. RJ45 Connectors
+
+  RJ11: has 4 or 6 physical positions (labeled P2C, P4C, or P6C); used for analog telephone lines and DSL connections; low bandwidth;
+        not compatible with RJ45 ports.
+
+  RJ45: has 8 positions and 8 contacts (8P8C); the standard for Ethernet networking across Cat5e through Cat8 cabling; supports
+        speeds from 1 Gbps up to 40 Gbps.
+  
+  RJ45 connectors use the T568A/T568B pinout standards (see section 5) and work with both UTP and STP cabling.
+
+12. USB Connectors (Physical Types)
+  
+  Micro-USB: supports 480 Mbps (USB 2.0) up to 5 Gbps (USB 3.0); not reversible; found on older Android phones, IoT devices,
+             and budget electronics.
+
+  Mini-USB: supports up to 480 Mbps; not reversible; found on legacy cameras, MP3 players, and GPS units.
+
+  USB-C: supports up to 80 Gbps with USB4 v2.0; fully reversible; the current universal standard, carrying data, video, and power
+         delivery up to 240 W.
+
+13. Fiber Optic Connectors (Detail)
+
+  ST (Straight Tip): uses a bayonet twist-lock mechanism; best for legacy telecom, industrial settings, and rugged/vibration-prone
+                     environments.
+
+  SC (Subscriber Connector): uses a push-pull locking mechanism; common in enterprise networks and telecom closets; known for low
+                             insertion loss.
+
+  LC (Lucent Connector): push-pull locking, about half the size of SC; ideal for high-density data centers and cloud infrastructure;
+                         supports 10/40/100 Gbps applications.
+
+  MTP/MPO: multi-fiber push-on connector housing 12–24+ fibers; used in 400G+ data center deployments.
+ 
+14. Punch Down Blocks
+
+  66 block: the oldest type, used for analog voice systems only — not suitable for modern Ethernet.
+
+  110 block: supports higher-frequency signals, suitable for Cat5e/Cat6 Ethernet in structured cabling.
+
+  Krone block: originally developed in Europe, uses angled contact blades to reduce crosstalk, supports both voice and data.
+  
+  Punch down block vs. patch panel: a punch down block is a fixed, permanent termination best suited to telephony or static setups,
+                                    while a patch panel offers much more flexibility through reconfigurable patch cords — the
+                                    preferred choice for modern Ethernet networks and data centers.
+  
+  Common issues: loose or improperly seated wires, EMI-related signal degradation, mixed T568A/T568B standards on the same run,
+                 and corrosion/oxidation over time.
+
+15. DB9, Lightning, and F Connectors
+  
+  DB9 (9-pin serial): supports up to 115.2 kbps; not reversible; used for RS-232 communication on legacy PCs, point-of-sale systems,
+                      and industrial/lab equipment.
+
+  Lightning (Apple): supports 480 Mbps (USB 2.0 speeds), with some newer implementations reaching USB 3.0 speeds; fully reversible;
+                     used for charging, data, and audio on iPhones/iPads — being phased out in favor of USB-C.
+
+  F connector: supports frequencies up to 3 GHz; not reversible (threaded/screw-on); used with RG6/RG59 coax for cable TV, satellite,
+               and broadband internet.
+
+16. Molex Connectors (Power)
+
+  Molex: 4-pin connector delivering 5V and 12V; uses a friction-fit connection (less secure); used for legacy IDE drives, optical
+         drives, and cooling fans.
+
+  SATA power: 15-pin connector delivering 3.3V, 5V, and 12V; uses a latch mechanism for a more secure connection; the modern
+              standard for HDDs and SSDs.
+
+  PCIe power: delivers 12V through 6-, 8-, or 12-pin configurations; uses a clip-on locking system; used for high-power components
+              like graphics cards.
+  
+  Molex remains relevant for legacy and industrial equipment and some modular power supplies; modern builds rely on SATA power
+  for drives and PCIe power for GPUs and other high-power components.
+
+Quick Exam-Focus Reminders
+
+  - Cat ratings, fastest-relevant-context first: 5e (1G) → 6 (10G short runs) → 6a (10G full 100m) → 7 (shielded) → 8 (40G,
+    data centers).
+  - STP needs proper grounding or the shielding can worsen interference; UTP is the default choice for low-EMI environments.
+  - Single-mode fiber = long distance and higher cost; multi-mode fiber = shorter distance and lower cost.
+  - T568A vs. T568B differ only in wire-pair color placement — pick one standard and stay consistent across the whole installation.
+  - Fiber connectors by density, low to high: ST (legacy/rugged) → SC (telecom, bulkier) → LC (compact/high-density) → MTP/MPO
+    (multi-fiber, data centers).
+  - USB-C is the universal modern connector: reversible, carries data, video (DP Alt Mode), and power (PD up to 240 W).
+  - RJ11 = phone/DSL (4–6 pin); RJ45 = Ethernet (8P8C).
+  - Punch down blocks, in order of capability: 66 (voice only) < 110 (Ethernet-capable) < Krone (best crosstalk performance).
+  - Power connectors, oldest to newest: Molex (legacy, friction-fit) → SATA power (modern drives, latched) → PCIe power (GPUs, clip-on).
