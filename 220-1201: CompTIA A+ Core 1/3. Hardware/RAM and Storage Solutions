@@ -1,106 +1,166 @@
 1. SODIMM
   
-  Compact RAM module (roughly half the size of a standard DIMM) designed for space-constrained devices — laptops, small form factor desktops, all-in-ones, and embedded systems.
-  Pin counts increased with each generation: 144-pin (SDR SDRAM, earliest), 200-pin (DDR/DDR2), 204-pin (DDR3), 260-pin (DDR4 and DDR5). Higher pin count means newer modules are not compatible with older sockets.
-  Operates at lower voltage than standard DIMMs, helping extend battery life in portable devices.
-  Advantages: compact size, energy efficiency, decent performance, easy upgradability.
-  Used in laptops/ultrabooks, mini PCs/NUCs, industrial/embedded controllers, and gaming laptops.
-  Installation: locate the memory compartment, release the retaining clips, align the notch, insert at roughly a 45-degree angle, and press down until it clicks. Always verify motherboard/chipset support and matching speed/voltage first.
+  - Compact RAM module (roughly half the size of a standard DIMM) designed for space-constrained devices — laptops, small form factor
+    desktops, all-in-ones, and embedded systems.
+  - Pin counts increased with each generation: 144-pin (SDR SDRAM, earliest), 200-pin (DDR/DDR2), 204-pin (DDR3), 260-pin (DDR4 and DDR5).
+    Higher pin count means newer modules are not compatible with older sockets.
+  - Operates at lower voltage than standard DIMMs, helping extend battery life in portable devices.
+  - Advantages: compact size, energy efficiency, decent performance, easy upgradability.
+  - Used in laptops/ultrabooks, mini PCs/NUCs, industrial/embedded controllers, and gaming laptops.
+  - Installation: locate the memory compartment, release the retaining clips, align the notch, insert at roughly a 45-degree angle, and
+    press down until it clicks. Always verify motherboard/chipset support and matching speed/voltage first.
 
 2. DDR3 vs. DDR4
   
-  DDR3 (introduced 2007): improved bandwidth over DDR2, runs at 1.5V (vs. DDR2's 1.8V). Became the standard for many years but is now slower, less scalable, and higher-latency than DDR4/DDR5 — adequate only for older or budget systems.
+  DDR3 (introduced 2007): improved bandwidth over DDR2, runs at 1.5V (vs. DDR2's 1.8V). Became the standard for many years but is now
+  slower, less scalable, and higher-latency than DDR4/DDR5 — adequate only for older or budget systems.
   
-  DDR4 (released 2014): runs at 1.2V, starts at 2133 MHz and climbs beyond 3200 MHz, has a larger prefetch buffer (16ns vs. DDR3's 8ns), includes on-die termination (ODT) for better signal integrity, and supports DIMMs up to 128GB. Includes on-die ECC support for better reliability. Used in gaming PCs, workstations, servers, virtualization, and AI/content-creation workflows.
+  DDR4 (released 2014): runs at 1.2V, starts at 2133 MHz and climbs beyond 3200 MHz, has a larger prefetch buffer (16ns vs. DDR3's 8ns),
+  includes on-die termination (ODT) for better signal integrity, and supports DIMMs up to 128GB. Includes on-die ECC support for better
+  reliability. Used in gaming PCs, workstations, servers, virtualization, and AI/content-creation workflows.
   
-  Key limitation: DDR4 is NOT backward compatible with DDR3 motherboards (different physical layout, voltage, and signaling) — upgrading usually requires a new motherboard and often a new CPU. DDR4 modules also cost more than DDR3, especially early on, and DDR4 has slightly higher latency than DDR5.
+  Key limitation: DDR4 is NOT backward compatible with DDR3 motherboards (different physical layout, voltage, and signaling) — upgrading
+  usually requires a new motherboard and often a new CPU. DDR4 modules also cost more than DDR3, especially early on, and DDR4 has
+  slightly higher latency than DDR5.
 
 3. DDR5
   
-  Released 2021; runs at 1.1V (lower than DDR4's 1.2V), reducing power consumption and heat.
-  Starts at 4800 MT/s and scales well beyond, versus DDR4's typical ~3200 MHz ceiling.
-  Splits each DIMM into two independent 32-bit channels (vs. DDR4's single 64-bit channel per module), improving access efficiency.
-  Includes improved on-die ECC for better error detection/correction.
-  Supports much higher density — up to 256GB per DIMM.
-  Ideal for gaming rigs, professional workstations, AI/ML workloads, servers, and cloud/virtualized environments.
-  Limitations: not backward compatible with DDR4 motherboards (different slot design, often needs a new CPU too), more expensive than DDR4, and software/hardware ecosystems are still catching up to fully exploit its bandwidth.
+  - Released 2021; runs at 1.1V (lower than DDR4's 1.2V), reducing power consumption and heat.
+  - Starts at 4800 MT/s and scales well beyond, versus DDR4's typical ~3200 MHz ceiling.
+  - Splits each DIMM into two independent 32-bit channels (vs. DDR4's single 64-bit channel per module), improving access efficiency.
+  - Includes improved on-die ECC for better error detection/correction.
+  - Supports much higher density — up to 256GB per DIMM.
+  - Ideal for gaming rigs, professional workstations, AI/ML workloads, servers, and cloud/virtualized environments.
+  - Limitations: not backward compatible with DDR4 motherboards (different slot design, often needs a new CPU too), more expensive than
+    DDR4, and software/hardware ecosystems are still catching up to fully exploit its bandwidth.
 
 4. ECC (Error Correcting Code) Memory
   
-  Automatically detects and corrects single-bit memory errors on the fly, improving system stability and preventing data corruption.
-  Common in servers, workstations, and mission-critical environments — finance, healthcare, scientific research, data centers, cloud/virtualization, and AI/ML.
-  Non-ECC RAM lacks this error correction, is cheaper and slightly faster (less overhead), and is the standard choice for everyday consumer laptops/desktops.
-  Trade-offs of ECC: higher cost due to added circuitry, slight performance overhead from constant error-checking, and it's unnecessary for typical consumer workloads like browsing, gaming, or office work.
-  To confirm ECC support: check that BOTH motherboard and CPU support it (consumer CPUs often don't even if the board does), check BIOS/UEFI for an enable/disable option, and consult manufacturer documentation.
+  - Automatically detects and corrects single-bit memory errors on the fly, improving system stability and preventing data corruption.
+  - Common in servers, workstations, and mission-critical environments — finance, healthcare, scientific research, data centers,
+    cloud/virtualization, and AI/ML.
+  - Non-ECC RAM lacks this error correction, is cheaper and slightly faster (less overhead), and is the standard choice for everyday
+    consumer laptops/desktops.
+  - Trade-offs of ECC: higher cost due to added circuitry, slight performance overhead from constant error-checking, and it's unnecessary
+    for typical consumer workloads like browsing, gaming, or office work.
+  - To confirm ECC support: check that BOTH motherboard and CPU support it (consumer CPUs often don't even if the board does), check
+    BIOS/UEFI for an enable/disable option, and consult manufacturer documentation.
 
 5. Memory Channel Modes (Single / Dual / Triple / Quad)
   
-  Single channel: only one memory module communicates with the controller at a time. Simple, cheap, and compatible with systems that have limited RAM slots — fine for browsing, office work, and media playback, but bandwidth-limited for gaming, video editing, or virtual machines. Easy to troubleshoot since only one module is involved.
+  Single channel: only one memory module communicates with the controller at a time. Simple, cheap, and compatible with systems that have
+  limited RAM slots — fine for browsing, office work, and media playback, but bandwidth-limited for gaming, video editing, or virtual
+  machines. Easy to troubleshoot since only one module is involved.
   
-  Dual channel: two identical modules (same size/speed/type) work together, roughly doubling bandwidth. Requires correct (usually color-coded) motherboard slots. Common in gaming PCs and workstations — a cost-effective way to boost responsiveness.
+  Dual channel: two identical modules (same size/speed/type) work together, roughly doubling bandwidth. Requires correct (usually
+  color-coded) motherboard slots. Common in gaming PCs and workstations — a cost-effective way to boost responsiveness.
   
-  Triple channel: three matched modules working in parallel for even higher bandwidth than dual channel. Requires specific motherboard/CPU support (historically Intel's X58 chipset) — now largely a legacy configuration, replaced by more scalable dual/quad-channel systems.
+  Triple channel: three matched modules working in parallel for even higher bandwidth than dual channel. Requires specific motherboard/CPU
+  support (historically Intel's X58 chipset) — now largely a legacy configuration, replaced by more scalable dual/quad-channel systems.
   
-  Quad channel: four matched modules deliver the highest bandwidth of the four modes, ideal for 3D rendering, simulations, and enterprise/high-end workstation workloads. Requires motherboard and CPU support, typically found in high-end desktop (HEDT) or server platforms — minimal benefit for everyday tasks like browsing or office work.
+  Quad channel: four matched modules deliver the highest bandwidth of the four modes, ideal for 3D rendering, simulations, and
+  enterprise/high-end workstation workloads. Requires motherboard and CPU support, typically found in high-end desktop (HEDT) or server
+  platforms — minimal benefit for everyday tasks like browsing or office work.
   
-  Across all multi-channel modes: use identical (matched) modules in the correct slots, enable XMP (Extreme Memory Profile) in BIOS/UEFI for rated speeds, keep BIOS/firmware updated, and avoid mixing brands/speeds. If a mode isn't detected: verify slot placement, update BIOS, and run a memory diagnostic tool (Windows Memory Diagnostic or MemTest86) to rule out a faulty module.
+  Across all multi-channel modes: use identical (matched) modules in the correct slots, enable XMP (Extreme Memory Profile) in BIOS/UEFI
+  for rated speeds, keep BIOS/firmware updated, and avoid mixing brands/speeds. If a mode isn't detected: verify slot placement, update
+  BIOS, and run a memory diagnostic tool (Windows Memory Diagnostic or MemTest86) to rule out a faulty module.
 
 6. Virtual Memory
   
-  Uses a portion of the storage drive as overflow space when physical RAM fills up, letting the system keep running without immediate slowdowns or crashes.
-  Managed automatically by the OS via a page file (Windows) or swap space (macOS/Linux).
-  Paging moves only the needed chunks ("pages") of a process between RAM and disk — efficient and commonly used. Swapping moves entire processes out of RAM — frees more space but is slower and can cause noticeable slowdowns; used as a fallback when memory pressure is extreme.
-  Benefits: enables multitasking beyond physical RAM limits, prevents application crashes from memory shortages, and is a cost-effective alternative to buying more RAM.
-  Limitations: much slower than physical RAM (especially on HDDs), frequent swapping wears down SSDs over time, and heavy reliance on virtual memory makes a system feel sluggish.
-  General rule of thumb: size virtual memory at 1.5–2x installed RAM; always prefer an SSD over an HDD for the page/swap file; don't treat virtual memory as a substitute for adequate physical RAM.
+  - Uses a portion of the storage drive as overflow space when physical RAM fills up, letting the system keep running without immediate
+    slowdowns or crashes.
+  - Managed automatically by the OS via a page file (Windows) or swap space (macOS/Linux).
+  - Paging moves only the needed chunks ("pages") of a process between RAM and disk — efficient and commonly used. Swapping moves entire
+    processes out of RAM — frees more space but is slower and can cause noticeable slowdowns; used as a fallback when memory pressure
+    is extreme.
+  - Benefits: enables multitasking beyond physical RAM limits, prevents application crashes from memory shortages, and is a cost-effective
+    alternative to buying more RAM.
+  - Limitations: much slower than physical RAM (especially on HDDs), frequent swapping wears down SSDs over time, and heavy reliance
+    on virtual memory makes a system feel sluggish.
+  - General rule of thumb: size virtual memory at 1.5–2x installed RAM; always prefer an SSD over an HDD for the page/swap file; don't
+    treat virtual memory as a substitute for adequate physical RAM.
 
 7. Hard Drive Storage (HDD vs. SSD Overview)
   
-  HDD (Hard Disk Drive): uses spinning magnetic platters and a moving read/write head. Offers large capacity at a low cost per gigabyte, but slower access speeds and more susceptibility to physical/mechanical damage. Best for archival storage, backups, and budget-friendly mass storage where speed isn't the priority.
+  HDD (Hard Disk Drive): uses spinning magnetic platters and a moving read/write head. Offers large capacity at a low cost per gigabyte,
+  but slower access speeds and more susceptibility to physical/mechanical damage. Best for archival storage, backups, and budget-friendly
+  mass storage where speed isn't the priority.
   
-  SSD (Solid-State Drive): uses flash memory with no moving parts, giving much faster data access, quicker boot times, and better reliability/durability — especially valuable in portable devices. More expensive per gigabyte than HDDs but has become the standard for OS drives, gaming, and video editing due to the performance benefit.
+  SSD (Solid-State Drive): uses flash memory with no moving parts, giving much faster data access, quicker boot times, and better
+  reliability/durability — especially valuable in portable devices. More expensive per gigabyte than HDDs but has become the standard for
+  OS drives, gaming, and video editing due to the performance benefit.
   
-  Future trends: NVMe SSDs (connect via PCIe) far outpace SATA SSDs and HDDs; hybrid drives (SSHDs) blend SSD speed with HDD capacity; cloud storage is reducing reliance on physical drives; SSD prices continue to fall while HDD platter density keeps climbing for enterprise/data-center bulk storage.
+  Future trends: NVMe SSDs (connect via PCIe) far outpace SATA SSDs and HDDs; hybrid drives (SSHDs) blend SSD speed with HDD capacity;
+  cloud storage is reducing reliance on physical drives; SSD prices continue to fall while HDD platter density keeps climbing for
+  enterprise/data-center bulk storage.
 
 8. SSD Storage (Detail)
   
-  Non-volatile flash storage — retains data without power, no moving parts, so more durable and shock-resistant than HDDs.
-  Benefits: lower power consumption (better battery life, less heat), much faster boot times and data transfer, smoother multitasking.
-  SATA SSDs: most common/affordable, but capped by the SATA interface's speed ceiling — a solid upgrade path from HDDs.
-  NVMe SSDs: connect via PCIe for much higher speed and lower latency — ideal for gaming, video editing, and professional workloads. Common form factors are M.2 (compact, fits directly on the motherboard, great for slim laptops) and U.2 (enterprise-focused, better cooling/power management).
-  Compared to HDDs: SSDs win on performance and durability; HDDs still win on cost per gigabyte for bulk storage.
-  Future direction: PCIe Gen 5+ SSDs, advances in 3D NAND (more layers = more capacity in less space), and a broader shift toward all-flash data centers.
+  - Non-volatile flash storage — retains data without power, no moving parts, so more durable and shock-resistant than HDDs.
+  - Benefits: lower power consumption (better battery life, less heat), much faster boot times and data transfer, smoother multitasking.
+  - SATA SSDs: most common/affordable, but capped by the SATA interface's speed ceiling — a solid upgrade path from HDDs.
+  - NVMe SSDs: connect via PCIe for much higher speed and lower latency — ideal for gaming, video editing, and professional workloads.
+    Common form factors are M.2 (compact, fits directly on the motherboard, great for slim laptops) and U.2 (enterprise-focused, better
+    cooling/power management).
+  - Compared to HDDs: SSDs win on performance and durability; HDDs still win on cost per gigabyte for bulk storage.
+  - Future direction: PCIe Gen 5+ SSDs, advances in 3D NAND (more layers = more capacity in less space), and a broader shift toward
+    all-flash data centers.
 
 9. Redundant Drive Configurations & RAID Basics
   
-  RAID (Redundant Array of Independent Disks) combines multiple physical drives into one logical unit to improve performance, redundancy, or both — common in enterprise/data-center environments where uptime matters.
+  RAID (Redundant Array of Independent Disks) combines multiple physical drives into one logical unit to improve performance, redundancy,
+  or both — common in enterprise/data-center environments where uptime matters.
   
-  RAID 0 (striping): splits data across 2+ drives for faster read/write speeds. No redundancy — if one drive fails, all data is lost. Best for speed-focused, loss-tolerant use cases like gaming or scratch-disk video editing.
-  RAID 1 (mirroring): duplicates data across two drives. Excellent fault tolerance (a failed drive still leaves a full copy), but usable capacity is cut in half. Good for critical backups and systems that can't tolerate data loss.
-  RAID 5 (striping with parity): spreads data and parity across at least 3 drives. Balances performance, storage efficiency, and redundancy — tolerates a single drive failure. Popular for file servers and NAS devices.
-  RAID 6 (double parity): like RAID 5 but tolerates two simultaneous drive failures — more overhead in capacity and write performance, but better suited to large arrays with higher failure risk.
-  RAID 10 (1+0, mirror + stripe): combines RAID 1 mirroring with RAID 0 striping. Needs at least four drives, offers both strong performance and strong fault tolerance (can survive multiple failures as long as they're not in the same mirrored pair). Common for database servers and high-traffic systems.
-  RAID 50 / RAID 60: nested configurations combining multiple RAID 5 or RAID 6 arrays respectively — used in large enterprise systems needing both speed and heavy fault tolerance.
+  RAID 0 (striping): splits data across 2+ drives for faster read/write speeds. No redundancy — if one drive fails, all data is lost.
+                     Best for speed-focused, loss-tolerant use cases like gaming or scratch-disk video editing.
+  RAID 1 (mirroring): duplicates data across two drives. Excellent fault tolerance (a failed drive still leaves a full copy), but usable
+                      capacity is cut in half. Good for critical backups and systems that can't tolerate data loss.
+  RAID 5 (striping with parity): spreads data and parity across at least 3 drives. Balances performance, storage efficiency, and
+                                 redundancy — tolerates a single drive failure. Popular for file servers and NAS devices.
+  RAID 6 (double parity): like RAID 5 but tolerates two simultaneous drive failures — more overhead in capacity and write performance, but
+                          better suited to large arrays with higher failure risk.
+  RAID 10 (1+0, mirror + stripe): combines RAID 1 mirroring with RAID 0 striping. Needs at least four drives, offers both strong
+                                  performance and strong fault tolerance (can survive multiple failures as long as they're not in the same
+                                  mirrored pair). Common for database servers and high-traffic systems.
+  RAID 50 / RAID 60: nested configurations combining multiple RAID 5 or RAID 6 arrays respectively — used in large enterprise systems
+                     needing both speed and heavy fault tolerance.
   
-  Hardware vs. software RAID: hardware RAID uses a dedicated controller (built-in or add-on card), offloading work from the CPU and enabling features like battery-backed cache and hot-swapping — better performance/reliability, common in enterprise setups. Software RAID is managed by the OS itself — cheaper, slightly lower performance, well suited to home/small-business use.
+  Hardware vs. software RAID: hardware RAID uses a dedicated controller (built-in or add-on card), offloading work from the CPU and enabling
+  features like battery-backed cache and hot-swapping — better performance/reliability, common in enterprise setups. Software RAID is
+  managed by the OS itself — cheaper, slightly lower performance, well suited to home/small-business use.
   
-  Best practices: verify drive/controller compatibility with the chosen RAID level before setup, monitor array health and configure failure alerts, and remember RAID is NOT a replacement for regular off-site backups — it protects against drive failure, not against corruption, accidental deletion, or disasters.
+  Best practices: verify drive/controller compatibility with the chosen RAID level before setup, monitor array health and configure failure
+  alerts, and remember RAID is NOT a replacement for regular off-site backups — it protects against drive failure, not against corruption,
+  accidental deletion, or disasters.
 
 10. Removable Storage
   
-  Flash drives / external SSDs: portable, high-speed storage for file transfers, backups, and bootable installs. External SSDs offer much faster read/write speeds than basic USB flash drives — better suited to gaming, video editing, and large transfers.
-  Memory cards: SD cards (cameras, laptops, portable gaming — good balance of capacity and speed), microSD cards (smartphones, drones, IoT — smaller, space-constrained devices), and CompactFlash/CF cards (preferred in professional photography for durability and fast continuous-shooting performance).
-  Optical media: CDs (software, music, small files), DVDs (larger capacity, movies/backups), Blu-ray (high-definition media, large archival storage), plus rewritable formats (CD-RW/DVD-RW) for reusable storage. Usage has declined with cloud storage and streaming, but optical media still serves archival and legacy-software use cases — and is prone to scratches/degradation over time.
-  Choosing a solution: consider capacity needs (flash drives commonly 32GB–2TB, memory cards 16GB–1TB, optical discs 700MB–128GB), speed requirements (external SSDs are fastest), and durability/portability (flash-based storage is more shock-resistant than optical media).
+  - Flash drives / external SSDs: portable, high-speed storage for file transfers, backups, and bootable installs. External SSDs offer much
+    faster read/write speeds than basic USB flash drives — better suited to gaming, video editing, and large transfers.
+  - Memory cards: SD cards (cameras, laptops, portable gaming — good balance of capacity and speed), microSD cards (smartphones, drones,
+    IoT — smaller, space-constrained devices), and CompactFlash/CF cards (preferred in professional photography for durability and fast
+    continuous-shooting performance).
+  - Optical media: CDs (software, music, small files), DVDs (larger capacity, movies/backups), Blu-ray (high-definition media, large
+    archival storage), plus rewritable formats (CD-RW/DVD-RW) for reusable storage. Usage has declined with cloud storage and streaming,
+    but optical media still serves archival and legacy-software use cases — and is prone to scratches/degradation over time.
+  - Choosing a solution: consider capacity needs (flash drives commonly 32GB–2TB, memory cards 16GB–1TB, optical discs 700MB–128GB), speed
+    requirements (external SSDs are fastest), and durability/portability (flash-based storage is more shock-resistant than optical media).
 
 Quick Exam-Focus Reminders
   
-  SODIMM pin counts by generation: 144-pin (SDR) → 200-pin (DDR/DDR2) → 204-pin (DDR3) → 260-pin (DDR4/DDR5).
-  DDR3 = 1.5V; DDR4 = 1.2V; DDR5 = 1.1V — each generation lowers voltage while raising speed. None of DDR3/DDR4/DDR5 are cross-compatible with each other's motherboards.
-  ECC catches and fixes single-bit errors — needs BOTH CPU and motherboard support; standard for servers/mission-critical systems, unnecessary for typical consumer use.
-  Channel modes scale bandwidth with matched module count: single (1) → dual (2) → triple (3) → quad (4) — always use identical modules in the correct slots.
-  Virtual memory = page file (Windows) / swap space (macOS, Linux); paging moves partial data (efficient), swapping moves whole processes (slower, last resort).
-  HDD = cheap, high-capacity, slower, mechanical; SSD = fast, durable, no moving parts, pricier per GB.
-  SSD interfaces: SATA (capped speed, affordable) vs. NVMe over PCIe (fastest, M.2 or U.2 form factor).
-  RAID cheat list: 0 = speed, no redundancy; 1 = mirror, 50% capacity; 5 = striping + single parity; 6 = striping + double parity; 10 = mirror + stripe, needs 4+ drives. RAID is not a backup strategy.
-  Removable storage speed/durability order (fastest/toughest to slowest/most fragile): external SSD > USB flash drive > memory card > optical disc.
+  - SODIMM pin counts by generation: 144-pin (SDR) → 200-pin (DDR/DDR2) → 204-pin (DDR3) → 260-pin (DDR4/DDR5).
+  - DDR3 = 1.5V; DDR4 = 1.2V; DDR5 = 1.1V — each generation lowers voltage while raising speed. None of DDR3/DDR4/DDR5 are cross-compatible
+    with each other's motherboards.
+  - ECC catches and fixes single-bit errors — needs BOTH CPU and motherboard support; standard for servers/mission-critical systems,
+    unnecessary for typical consumer use.
+  - Channel modes scale bandwidth with matched module count: single (1) → dual (2) → triple (3) → quad (4) — always use identical modules
+    in the correct slots.
+  - Virtual memory = page file (Windows) / swap space (macOS, Linux); paging moves partial data (efficient), swapping moves whole
+    processes (slower, last resort).
+  - HDD = cheap, high-capacity, slower, mechanical; SSD = fast, durable, no moving parts, pricier per GB.
+  - SSD interfaces: SATA (capped speed, affordable) vs. NVMe over PCIe (fastest, M.2 or U.2 form factor).
+  - RAID cheat list: 0 = speed, no redundancy; 1 = mirror, 50% capacity; 5 = striping + single parity; 6 = striping + double parity;
+    10 = mirror + stripe, needs 4+ drives. RAID is not a backup strategy.
+  - Removable storage speed/durability order (fastest/toughest to slowest/most fragile): external SSD > USB flash drive > memory
+    card > optical disc.
