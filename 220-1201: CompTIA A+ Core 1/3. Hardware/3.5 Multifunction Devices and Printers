@@ -1,0 +1,409 @@
+1. Multifunction Devices (MFDs)
+  
+  Multifunction devices combine printing, scanning, copying, and faxing (less common today, but still present on many models) into a 
+  single unit — consolidating hardware and saving space in offices and homes. Many support wireless/network printing, and some support 
+  cloud printing and remote management depending on make and model.
+  
+  Installation process: unbox and remove shipping tape/adhesive, connect power and configure initial device settings, install drivers 
+  and software on the computer first (so the device is auto-detected once connected), connect via USB or configure networking, then 
+  perform a test print to verify functionality.
+  
+  Print settings to configure: default paper size (letter, legal, envelope, etc.), print quality/resolution measured in DPI 
+  (higher DPI = better quality but more ink/toner use), duplex printing (both sides of the paper), and default tray/media type 
+  (standard vs. photographic paper, etc.).
+  
+  Scan settings to configure: scan resolution, output document format (PDF, JPEG, TIFF), destination (scan-to-email, network folder, or 
+  cloud storage), and color/contrast adjustments (higher resolution scans produce larger files but don't affect ink/toner).
+  
+  Wired connectivity: USB (single local device) or Ethernet (shared network device) — for Ethernet, assign a static IP so it doesn't 
+  change, and confirm DHCP won't hand that address to another device.
+  
+  Wireless connectivity: Wi-Fi Direct for direct peer-to-peer connections; WPS (Wi-Fi Protected Setup, often a push-button pairing) or
+  manual SSID entry to join a home/office network; optional mobile printing standards like AirPrint (Apple), Google Cloud Print, or 
+  Mopria (Android).
+  
+  Troubleshooting: can't print at all → check/update drivers, verify physical or Wi-Fi connectivity, clear and resubmit the print 
+  queue, restart the printer or the print spooler service. Scanning/copying issues → verify drivers, check for paper jams (especially 
+  in the ADF), adjust scan settings if images are blurry. Network issues → restart the router or device, verify IP configuration, and 
+  check whether a firewall is blocking print traffic.
+
+2. Device Drivers
+  
+  Drivers are software packages that let the operating system communicate with hardware — printers, graphics cards, network adapters, and 
+  virtually anything installed into a system.
+  
+  Kernel-mode drivers are pre-installed for core internal components (memory, processor, storage) — users generally don't interact with 
+  these directly. User-mode drivers are for peripherals users add themselves (sound cards, network cards, printers) and can be installed, 
+  accessed, and configured by the user.
+  
+  Using the correct driver for the exact OS version and device model matters for stability, performance, and full feature 
+  availability — a driver built for a different OS version or device generation may still install and partially work, but without 
+  exposing every feature. Manufacturer-supplied drivers are generally the safest choice; third-party drivers found online may work but 
+  less reliably.
+  
+  Installation methods: automatic updates (through the OS itself, common when the manufacturer partners with the OS vendor), manual 
+  installation (running the manufacturer's installer, historically via disc, now more often downloaded), or driver discs (still a manual 
+  install). Even after manual installation, the vendor's own software may separately check for updates on its own schedule.
+  
+  Best practices: back up the current driver before updating, use only official manufacturer or OS-vendor sources to avoid malicious 
+  software, and keep BIOS/firmware updated for full driver compatibility.
+  
+  Troubleshooting: device not recognized → likely an incorrect driver (wrong OS, wrong model) or a bad third-party driver, or a physical 
+  connectivity problem. Performance/feature problems → often an OS mismatch or driver misconfiguration; roll back to the previous 
+  driver if needed. Driver conflicts → sometimes the old driver must be fully removed before the new one installs.
+  
+  Driver management best practices: perform regular updates, use manufacturer tools (like Device Manager in Windows, or vendor utilities 
+  from Intel, NVIDIA, HP, etc.) for full configuration options, avoid unknown third-party installers, and create system restore points 
+  before major driver updates — this lets you revert everything at once, versus a single driver rollback through Device Manager for 
+  one specific update.
+
+3. Device Connections
+  
+  Device connectivity comes down to wired and wireless options, and for printers specifically, the mix determines how it's shared.
+  
+  Wired options: USB (local connection to one computer), Ethernet (the printer gets its own IP address directly on the network), and 
+  HDMI/DisplayPort (used almost exclusively for external monitors or similar multimedia devices). A printer can also be installed 
+  locally via USB on a print server and then shared — network users see it as a "network printer" even though there's no visible 
+  Ethernet cable on the printer itself.
+  
+  Wireless options: Bluetooth (typically simpler peripherals like keyboards, mice, mobile devices — printers usually don't use this), Wi-Fi 
+  (the printer connects directly to the network and gets its own IP address, no print server needed), and NFC (only for very short, 
+  momentary connections like mobile-to-mobile file transfers — never used for a semi-permanent device connection like a printer).
+  
+  Printer connectivity types recap: USB = always a local install on one computer (though that computer can still share it over the 
+  network). Direct network printer (wired or wireless) = the device gets its own IP address, no dedicated print server required, common 
+  in small offices. Cloud printing = the printer doesn't live in the cloud, but both the user and the printer connect to a cloud 
+  service, letting users print to it from anywhere with internet access.
+  
+  Troubleshooting: device not recognized → check cable or wireless connectivity, update drivers. Connection suddenly stopped → check 
+  cabling/wireless first (less likely a driver issue if it worked before). Intermittent connectivity → confirm Bluetooth/Wi-Fi are 
+  enabled, check for interference (other wireless devices, baby monitors, cordless phones, microwaves). Slow transfers → use USB 3.0 or 
+  higher for wired connections, or check Wi-Fi range and obstructions for wireless.
+
+4. Publicly Shared Devices
+  
+  Shared devices (most commonly printers, but also scanners and network storage) are accessible to multiple users on a network — reducing 
+  hardware costs, improving efficiency, and centralizing management and collaboration.
+  
+  Direct printer sharing: the printer connects straight to the network (e.g., via Wi-Fi) and anyone on that network can print to 
+  it — simple, but with minimal control over who can print.
+  
+  Network printer sharing (via a print server): the printer is installed locally on a dedicated server (often via USB) and then 
+  shared, giving administrators far more control over access.
+  
+  Cloud-based printing: both the printer and remote users connect to the same cloud service, letting traveling users submit jobs 
+  that print at a fixed office location.
+  
+  Print servers provide queue management for multiple print requests, user authentication and access control (who can print, 
+  and when), and monitoring/logging of usage (who printed what, when, and from where) — useful for restricting confidential print
+  jobs or dedicating certain printers to large jobs.
+  
+  Best practices for print server deployment: assign a static IP to the print server, use enterprise-grade security protocols to 
+  protect data in transit, and keep firmware/drivers updated.
+  
+  Security considerations: unauthorized access can lead to print job interception or data leakage — both digitally (intercepted jobs) and 
+  physically (anyone can walk up and grab a printed confidential document). Mitigations include enabling user authentication for printer
+  access, using encryption for network print jobs, restricting access via role-based access control (RBAC) or explicit user/group
+  permissions, and enabling audit logging (which is not on by default for shared printers, even in a network environment with its own 
+  login logging).
+  
+  Troubleshooting: printer/device not found → standard network troubleshooting (verify connection, IP address, restart the print 
+  spooler service). Slow printing → check for network congestion or a backed-up print queue, and check driver/firmware versions. 
+  Permissions/access-denied errors → not a technical fault, just a configuration issue — contact administration to correct access rights.
+
+5. Device Configuration Settings
+  
+  Printer configuration settings ensure optimal performance, let jobs be customized to specific needs, and reduce paper/ink waste — though 
+  most printers work fine on default settings for routine use.
+  
+  Duplex printing: printing on both sides of the paper — mechanically, the printer prints one side, flips the sheet, then prints the
+  other (not literally simultaneous).
+  
+  Page orientation: portrait (taller than wide, most common for text documents) vs. landscape (wider than tall, more common for 
+  images) — not every printer supports both equally well, but virtually all support setting orientation.
+  
+  Feed tray and paper type: select the correct tray for the paper size in use (letter 8.5x11, legal 8.5x14, various envelope sizes) and
+  paper type (standard, photographic/glossy, cardstock). Many trays have adjustable guides for different sizes.
+  
+  Print quality modes: draft (lowest quality, saves ink/toner, good for work-in-progress), standard (typical default, fine for most
+  documents), and high quality (best results, but uses the most ink and takes the longest). These modes are really presets for the
+  underlying DPI (dots per inch) setting — higher DPI means sharper but slower prints; lower DPI means faster but less detailed prints. 
+  Additional ink-saving options include grayscale (black-and-white) printing for non-color documents and eco mode (still color, but 
+  reduced ink consumption and vibrancy).
+  
+  Troubleshooting: light/faded printouts → check for eco mode or an unintentionally lowered DPI setting, or low ink/toner. Frequent
+  paper jams → check the pickup rollers for misalignment or debris buildup, and clean as needed. Misaligned printouts (info off-position, 
+  printing outside margins) → check printhead alignment (often has a built-in maintenance routine) or the application's own margin settings.
+
+6. Device Security
+  
+  Printer/device security prevents unauthorized access to sensitive printed data, protects against cyber threats and physical 
+  tampering, and helps maintain compliance with data protection regulations. Available security features vary heavily by make, model, and 
+  the security requirements of the environment.
+  
+  Common threats: unauthorized print jobs leading to data leaks, network vulnerabilities enabling remote access exploitation, and lack
+  of user authentication increasing misuse risk. A key physical risk: even a securely transmitted confidential document can be picked
+  up by anyone standing at the printer tray.
+  
+  Authentication methods: username/password, smart card/badge authentication (tap to a reader), or biometric authentication 
+  (fingerprint) — required before a job can even be submitted.
+  
+  Access control strategies: role-based access control (RBAC) restricts privileges by assigning users to roles with predefined 
+  permissions; network authentication ensures only authorized users/devices can even connect to the network in the first place 
+  (similar to logging into a Wi-Fi network).
+  
+  Securing the printed output itself: requiring authentication before printing, secure spooler settings that delete jobs immediately 
+  after printing (rather than leaving them available for resubmission), PIN-based release (must enter a PIN at the device to release
+  the physical printout), badge-based release, and encrypting print job traffic in transit.
+  
+  Audit logs and monitoring: track device activity for security/compliance, generate reports, identify unauthorized access or suspicious 
+  activity, and configure real-time alerts for unusual print behavior. Logs can track submitted jobs, who accessed the logs themselves, and 
+  device error logs (useful for troubleshooting hardware or configuration problems).
+  
+  Best practices: enforce strong, regularly changed passwords and valid credentials at the network level; physically secure the device
+  (locked room, badge access, security cameras) especially for confidential printing environments; use encrypted protocols for print traffic.
+
+7. Network Scanning Services
+  
+  Network scanning services let a centralized, network-attached scanner send scanned documents directly to email, network folders
+  (SMB), or cloud storage — without needing a local computer at the scanner itself. This improves document workflow, reduces paper
+  usage, increases accessibility and security, and supports centralized document management.
+  
+  Scan-to-email: the scanner sends the scanned document as an email attachment directly, using a configured mailbox (typically a 
+  shared/departmental address like info@company.com rather than an individual's). Requires correct SMTP settings (mailbox, address, 
+  password); firewall/port settings may need adjustment if mail isn't sending; scan resolution may need lowering if attachments are too large.
+  
+  Scan-to-SMB: sends the scanned document to a shared network folder using the Server Message Block protocol (common in Windows, also 
+  supported on Linux/Unix) — useful for centralized file management where many people need access. Setup involves assigning the scanner a
+  static IP/hostname, configuring the SMB protocol and destination folder path, and ensuring correct permissions via a service account
+  that has write access to that folder.
+  
+  Cloud scanning: sends scans directly to cloud storage platforms (Google Drive, Dropbox, OneDrive, etc.) — conceptually similar to SMB 
+  scanning but the destination lives in the cloud, letting users access documents from anywhere with internet access. Requires the 
+  scanner to support cloud authentication (API/interface) and configuration of a destination folder and, optionally, automatic file 
+  format conversion.
+  
+  Troubleshooting: authentication failures (any of the three methods) → verify credentials/passwords in the scanner's settings. File
+  transfer failures → check network connectivity, firewall settings, and destination write permissions. Slow scanning → reduce resolution
+  or output file size, check Wi-Fi connectivity (or prefer a wired connection where reliability matters).
+
+8. Automatic Document Feeders (ADFs)
+  
+  An ADF allows multiple pages to be scanned, copied, or faxed without manual page-by-page loading — either built into the device or
+  added as an aftermarket attachment. This increases efficiency, reduces manual handling and document wear, and supports batch loading
+  for large jobs.
+  
+  Types of ADFs:
+    
+    - Simplex — loads and processes one page, one side, at a time.
+    - Duplex — scans both sides of a page in a single pass (most efficient for large jobs).
+    - Reversing — scans one side, flips the page mechanically, then scans the other side; cheaper than full duplex but slower.
+    - Continuous — designed for very high-volume operations with minimal manual intervention, typically found in large enterprise devices.
+    
+  Configuration and use: ensure proper alignment and secure attachment (for aftermarket units), load documents face-up or face-down per
+  manufacturer guidance, adjust paper guides to prevent misfeeds, remove staples/paper clips before loading, and use higher-quality paper
+  to reduce jams.
+  
+  Troubleshooting: paper jams → check for torn/wrinkled pages, open the cover and clear stuck sheets. Multiple pages feeding at
+  once → ensure proper separation (no staples, fan the stack to reduce static cling). Blurry/incomplete results → clean the scanner
+  glass and ADF rollers, check resolution settings. ADF not recognized → check firmware updates, restart the device, verify all 
+  connections (especially for aftermarket modules).
+  
+  Maintenance and optimization: clean rollers and scanner glass periodically with a lint-free cloth, monitor roller wear and replace
+  as needed, keep firmware/drivers updated (both the device and any aftermarket ADF module), use predefined scanning profiles for
+  different document types, enable real-time error detection for jams, and train users on proper loading technique.
+
+9. Laser Printers
+  
+  Laser printers use laser technology and toner (a fine powder, not liquid ink) to produce high-resolution output at fast 
+  speeds — historically an office standard, now also common at home as prices have dropped. They tend to cost more upfront than 
+  inkjets but are typically cheaper per page for high-volume printing, since toner generally lasts longer than ink cartridges.
+  
+  The 7-step laser printing process: (1) data processing — the printer receives and processes the print job; (2) the photosensitive 
+  drum receives a positive electrostatic charge; (3) the laser writes the image by discharging specific areas of the drum; (4) 
+  developing — toner is attracted to the discharged areas of the drum; (5) transferring — the toner is applied to the paper; (6) 
+  fusing — heat and pressure permanently bond the toner to the paper (this is why printed pages come out warm).
+  
+  Why choose laser over inkjet: faster print speeds, lower cost per page at high volume, and longer-lasting consumables (toner can last
+  months in high-volume use versus weeks for ink cartridges at similar volume).
+  
+  Key components: toner cartridge (replaceable), photosensitive drum (transfers toner to paper), fuser assembly (applies heat/pressure), 
+  laser assembly (directs the beam for image formation), and transfer belt/roller (moves paper through the process). Most components are 
+  modular and replaceable, though for lower-end home units it's often cheaper to replace the whole printer than to service individual 
+  parts (aside from the toner cartridge, which is always meant to be replaced).
+  
+  Maintenance: clean components regularly to prevent dust buildup, replace toner before it's fully depleted (running it to empty causes
+  excess wear on the fusing/transfer process), check for firmware updates, and calibrate regularly for accurate color reproduction.
+  
+  Troubleshooting: streaks/smudges → clean components (rollers, toner transfer path). Faint/uneven prints → toner running low, replace it. 
+  Paper jams → calibrate the printer and clean/inspect pickup rollers.
+  
+  Extending printer life: use high-quality toner and paper, store the unit in a dust-free, well-ventilated area (laser printers run warm),
+  and keep the fuser unit clean for even heat distribution.
+
+10. Inkjet Printers
+  
+  Inkjet printers use liquid ink sprayed through small nozzles — well suited to home/office use and especially strong for color quality 
+  and photo printing. Lower upfront cost than laser printers, but typically higher cost per page over time, and a more compact design overall.
+  
+  Two ink-delivery technologies:
+    
+    - Thermal Bubble Jet: heats ink to create a vapor bubble that pushes it onto the paper — lower cost, simpler design, generally faster
+      print speeds.
+    - Piezoelectric: uses an electric current to precisely control ink release — higher precision, more versatility, and supports a wider 
+      variety of ink types.
+  
+  Key components: ink cartridges (typically one black cartridge plus three color cartridges that mix to produce other colors), print
+  head (deposits ink onto the paper as it moves back and forth), feed mechanism (moves paper through the printer), and a cleaning
+  mechanism to prevent clogs.
+  
+  Maintenance: run print head cleanings regularly (via software or the device's own menu), store unused ink cartridges in their original
+  sealed packaging to prevent drying out, and use high-quality paper to reduce smudging.
+  
+  Troubleshooting: streaky/faded prints → run a print head cleaning or alignment. Frequent paper jams → verify correct paper size/tray
+  and tray guide adjustment. Ink not recognized → reseat the cartridge fully.
+  
+  Extending printer life: keep firmware updated, use genuine (manufacturer) ink cartridges for best performance, keep the device 
+  clean, print non-essential documents in draft mode, turn the printer off when not in use to help prevent nozzle clogs, and avoid 
+  leaving depleted cartridges installed for long periods.
+
+11. Thermal Printers
+  
+  Thermal printers use heat-sensitive paper and thermal print heads rather than ink or toner — common in point-of-sale systems, shipping
+  labels, and medical devices, but rarely found as standard home/office printers. They print fast and quietly with lower maintenance needs
+  than ink-based printers.
+  
+  Direct thermal printing: heat directly darkens heat-sensitive paper to create the image — used for receipts and shipping labels, but
+  these fade significantly over time (a year-old receipt is often unreadable).
+  
+  Thermal transfer printing: uses a ribbon that transfers wax or resin onto the paper via heat, producing a much more durable, 
+  long-lasting result than direct thermal.
+  
+  Key components: print head (generates heat to transfer the image), platen roller (moves paper smoothly through the printer), ribbon 
+  (thermal transfer models only), and sensors (detect paper position for proper feed).
+  
+  Maintenance: clean the print head with isopropyl alcohol to prevent buildup, check and replace worn rollers, and store paper/ribbon away 
+  from dust and excessive heat.
+  
+  Troubleshooting: faded prints → clean the print head or increase heat settings if adjustable. Paper jams → check rollers and confirm
+  correct paper type is being used. Blurry/smudged text → adjust print speed and check ribbon alignment (ribbon-based models).
+  
+  Extending lifespan: store paper/ribbon in a dry, cool environment away from heat sources, use high-quality thermal paper for 
+  longevity, and regularly inspect cables/connections.
+
+12. Impact Printers
+  
+  Impact printers use mechanical force to press an inked ribbon onto paper — functioning much like a typewriter. Now less common 
+  overall, but still used in point-of-sale systems, invoice printing, and industrial applications.
+  
+  Types:
+    
+    - Dot matrix — uses pins striking the ribbon to form characters (or images) out of tiny dots; the most flexible impact type since 
+      it can print anything assembled from dots.
+    - Daisy wheel — a rotating wheel with pre-formed characters (letters, numbers); can only print those fixed characters, not images.
+    - Line printer — prints entire lines at once, used in high-volume environments.
+    
+  Why still choose impact printing: it's the only printer type that can produce true multi-part carbon copies in a single pass
+  (useful for customer/internal copy pairs), it's more reliable in harsh environments where other printer types may fail, and it 
+  has a lower long-term operational cost per page.
+  
+  Key components: print head (contains pins or hammers), ink ribbon cartridge (the ribbon itself can typically be cycled/refreshed), tractor
+  feed (uses perforated side strips with pin-wheels to keep paper precisely aligned during impact, with tear-off perforated edges), and 
+  a platen roller (provides solid backing behind the point of impact).
+  
+  Maintenance: clean the print head to prevent ink buildup, replace ribbons before they dry out, and keep the paper feed mechanism clear
+  of debris.
+  
+  Troubleshooting: faded prints → replace the ribbon or adjust print head alignment. Paper jams → check tractor feed alignment. Misaligned
+  text → adjust print head position and/or platen roller tension.
+  
+  Extending lifespan: store ribbons in a cool, dry environment, lubricate mechanical components per manufacturer guidance (using only
+  specified lubricants), avoid excessive force on the tractor feed, and monitor print jobs to catch errors before they cause hardware damage.
+
+13. 3D Printers
+  
+  3D printers use additive manufacturing to build objects layer by layer — common in prototyping, manufacturing, and custom fabrication, 
+  working with materials like PLA (polylactic acid), ABS (acrylonitrile butadiene styrene), and resin.
+  
+  Three primary technologies:
+    
+    - FDM (Fused Deposition Modeling) — melts and extrudes plastic filament layer by layer; the most common and affordable method.
+    - SLA (Stereolithography) — uses UV light to harden liquid resin into solid objects; produces higher-resolution, finer-detail results.
+    - SLS (Selective Laser Sintering) — uses a laser to fuse powdered materials (nylon, even metal); common for industrial/high-strength 
+      applications.
+  
+  Key components: extruder/hot end (FDM — heats and deposits filament), build platform (supports the model during printing), stepper motors
+  (control print head and platform movement), and a resin tank (SLA — holds liquid resin for curing).
+  
+  Maintenance: regularly clean the nozzle and build plate, check filament/resin levels before printing, and keep moving parts lubricated.
+  
+  Troubleshooting: warping → use a heated bed or adhesive to improve bed adhesion. Under-extrusion → check the filament feed and clean
+  the nozzle. Layer shifting → check belt tension and stepper motor function.
+  
+  Extending lifespan/optimizing performance: store filament in a dry, sealed container to prevent moisture absorption, keep firmware 
+  updated, maintain calibration settings, use correct print speed/temperature for each material, place the printer on a stable, vibration-free
+  surface, and test settings on small models before large print jobs.
+
+14. Printer Maintenance (General)
+  
+  Regular maintenance across any printer type prevents hardware failures, ensures consistent print quality, extends lifespan, reduces
+  downtime, and improves efficiency (fewer jams, less wasted ink/toner).
+  
+  Common maintenance tasks: regularly clean print heads and rollers (often via an automated cleaning cycle in the device's own
+  settings, occasionally supplemented by manual cleaning with a lint-free cloth and isopropyl alcohol), keep firmware and drivers
+  updated, and properly store/handle ink and toner cartridges.
+  
+  Driver/firmware updates: improve OS compatibility, fix bugs, and patch security vulnerabilities. Driver updates sometimes arrive
+  via standard OS updates (less common for printers than simpler devices, but possible), while firmware updates almost always come 
+  through the printer's own dedicated software — check that automatic update checking is enabled if prompts aren't appearing.
+  
+  Cartridge handling best practices: store ink/toner in a cool, dry place, keep cartridges in their original sealed packaging until
+  needed, gently shake new toner cartridges before installing (to prevent clumping), ensure proper alignment when inserting cartridges, print
+  a test page after installation, avoid touching nozzles/print heads, and never use expired ink or toner.
+  
+  Common issues: streaks/blurry prints → clean the print heads, use higher-quality ink and paper. Paper not feeding properly → check and
+  clean (or replace, if possible) the pickup rollers. Low ink warnings → these typically appear well before the cartridge is empty
+  (e.g., at 20% or 10% remaining); replace once quality visibly declines. Slow printing → lower the print quality setting (e.g., draft mode) 
+  for non-essential jobs.
+  
+  Preventative maintenance: run maintenance tasks on a regular schedule based on usage volume (more use = more frequent maintenance), use
+  genuine ink/toner over generic alternatives for reliable performance, and regularly inspect internal components.
+
+15. Setting Up Wireless Printing
+  
+  General installation flow for a local (USB or Wi-Fi) printer or multifunction device:
+    
+   1. Download the driver/software package directly from the manufacturer's support site, selecting the correct operating system version.
+   2. Run the installer before physically connecting the device — for USB connections especially, don't plug in the cable until the installer
+      prompts you to.
+   3. Accept the license and choose which software components to install (drivers, utilities, any bundled apps).
+   4. At the connection step, choose wireless or direct USB connection.
+   5. For wireless setup: either configure the Wi-Fi connection (SSID and password) directly through the device's own menu beforehand, or 
+      configure it during the installer's setup process — both achieve the same result. If the printer is already on the network, the installer
+      can simply search for and detect it.
+   6. Approve any firewall prompts needed for the installer's network components to function.
+   7. Print a test page to confirm everything is working, and install any available firmware update offered at the end of setup.
+    
+  This same general flow — install software first, then connect (USB) or configure Wi-Fi (wireless), then test print — applies to virtually
+  any modern local printer or multifunction device, regardless of manufacturer.
+
+Quick Exam-Focus Reminders
+  
+  - Printer connection types: USB = local single-computer install; wired/wireless network printer = its own IP address, no dedicated server
+    needed; print server = shared local install with centralized control; cloud printing = remote job submission to a fixed physical printer.
+  - ADF types, in order of capability: simplex (one side) → reversing (two sides, flips the page) → duplex (two sides in one 
+    pass) → continuous (very high volume).
+  - Laser printing steps: data processing → drum charges → laser writes/discharges → developing (toner adheres) → transferring (toner
+    to paper) → fusing (heat/pressure bonds toner).
+  - Printer type comparison: laser = high volume, low cost/page, toner-based, fast; inkjet = better color/photo quality, lower upfront
+    cost, higher cost/page; thermal = no ink/toner, heat-sensitive paper or ribbon, POS/labels; impact = mechanical force, only type that
+    produces true carbon copies; 3D = additive manufacturing (FDM/SLA/SLS).
+  - Kernel-mode drivers = pre-installed, core system components, not user-configurable; user-mode drivers = peripherals users install and
+    manage themselves.
+  - Print server functions: queue management, authentication/access control, usage monitoring and logging (logging is not on by default).
+  - Printer security layers: authentication to submit a job (password/badge/biometric) + secure release (PIN/badge at the device) + encrypted
+    transmission + audit logging.
+  - Scan destinations: scan-to-email (SMTP, needs a mailbox), Scan-to-SMB (network folder, needs a service account with write permission),
+    scan-to-cloud (needs the scanner to support cloud auth/API).
+  - DPI controls both quality and speed — higher DPI means sharper output but slower, larger print jobs; draft/standard/high-quality modes
+    are just DPI presets.
