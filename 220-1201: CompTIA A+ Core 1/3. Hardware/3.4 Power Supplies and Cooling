@@ -1,0 +1,261 @@
+1. Power Supply Features
+  
+  A power supply unit (PSU) converts AC power from the wall outlet into the DC power all computer components actually use, then regulates and
+  distributes it to the motherboard, CPU, GPU, and peripherals — each with different power requirements. This applies to desktop-style systems
+  only; laptops have their own internal battery and charger. An incorrect or inadequate PSU causes system instability and shortens component
+  lifespan.
+  
+  Wattage: the total power output of the unit (commonly 500W, 750W, 1000W+), sized to match how many components the system has.
+  
+  Efficiency rating (80 PLUS certification): measures efficiency at varying loads. Levels from lowest to highest: Standard/White, Bronze,
+  Silver, Gold, Platinum, Titanium — Titanium can reach 94–95% efficiency. Higher efficiency means less wasted heat and lower power draw.
+  
+  Form factors: ATX (standard for desktops, ~150mm x 86mm), Small Form Factor (compact builds), TFX and FlexATX (slim and Mini-ITX cases).
+  The PSU's form factor must match the case.
+  
+  Common power connectors: 24-pin ATX (motherboard), 4-pin/8-pin EPS (CPU), 6+2 pin PCIe (GPU/other PCIe devices — the 2-pin section is often
+  detachable depending on whether the device needs 6 or 8 pins), and SATA/Molex (storage devices, case fans, peripherals).
+  
+  Modularity: non-modular (all cables permanently attached, cheapest, more clutter), semi-modular (some fixed, some detachable), and fully
+  modular (all cables detachable — best cable management and airflow).
+  
+  Selection best practices: calculate wattage needs for all components, aim for Gold-level efficiency or higher, verify connector
+  compatibility and case fit, and always prefer overpowering to underpowering — unused connectors can simply stay unplugged,
+  but insufficient wattage causes instability. Avoid low-efficiency units and don't ignore future expansion needs (extra GPUs, more storage).
+
+2. Power Supply Input
+  
+  Power supply input refers to the AC voltage range the PSU accepts from the wall outlet — matching this to regional standards is
+  essential, since the wrong voltage can damage hardware.
+  
+  Standard voltage ratings: 110–120V AC at 60Hz is used primarily in North America and Japan (needs higher current for the same power
+  output). 220–240V AC at 50Hz is used in most of Europe, Asia, and Australia, delivering power more efficiently with less transmission
+  loss — common in high-performance computing and data centers. Step-down adapters can convert 220–240V to 110–120V for travel.
+  
+  Voltage selection: auto-switching PSUs detect and adjust automatically; manual-switching units have a small slide switch on the back
+  (often needs a flathead screwdriver, deliberately not easy to flip by accident).
+  
+  Input protection: some PSUs have built-in overvoltage/undervoltage and short-circuit protection. Where that's absent, use a separate
+  surge protector (evens out incoming power fluctuations) or a UPS (uninterruptible power supply — provides battery backup during outages, and
+  many also include surge protection). Both are important for mission-critical systems.
+  
+  Common mistakes: using an incompatible PSU without a step-down/step-up transformer, forgetting to flip the manual voltage selector
+  before first use (can cause irreparable damage), and assuming a physically compatible plug means compatible power delivery — always confirm
+  the region's voltage standard.
+
+3. Power Supply Output
+  
+  Power supply output refers to the specific voltages the PSU delivers to different components via dedicated "rails." Incorrect voltage
+  delivery can cause hardware failure or reduced performance.
+  
+  3.3V rail: powers lower-power components — RAM, the motherboard chipset, and M.2 solid-state drives.
+  
+  5V rail: powers USB devices, non-M.2 SSDs, and some legacy components; provides stable current for control circuits and logic chips.
+  
+  12V rail: the main power source for higher-power components — CPU, GPU, fans, and hard drives/optical drives. Critical for stability in
+  gaming and high-performance systems.
+  
+  Single-rail vs. multi-rail (12V): a single 12V rail delivers all 12V power from one source — simpler but a failure impacts the whole system.
+  A multi-rail design distributes 12V power across multiple rails for better protection against overload, at a higher cost but with greater
+  reliability.
+  
+  Voltage regulation: higher-end PSUs use Voltage Regulation Modules (VRMs) to stabilize output. Higher efficiency ratings also mean cleaner,
+  more stable power for sensitive components, less heat, and lower long-term power draw.
+  
+  Selection considerations: check CPU/GPU wattage needs, prioritize voltage stability and regulation quality, and verify the 80 PLUS rating.
+  Common mistakes: overloading a single rail when a multi-rail unit is actually needed, using low-quality PSUs with poor voltage regulation,
+  and ignoring future upgrade power needs.
+
+4. Motherboard Connectors
+  
+  The main motherboard power connector is the 20+4 pin connector — a 20-pin base plus a separate or slide-together 4-pin segment, together
+  forming the standard 24-pin ATX connector for modern motherboards. This design supports both older 20-pin motherboards (the 4-pin segment
+  simply stays unused) and newer 24-pin boards. Always check motherboard specs before buying a PSU, since some high-performance boards need
+  additional connectors.
+  
+  Other motherboard-related connectors:
+    
+    - 4-pin/8-pin CPU power connector — dedicated CPU power, sometimes physically part of the 20+4 configuration, sometimes fully separate;
+      pin count depends on CPU make/model.
+    - PCIe power connectors — typically 6-pin or 8-pin, for GPUs and other PCIe devices.
+    - SATA and Molex power connectors — for hard drives and optical drives. SATA is the modern standard (also used by many SSDs); Molex is
+      the legacy 4-pin connector from the IDE era, rarely found in modern systems.
+    
+  Installation: align the connector using its keyed shape (it can only go in one orientation), ensure a secure fit without forcing it, and
+  verify all connections before powering on to avoid shorts.
+  
+  Troubleshooting: if the connector seems loose, reseat it and confirm the retention clip is fully engaged. No power to the motherboard at
+  all → check the PSU itself and cable connections. Instability while running → confirm the PSU can supply sufficient wattage for everything
+  connected.
+  
+  PSU selection for the motherboard: match the wattage rating to total system demand, consider modular vs. non-modular for cable management
+  and airflow, and aim for 80 PLUS Gold or higher. Avoid underpowered units, forgetting to connect all required cables, or choosing
+  low-quality PSUs with unstable regulation.
+
+5. Power Supply Selection
+  
+  Choosing the right PSU means matching it to the number and type of connected devices — undersizing risks crashes, overheating, and
+  inefficiency, while leaving headroom supports future expansion.
+  
+  Rough wattage guidelines per component (these vary by make/model and actual load): CPU wattage varies widely by model; GPU needs
+  150–450W for high-performance cards; motherboard + RAM together need roughly 50–100W; each storage device (HDD/SSD/optical) needs
+  about 10W; each fan needs 5–15W; allocate roughly 25W per additional expansion device (network card, sound card, etc.). As a rule of
+  thumb, budgeting toward the higher end of each range leaves comfortable headroom.
+  
+  System-level wattage recommendations: a basic office PC needs roughly 300–450W; a gaming PC needs roughly 550–850W; a workstation or
+  multi-GPU setup needs 1000W or more.
+  
+  Modularity recap: non-modular (all cables fixed, unused ones just hang loose, can restrict airflow), semi-modular (some fixed, some
+  removable), fully modular (all cables detachable, best airflow and cable management).
+  
+  Future-proofing: budget an extra 150–200W beyond current needs to accommodate future upgrades (e.g., a more powerful GPU later).
+  
+  Common mistakes: buying a PSU that just barely meets current needs, and not accounting for future component upgrades that will draw
+  significantly more power.
+  
+  Selection summary: calculate total power consumption, add 20–30% extra wattage for safety margin, look for 80 PLUS Gold or
+  higher, confirm case and motherboard connector compatibility, and consider a modular design for better cable management.
+
+6. Redundant Power Supplies
+  
+  Redundant power supplies provide a backup unit that keeps a system running if the primary PSU fails — mainly relevant to enterprise
+  servers and high-availability systems, not typical desktop builds.
+  
+  Hot-swappable vs. cold-swappable: a hot-swappable PSU can be replaced while the system keeps running (slides out like a drawer); a
+  cold-swappable PSU requires shutting the system down first.
+  
+  N+1 redundancy: adds exactly one extra unit beyond what's needed (e.g., a system needing 3 PSUs gets a 4th as backup/standby, or all
+  4 share the load).
+  
+  2N redundancy: doubles the total number of units (e.g., a system needing 3 PSUs gets 6 total, so every unit has its own dedicated backup).
+  
+  Benefits: high availability (service continues if one unit fails), improved load balancing (distributing load across multiple active
+  units, e.g., 50/50 across two), and hot-swappable replacement without service disruption.
+  
+  Implementation: confirm compatibility with the system and any power distribution infrastructure, and choose appropriate wattage. Best
+  practices: use qualified personnel for installation, regularly test redundancy by simulating failure scenarios, and keep
+  firmware/monitoring software updated.
+  
+  Troubleshooting: power imbalance → check that units are properly sharing the load; failure alerts from monitoring software → use
+  built-in diagnostics to identify the faulty unit; unexpected shutdowns → verify input voltage and power draw settings on each unit,
+  especially after installing new hardware with default configurations.
+
+7. Modular Power Supplies
+  
+  A modular PSU lets you detach and connect only the cables you actually need, reducing clutter and improving airflow and cooling.
+  
+  Fully modular: all cables detachable — maximum flexibility and cleanest builds. Semi-modular: essential cables (like the 24-pin
+  motherboard connector) are fixed; others are removable and can be added later if the system grows. Non-modular: all cables permanently
+  attached — the standard for most off-the-shelf desktop systems; unused cables are simply left tucked away, which can interfere with airflow.
+  
+  Selection considerations: same fundamentals as any PSU — adequate wattage for CPU/GPU/peripherals, 80 PLUS Gold or higher efficiency, and
+  confirmed case/motherboard compatibility. Avoid insufficient wattage for future needs, low-quality brands with unstable power delivery,
+  and missing connector types.
+  
+  Installation best practices: mount and screw the PSU securely into the case, connect only the cables actually needed, route cables
+  efficiently without blocking fans, store spare modular cables in a pouch or the case's dedicated storage area, then power on and test for
+  stability.
+  
+  Cable management tips: use shorter cables for a cleaner build, avoid excessive bending (can eventually damage the cable over time), and
+  verify grounding is intact (usually wired internally by default).
+
+8. Power Supply Issue Troubleshooting
+  
+  Common causes of PSU failure: electrical surges or fluctuations, overheating from poor ventilation, aging components, poor build
+  quality, and overloading the unit beyond its rated capacity.
+  
+  Common failure symptoms: the system won't power on at all; unexpected shutdowns or restarts; burning smells or unusual noises from
+  the PSU; random Blue Screen of Death errors on Windows systems.
+  
+  Diagnosis methods: some systems include dedicated PSU diagnostic software; check the BIOS/UEFI for power supply status; review system
+  logs (e.g., Windows Event Viewer, under the System category, for hardware-related shutdown events); run load tests with different
+  applications to try to isolate what triggers the issue.
+  
+  Fixing common issues:
+    
+    - No power at all: check the PSU's physical on/off switch on the back (can get bumped, especially after moving the system), check for
+      loose or disconnected cables (especially with modular PSUs, which have connectors at both ends), and verify the case's power button
+      itself isn't damaged or disconnected.
+    - Intermittent shutdowns: ensure proper ventilation and check that the PSU's internal fan is running, confirm sufficient wattage
+      (especially after adding new components), and inspect for loose or damaged connections.
+    - Noise and/or overheating: clean dust from fans, replace failed fans (including the one inside the PSU — this is generally the only
+      serviceable internal component), and avoid overloading the unit with too many devices.
+  
+  Preventing failures: buy a high-quality unit from a reputable brand, keep it ventilated and dust-free, avoid cheap power strips without
+  surge protection, use a UPS for stable and conditioned power, ensure sufficient wattage with room for future upgrades, and avoid
+  unnecessary overclocking, which increases power draw and heat.
+  
+  A failed or failing PSU is generally not worth repairing beyond replacing its internal fan — a full replacement unit is inexpensive and
+  straightforward.
+
+9. System Cooling
+  
+  Keeping a system cool prevents thermal throttling (the CPU intentionally reduces its clock speed once it hits a critical temperature to
+  avoid damage, which also reduces performance), extends component lifespan, and ensures stable performance under heavy load.
+  
+  Air cooling uses heat sinks (metal components with fins that increase surface area for better heat dissipation) combined with fans.
+    
+    - Stock cooling: included with the CPU, generally sufficient for standard workloads.
+    - Aftermarket cooling: larger heat sinks and improved airflow, better suited to demanding workloads.
+    - Advantages: more affordable, easier to install and maintain, and more reliable since a fan is really the only part that can fail.
+    - Best practice: ensure proper case airflow and regularly clean dust from fans and heat sink fins.
+    
+  Liquid cooling uses a liquid coolant to dissipate heat.
+    
+    - All-in-one (AIO) coolers: prebuilt units with pump, radiator, and coolant included — the liquid-cooling equivalent of stock air cooling.
+    - Custom liquid cooling loops: more advanced setups for very high-performance systems.
+    - Advantages: more effective heat dissipation for demanding systems (gaming rigs, high-end CPUs/GPUs) and quieter operation than
+      multiple fans, since only the pump generates real noise.
+    - Considerations: the pump has moving parts that may need eventual replacement, and there's a risk of leaks if not properly installed
+      and maintained.
+  
+  Thermal paste fills microscopic gaps between the CPU and heat sink to improve heat transfer — apply only a pea-sized dot in the center
+  of the CPU (it spreads under the heat sink's pressure); too much can cause a mess and doesn't improve performance.
+  
+  Heat sink materials: copper offers better thermal conductivity than aluminum (and costs more); larger heat sinks provide more surface
+  area and better dissipation, within the space the case allows.
+  
+  Temperature monitoring: available through the BIOS/UEFI (requires a reboot to access) or third-party software (often bundled with
+  aftermarket cooling solutions), which can monitor temperature and control fan speeds without rebooting.
+  
+  Best practices: maintain positive airflow with more intake than exhaust to pull adequate air in, distribute case fans across multiple
+  locations rather than clustering them on one side, and periodically check and reapply thermal paste as it hardens and cracks over time.
+
+10. Configuring a System for Cooling
+  
+  Common causes of overheating: blocked airflow from dust accumulation (worse in homes with pets), degraded or improperly applied thermal
+  paste that dries and cracks over time, and poor case ventilation or fan placement.
+  
+  Fan speed and power configuration: dynamic fan speed adjustment balances cooling against power draw and noise (running fans at max speed
+  constantly wastes power and adds noise); power settings can put unused features into sleep or hibernation mode to save power; fan
+  monitoring/configuration software shows real-time RPM values against temperature and lets you set custom thresholds.
+  
+  Case and airflow best practices: ensure no vents are blocked by cables, place fans strategically across multiple locations for balanced
+  airflow, and keep the system clean — clogged intake vents and dust-coated fans are the most common airflow killers.
+  
+  Air vs. liquid cooling — choosing between them: air cooling is cheaper, easier to install, and more reliable (fans are inexpensive and
+  simple to replace); liquid cooling dissipates heat more effectively for high-end CPUs/GPUs and runs quieter, but costs more and requires
+  more maintenance. Standard office/home systems are generally fine with air cooling; demanding workloads like gaming benefit more
+  from liquid cooling.
+  
+  Troubleshooting overheating: watch for frequent crashes or unexpected shutdowns, monitoring software showing temperatures above roughly
+  85°C for the CPU (approaching the overheating range), fans running constantly at maximum speed without the temperature dropping
+  (possible fan failure elsewhere or blocked intake vents). Fixes include improving airflow and ventilation, cleaning out dust, replacing
+  failed fans (or upgrading to an aftermarket cooling solution if stock cooling proves inadequate), and reapplying thermal paste — generally
+  recommended every one to two years depending on system heat load.
+
+Quick Exam-Focus Reminders
+  
+  - 80 PLUS efficiency tiers, lowest to highest: Standard/White → Bronze → Silver → Gold → Platinum → Titanium.
+  - Power rails: 3.3V (RAM, chipset, M.2 SSDs) → 5V (USB, non-M.2 SSDs, legacy) → 12V (CPU, GPU, fans, drives — the main power rail).
+  - Modularity levels: non-modular (all fixed) → semi-modular (some removable) → fully modular (all removable) — more modularity means
+    better airflow and cable management.
+  - PSU redundancy: N+1 (one extra unit) vs. 2N (fully doubled) — hot-swappable (no shutdown needed) vs. cold-swappable (requires shutdown).
+  - The main motherboard connector is the 20+4 pin (24-pin ATX) — the 4-pin segment supports both legacy 20-pin and modern 24-pin boards.
+  - Rough system wattage targets: office PC ~300–450W, gaming PC ~550–850W, workstation/multi-GPU ~1000W+.
+  - Always oversize wattage rather than undersize — unused capacity is harmless, insufficient capacity causes instability.
+  - Thermal throttling = CPU intentionally slows down to avoid overheating damage — a performance symptom of a cooling problem, not a
+    separate fault.
+  - Air cooling = cheaper, simpler, more reliable (only fans fail); liquid cooling = better heat dissipation and quieter, but pricier
+    and needs more maintenance (pump wear, leak risk).
+  - CPU temps approaching ~85°C are considered close to the overheating range — worth investigating immediately.
