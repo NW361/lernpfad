@@ -6,7 +6,7 @@
 
 ## Über mich
 
-- 🎂 **26 Jahre alt** | 📍 Leipzig
+- 🎂 **27 Jahre alt** | 📍 Leipzig
 - 🔧 **5+ Jahre Berufserfahrung** in der technischen Instandhaltung
 - 💻 **Digital Native** – seit meinem 13. Lebensjahr am Computer
 - 🎯 **Langzeitziel:** Spezialisierung auf **IT-Sicherheit**
