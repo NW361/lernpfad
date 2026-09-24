@@ -1,0 +1,155 @@
+Cloud computing moves data/workloads to a remote location outside the organization's direct control, introducing new risk categories:
+  
+  - Security and privacy risks: data breaches (from misconfiguration, unpatched software), compliance issues (regulated industries like
+    healthcare, government, finance must know where data resides and how it's encrypted/protected), and insider threats at the provider's
+    location.
+  - Organizational challenges: service downtime (outside the client's control), and vendor lock-in (differences in underlying infrastructure
+    make migrating between providers difficult as cloud presence grows).
+  - Cost and performance issues: elastic scaling can cause unexpected costs; static/stable workloads are often cheaper on local servers, while
+    variable workloads suit elastic cloud environments; distance from the provider introduces latency.
+  
+  Mitigation strategies: security hardening (patching, correct firewall/gateway configuration), multi-cloud (reduces vendor lock-in) and
+  hybrid cloud (balances cost/control), continuous automated monitoring, proactive incident response planning, and reviewing service
+  agreements/compliance before migrating.
+
+Cloud Performance Troubleshooting
+  
+  Key performance factors: compute resources (CPU/RAM/GPU), network latency/bandwidth, storage read/write performance, and application-level
+  performance (queries, caching).
+  
+  Monitoring tools: Amazon CloudWatch, Azure Monitor, Google Cloud Operations (formerly Stackdriver) — track metrics in real time and
+  trigger alerts on thresholds.
+  
+  Optimization approaches:
+    
+    - Compute: autoscaling, right-sizing VM specs to the workload type (web servers need network capacity more than storage speed; database
+      servers need RAM/disk more than network). Reserved instances suit stable workloads; spot instances suit dynamic ones.
+    - Network: CDNs (content delivery networks) reduce latency by placing data copies closer to users; distribute traffic across multiple
+      connections to avoid bottlenecks; newer protocols like HTTP/2 improve throughput.
+    - Storage: match the storage tier (HDD vs. SSD) to the application's needs; use caching (RAM-based, e.g., Redis, Memcached) for
+      frequently accessed data; optimize database indexing/queries.
+    
+  Favor proactive strategies (continuous monitoring, alerting, automated scaling) over reactive troubleshooting, balanced against cost.
+
+Restoring VMs from Snapshots (Demo — Hyper-V)
+  
+  In newer Hyper-V Manager versions, "snapshot" = checkpoint. Two checkpoint types (configured under VM Settings → Checkpoints):
+    
+    - Standard checkpoint: captures a snapshot of RAM/memory contents (what's currently running), not saved disk changes.
+    - Production checkpoint: uses the Volume Shadow Copy Service (VSS) to capture the actual disk contents; takes longer to create.
+    
+  Restoring: right-click the checkpoint → Apply (optionally creating a new checkpoint of the current state first, as a safety net before
+  reverting — this cannot be undone once applied). Applying a Standard checkpoint automatically reboots/reconnects the VM; applying a
+  Production checkpoint turns the VM off and requires manually starting it again.
+
+VM Performance Improvement
+
+VM performance = speed/efficiency of task execution. Key indicators: CPU utilization (sustained >80% is a concern, but check for memory
+swapping first, which drives CPU up artificially), memory usage (watch for load spikes from data caching), disk I/O (tier-dependent), and
+network throughput.
+
+Optimization strategies:
+  
+  - CPU: avoid over-provisioning virtual CPUs beyond actual workload needs or beyond what the host physically has; leverage Turbo Boost and
+    Hyper-Threading; use load balancing to spread demand across servers.
+  - Memory: Transparent Page Sharing (TPS) deduplicates identical memory pages across VMs to free RAM; use memory reservations for critical
+    apps intolerant of swapping; use dynamic memory allocation for more flexible workloads.
+  - Disk/storage: choose the right tier (SSD vs. HDD vs. NAS vs. SAN); use fixed-size disks instead of dynamic ones to avoid fragmentation.
+  - Proactive management: continuous monitoring and alerting, load balancing, capacity planning (anticipating seasonal/demand surges), and
+    regular stress testing. Cloud Performance Management and Optimization
+
+Cloud billing is usage-based (often to the minute), so performance management is tightly linked to cost management.
+  
+  Key optimization areas: right-sizing compute resources, matching storage tier to workload (SSD for fast analysis, HDD for
+  archiving/warehousing), caching frequently used data, replicating relatively static data across locations for faster retrieval, and
+  compressing infrequently accessed data to save costs.
+  
+  Network performance: reduce latency by hosting resources closer to users (via distributed/regional deployments), manage bandwidth
+  usage (e.g., scheduling replication outside peak hours), and use security configurations that also reduce unwanted traffic load.
+  
+  Testing/benchmarking: load testing simulates production-level requests to identify weak components; latency (delay) and throughput
+  (data volume transmitted) are core network metrics to evaluate; industry and internal historical benchmarks help set performance
+  expectations. Automated performance/auditing tools help continuously rebalance cost vs. performance, since cloud environments are
+  elastic and constantly shifting.
+
+VM Backup Security
+
+A VM backup is a complete copy of the OS, applications, and data — anyone who gains access to it has everything. Risks of unsecured backups:
+unauthorized access/copying, corruption (including ransomware/malware), and potential violation of regulatory compliance if backups are
+stored outside a secured network.
+
+Core security principles:
+  
+  - Encryption: both backup files at rest and data in transit should be encrypted, ideally with AES-256 (data at rest) and TLS/SSL
+    (data in transit). Use centralized key management to protect and rotate encryption keys.
+  - Access control: Role-Based Access Control (RBAC) limits access to the minimum needed; multi-factor authentication (MFA) adds identity
+    assurance.
+  - Data immutability: once written, backup data cannot be changed — a key defense against ransomware, since an unaltered backup copy lets
+    you restore without paying a ransom.
+  - Monitoring/auditing: track who accessed backup data and when.
+
+Relevant compliance regulations: GDPR (EU personal data), HIPAA (US health information), SOC 2 (general data-handling controls).
+
+Best practices: store backups on dedicated storage separate from the production VM's disk (never on the same hardware); use air-gapped
+backups (no network connection) for extra protection; log and monitor the backup process itself (who made it, when, where it's stored, who
+accessed it); keep multiple copies in different locations/types; and regularly test restoring backups (not just creating them) — including
+restoring to a separate test environment. Remember: a snapshot only records changes since the last snapshot and is not a substitute for a
+complete/traditional backup — use both together.
+
+Virtual Network Troubleshooting
+  
+  - Virtual networks (software-defined networks, SDNs) share some issues with physical networks but also have unique, cloud-specific ones.
+  
+  - Key components: virtual switches/routers, virtual NICs (configured in the hypervisor, tied to a switch/port group), IP addressing
+    (often via DHCP configured in the hypervisor), firewalls (usually part of the guest OS) vs. network security groups (part of the
+    virtual network itself), and SDN controllers (define traffic paths for virtual routers).
+  
+  - Common issues: connectivity failures (bad routing, firewall misconfiguration), performance degradation (under-provisioned hardware or
+    traffic spikes), security issues (unnecessary traffic, misconfigured rules enabling DoS), and DNS/DHCP misconfigurations
+    (wrong destinations or unreachable hosts).
+  
+  - Diagnostic tools: cloud-native — AWS VPC Flow Logs, Azure Network Watcher, Google Cloud VPC Diagnostics. Command-line — ping,
+    traceroute (connectivity via ICMP), netstat, tcpdump, Wireshark (traffic/configuration analysis). Hypervisor-specific — VMware NSX
+    troubleshooting utilities, Hyper-V Virtual Switch Manager diagnostics.
+  
+  - Best practices: isolate the problem (hardware vs. software/cloud), use substitution (swap known-good components), verify configurations
+    (IP, DNS, firewall, NAT, VPN), check logs, use network segmentation and load balancing to relieve congestion, and follow zero trust
+    principles (no implicit access; every action requires explicit, non-transferable permission).
+
+Cloud Monitoring and Logging
+  
+  Purpose: track system health, performance, and security events in a constantly changing (elastic) cloud environment, enabling proactive
+  issue detection and compliance.
+  
+  Three core components:
+  
+  - Monitoring: real-time tracking of metrics (CPU, memory, network, storage), often shown as graphs/dashboards.
+  - Logging: recording historical system/security events (configuration changes, errors, logons) for later analysis and compliance proof.
+  - Alerting: automated notifications when thresholds/anomalies are detected, reducing the need for constant manual monitoring.
+  
+  Key metrics tracked: compute (CPU, memory, instance availability, autoscaling thresholds), network (latency, packet loss, bandwidth,
+  VPC flow logs), and storage/database (read/write speed, disk I/O, query performance, cache hit/miss ratio).
+  
+  Best practices: centralize log collection (simplifies analysis, backup, and compliance retention), configure alerts for abnormal activity
+  with a defined escalation/response plan, regularly test that alerts actually work, and conduct post-incident reviews to improve procedures.
+  Future trends: AI-driven anomaly detection, predictive analytics, and automated compliance remediation tools.
+
+Quick Exam-Focus Reminders
+  
+  - Vendor lock-in = difficulty migrating away from a cloud provider due to infrastructure differences; multi-cloud strategy helps
+    mitigate it.
+  - Standard checkpoint (Hyper-V) = RAM/memory snapshot; Production checkpoint = disk snapshot via VSS (Volume Shadow Copy Service).
+  - A snapshot only records changes since the last snapshot — it is NOT a replacement for a full/traditional backup.
+  - VM backup core security principles: encryption (AES-256 at rest, TLS/SSL in transit), RBAC + MFA for access control, and data
+    immutability (key ransomware defense).
+  - Compliance standards to recognize: GDPR (EU), HIPAA (US health data), SOC 2 (data controls).
+  - Best backup practice: store backups on separate/dedicated storage from the production VM; consider air-gapped backups; always test
+    restores, not just backups.
+  - CDN = reduces latency by caching data geographically closer to users.
+  - Reserved instances = stable/predictable workloads; spot instances = dynamic/interruptible workloads (cheaper, less reliable).
+  - Network security groups = part of the virtual network; firewalls = typically part of the guest OS — know the distinction.
+  - Diagnostic tools to recognize: ping/traceroute (connectivity, ICMP), netstat/tcpdump/Wireshark (traffic/config analysis), plus
+    cloud-native tools (AWS VPC Flow Logs, Azure Network Watcher, Google Cloud VPC Diagnostics).
+  - Zero trust = no implicit access; every action requires explicit, non-transferable permission.
+  - Monitoring vs. logging vs. alerting: monitoring = real-time tracking; logging = historical record; alerting = automated notification on
+    thresholds/anomalies.
