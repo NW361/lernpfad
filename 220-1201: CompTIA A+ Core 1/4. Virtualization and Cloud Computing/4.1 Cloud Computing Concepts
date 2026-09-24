@@ -1,0 +1,95 @@
+Benefits of Cloud Computing
+  
+  Cloud computing delivers computing services (servers, storage, databases, networking, software) over the internet, on-demand,
+  without managing physical infrastructure. Main benefits: cost efficiency (pay-as-you-go, no upfront hardware), accessibility
+  (anywhere with internet), high scalability (providers have near-unlimited resources), and enhanced collaboration/remote work.
+  Providers also handle physical infrastructure failures, offer strong built-in security/compliance, and support disaster
+  recovery/business continuity better than most organizations could alone.
+
+Cloud Services Cost Implications
+
+Pricing models:
+  
+  - Pay-as-you-go: pay only for what you use.
+  - Reserved instances: dedicated (non-shared) hardware — better/more predictable performance, higher cost.
+  - Spot/preemptible instances: leftover capacity, up to ~85% cheaper, but can be reclaimed anytime — never for mission-critical workloads.
+  - Subscription-based: flat monthly rate, extra charges if exceeded.
+
+Watch for hidden costs: data transfer fees, underutilized (but still paid-for) resources, and storage exceeding provisioned capacity.
+Key optimization tools: rightsizing, cost alerts/thresholds, and reviewing storage/transfer regularly.
+TCO (Total Cost of Ownership) = hardware + applications + security + operational costs — used to compare providers (AWS, Azure, Google Cloud).
+
+Cloud Models
+
+Two fundamental models, plus three combinations:
+  
+  - Public cloud: third-party-owned, shared infrastructure, pay-as-you-go, no maintenance burden on the customer.
+  - Private cloud: dedicated infrastructure for one organization (on-prem or third-party hosted), more control/security/compliance,
+    but higher cost since infrastructure must still be built/maintained.
+  - Hybrid cloud: mix of public + private, balances cost/security/flexibility.
+  - Multicloud: uses multiple public cloud providers to avoid vendor lock-in.
+  - Community cloud: shared infrastructure tailored to organizations with common needs (e.g., healthcare, government), cost-shared among
+    participants.
+
+IaaS, SaaS, PaaS
+  
+  - IaaS (Infrastructure as a Service): virtualized compute, storage, and networking (VMs, containers, serverless). Provider manages
+    physical hardware; customer manages what's built on it. Examples: AWS EC2, Azure Virtual Machines, Google Compute Engine.
+  - SaaS (Software as a Service): ready-to-use applications accessed via browser, no infrastructure management at all, subscription-based,
+    auto-updated by the provider. Examples: Microsoft 365, Salesforce, Slack. Relevant compliance standards: GDPR, HIPAA.
+  - PaaS (Platform as a Service): sits between IaaS and SaaS — provides a development platform (frameworks, DB tools) where infrastructure
+    is defined by the developer but managed by the provider. Examples: Google App Engine, AWS Lambda. Used mainly for application development.
+  
+Shared Resources & File Synchronization
+  
+  Shared resources (servers, storage, software) used by multiple users/teams — location-independent (on-prem, cloud, or hybrid).
+  Benefits: centralized management, cost efficiency. Drawbacks: resource contention, permission/security complexity.
+  
+  File sync mechanisms: event-driven (triggered by a change) vs. scheduled/periodic. Conflict resolution: last-change-wins, user prompt,
+  or moderator decision. Common pitfalls: sync storms (too many simultaneous syncs), version conflicts, and misconfigured sharing links.
+
+Measured & Metered Services
+  
+  Measurable = usage is tracked (CPU, memory, bandwidth). Metered billing = you pay only for what you actually consume (like a utility bill).
+  Benefits: financial flexibility, better budgeting. Challenges: cost spikes, complex pricing, resource inattention.
+  Management strategies: monitoring/alerts, tagging for cost attribution, reserved instances for predictability.
+
+Cloud Elasticity
+  
+  Elasticity = automatic, real-time scaling up/down based on demand (vs. scalability, which can be manual/slower).
+  Prevents over-provisioning (wasted cost) and under-provisioning (bottlenecks). Works via auto-scaling and resource pooling.
+  Risk: scale thrashing from overly aggressive policies. Limitation: monolithic apps can't be horizontally scaled easily.
+  Future trend: serverless/Functions-as-a-Service removes infrastructure concerns entirely.
+
+Availability in Cloud Environments
+  
+  Expressed as uptime %: 99.9% ("three nines") ≈ ~8h45m downtime/year; 99.99% ("four nines") ≈ <1h/year. Core elements: redundancy,
+  load balancing, automatic failover. Techniques: multi-zone/multi-region deployment, SLAs. Deployment strategies: blue-green
+  (two full environments swap active/dev roles) vs. rolling (incremental rollout into existing production).
+
+Multitenancy
+  
+  Multiple tenants share the same infrastructure/software, kept separate via logical isolation (not physical) — security controls,
+  permissions, schemas, or row-level security. Advantages: cost efficiency, unified updates, easier management, fast onboarding.
+  Risks: data security (shared physical hosts), performance contention, compliance complexity.
+
+Azure Demos (VM, VNet, Storage Account)
+  
+  - Resource group: logical container grouping related resources so they can interoperate.
+  - Virtual Machine: choose subscription/resource group, name, region, image (OS), size (cost/performance), admin credentials,
+    inbound ports (e.g., RDP), disks, and place into a virtual network.
+  - Virtual Network (VNet): hosts VMs that need to communicate; requires a non-conflicting IP address space and at least one subnet;
+    optional security features (encryption, Azure Bastion, Firewall, DDoS protection).
+  - Storage Account: needs a globally unique name; choose primary service (e.g., Blob Storage), performance tier (Standard/Premium),
+    redundancy level, and access tier for blobs — Hot (frequent access), Cool (infrequent), Cold (rare, cheapest).
+
+Quick Exam-Focus Reminders
+  
+  - IaaS = infrastructure, PaaS = dev platform (infra managed by provider), SaaS = ready-made software, no infra.
+  - Spot/preemptible instances = cheap but reclaimable, never for critical workloads. Reserved instances = dedicated, costs more.
+  - Elasticity = automatic real-time scaling; scalability = broader, can be manual.
+  - Availability nines: 99.9% ≈ 8h45m/yr downtime; 99.99% ≈ <1h/yr downtime.
+  - Multitenancy uses logical isolation, not physical separation.
+  - Blue-green = two full swapping environments; rolling = incremental into existing production.
+  - GDPR and HIPAA are the compliance standards called out for SaaS.
+  - Azure workflow order: Resource group → VNet → VM → Storage Account.
