@@ -1,0 +1,175 @@
+Understanding Virtualization
+  
+  Virtualization uses software (a hypervisor) to simulate hardware, obscuring physical hardware from applications/operating systems and
+  creating virtual versions of compute, storage, and networking resources. Client-side virtualization runs on a user's own workstation — the
+  hypervisor runs as an application on top of the host OS, which stays in control of the hardware. A virtual machine (its OS, config, data,
+  apps) exists as a file (or set of files) on the host, making it easy to copy, back up, and clone to another host.
+  
+  Benefits: multiple OS environments on one physical device (cost savings), increased security (apps isolated by the hypervisor), better
+  resource utilization, easier disaster recovery (copy the file, restore it elsewhere), and simplified workload migration between physical
+  hardware.
+  
+  Challenges: hypervisor is an extra software layer consuming RAM/storage/CPU; compromising the hypervisor can compromise every environment
+  it hosts; extra licensing costs (apps, OS, and hypervisor); and hardware compatibility requirements.
+
+The Purpose of Virtual Machines (VMs)
+  
+  A VM is the software-based execution of a physical computer — the guest OS behaves as if running on real hardware. The hypervisor intercepts
+  OS/hardware calls and allocates physical resources (CPU, memory, storage, networking) to each VM, isolating VMs from each other (a security
+  barrier) and allowing dynamic resource allocation.
+  
+  Key facts: VMs are stored as virtual disk files, enabling snapshots (point-in-time rollback), cloning, and easy migration between hosts.
+  A type 1 hypervisor IS the host OS (bare metal — used on servers/blade servers in data centers, managed remotely). A type 2 hypervisor
+  runs inside an existing host OS (used for testing/isolated environments on client machines).
+  
+  Common use cases: cloud computing (VMs are the backbone), software testing, running legacy/vulnerable systems in isolation, cybersecurity
+  sandboxing, and educational lab environments.
+
+Desktop Virtualization
+  
+  Runs multiple desktop environments on one physical machine or via cloud-hosted services. Two types:
+    
+    - Local desktop virtualization: multiple desktops on a single local session (e.g., switching between "accounting" and "sales" desktops).
+    - Remote desktop virtualization (VDI — Virtual Desktop Infrastructure): desktops hosted centrally (on-prem or cloud) and accessed remotely
+      via client software or a browser; a hypervisor on the server splits physical hardware into VMs, each hosting multiple desktop sessions.
+    
+  VDI sessions can be persistent (user settings saved between sessions) or non-persistent (desktop resets each time — good for
+  kiosks/education). Benefits: cost efficiency (client hardware doesn't need to meet app requirements), improved security
+  (apps/data never touch the local device), centralized management, and flexible access from any device/location.
+  
+  Use cases: remote workers using corporate apps, call centers/data-entry roles needing a locked-down interface, consistent educational lab
+  environments, high-security industries, and software development/testing needing a stable, repeatable environment.
+  
+  Challenges: high initial setup cost (or higher ongoing cost with a cloud solution), dependency on network reliability and latency, scaling
+  limitations/costs, and potential compliance issues if data resides in the cloud outside required jurisdictions.
+
+Containers
+  
+  Containers are lightweight, standalone executable packages that include the application code plus everything needed to run it (runtime,
+  tools, libraries, dependencies) — but they share the host OS kernel rather than including a full OS. This makes them much lighter and
+  faster than VMs.
+  
+  Key components: the container runtime (defines what's needed to run the app, pulling images/settings from a registry), and Kubernetes,
+  an open-source orchestration tool for automatically deploying, scaling, and managing containers at scale.
+  
+  Containers vs. VMs: containers start in seconds (VMs take minutes), use fewer resources, and are ideal for cloud-native apps,
+  microservices, and DevOps/CI-CD workflows. VMs are still the right choice for running different OS environments, legacy apps, or
+  providing IaaS.
+  
+  Challenges: less isolation than a VM (shared kernel); usually non-persistent (data isn't saved when the container stops, unless persistent
+  storage is configured); lifecycle management can get complex without orchestration tools; and containers depend on kernel compatibility —
+  Docker solves this by presenting a homogeneous kernel environment across different host kernels.
+
+Type I vs. Type II Hypervisors
+  
+  - Type I (bare metal): installed directly on hardware, acting as the OS itself. Minimal local interface (often text-based);
+  managed remotely via a control station. More performant, smaller attack surface (no underlying OS to exploit), supports advanced
+  features like live migration. Used in data centers/production/enterprise environments — the backbone of cloud computing.
+  
+  - Type II (hosted): installed as an application on top of an existing host OS (Windows, Linux, macOS); requests pass through the
+  host OS. Easier to use and more flexible/compatible, but has higher performance overhead and inherits the host OS's security
+  vulnerabilities. Used for testing, training, and development on client workstations.
+  
+  Considerations when choosing: deployment complexity and training needs, hardware sizing (don't just add up guest OS requirements — plan
+  extra capacity for the hypervisor itself), the hypervisor as a potential single point of failure/attack, and additional licensing costs.
+
+Virtualization Security Requirements
+  
+  Key risks specific to virtualization:
+  
+    - Hypervisor vulnerabilities: errors in hypervisor code can allow an attacker to escape the VM boundary — known as a VM escape attack.
+    - Misconfigured VMs: default passwords, excessive user privileges, or misconfigured rights are easy attack vectors.
+    - Virtual disk theft: since a VM is just a file, an attacker who gains access can steal a complete copy of a production system.
+    - Denial-of-service (DoS): a hypervisor flaw could let an attacker over-provision resources until the physical hardware can't keep up,
+      denying service to everyone.
+  
+  Best practices: regular patching of hypervisor, host OS, and guest OSes (ideally automated); least privilege access control; encryption
+  of data at rest and secure transmission protocols; network segmentation; monitoring/logging (increasingly automated, since VMs are
+  created/deleted dynamically); and Role-Based Access Control (RBAC) for hypervisor management tasks (VM creation, migration, etc.), with
+  all such changes audited.
+  
+  Future trends: AI-assisted threat detection, zero trust principles applied to virtualization infrastructure, container-specific security
+  strategies distinct from traditional tools, cloud-native vendor security solutions, and automated security enforcement given the sheer
+  scale of virtual assets.
+
+Virtualization Network and Storage Requirements
+  
+  Networking:
+    
+    - Software-Defined Networking (SDN): separates the control plane (configuration/decision logic, now centralized in software) from the
+      data plane (the actual physical devices moving data). SDN layers: application layer (firewall rules, routing, load balancing), control
+      layer (central software instructing devices), and infrastructure layer (physical switches/routers).
+    - Network Function Virtualization (NFV): simulates physical network devices in software, within the hypervisor, to create virtual
+      networks between VMs.
+    - VLANs: segregated network address groups — isolated and secure by default, requiring explicit rules to communicate across VLANs.
+    - VPNs: encrypted point-to-point connections creating a private network over shared physical infrastructure.
+    
+  Storage:
+    
+    - Software-Defined Storage (SDS): virtualizes physical storage so VMs see a consistent "disk" regardless of the underlying physical
+      hardware; the hypervisor translates requests to the actual physical disk.
+    - SAN (Storage Area Network): high-performance, low-latency network storage, typically for databases.
+    - NAS (Network-Attached Storage): network storage typically used for file sharing.
+    - Storage virtualization methods: block storage virtualization (abstracts storage blocks, enables snapshots/replication transparently
+      to the guest OS), file storage virtualization (presents files as a local file list, supports centralized file management), and
+      object storage virtualization (flat, non-hierarchical storage — ideal for large-scale cloud/media/backup storage).
+    
+  Benefits: near-limitless scalability, better hardware utilization (shared but isolated workloads), faster disaster recovery (just
+  copy/restart the VM file), easier network segmentation, and automation/orchestration through software.
+  
+  Challenges: added performance overhead from the extra software layer, the hypervisor as a central point of attack, hardware that may not
+  support virtualization, new/unfamiliar management tooling, and regulatory compliance complexity around data's physical location
+  (especially in the cloud).
+
+Installing and Configuring a Hypervisor (Demo — Hyper-V on Windows)
+
+Hyper-V (a type II hypervisor when installed on top of Windows) is supported on all Windows editions except Windows Home.
+Three ways to install it:
+  
+  1. PowerShell (as administrator): Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V -All
+  2. DISM (as administrator, via Command Prompt): DISM /Online /Enable-Feature /All /FeatureName:Microsoft-Hyper-V
+  3. GUI: Control Panel → "Turn Windows features on or off" → check both Hyper-V Management Tools and Hyper-V Platform.
+
+All three methods require a reboot to complete installation. After reboot, Hyper-V Manager connects automatically to the local machine.
+
+Key configuration step: in Hyper-V Settings, set where virtual hard disks and VM configuration files are stored — ideally on a separate
+volume/disk from the host OS to avoid disk contention.
+
+Creating a Virtual Machine (VM) — Demo (Hyper-V)
+
+Using the New Virtual Machine Wizard in Hyper-V Manager:
+  
+  1. Specify Name and storage Location (ideally a non-OS volume).
+  2. Choose Generation: Generation 2 for modern 64-bit hardware with UEFI BIOS; Generation 1 for older/legacy compatibility.
+  3. Assign Memory — balance the VM's needs against what's left for the host, based on the guest OS's minimum requirements.
+  4. Configure Networking: "Not Connected" (isolated, no networking) or "Default Switch" (NATs through the host's network adapter to
+     provide internet/network access).
+  5. Connect Virtual Hard Disk: create a new virtual disk, use an existing one, or attach one later — factor in storage needs for the
+     OS and any applications.
+  6. Installation Options: install an OS immediately (e.g., from an ISO image mounted as a virtual DVD drive) or install later.
+
+Once created, the VM can be configured further (hardware, security, memory, processor, etc.) and started/connected to install the guest OS.
+
+Course Summary
+
+This course covered client-side virtualization: the advantages of VMs (sandboxing, testing, app deployment), desktop virtualization/VDI,
+containers vs. VMs, type I vs. type II hypervisors, virtualization security, and installing/managing hypervisors and VMs (demonstrated
+with Hyper-V).
+
+Quick Exam-Focus Reminders
+
+- Type 1 hypervisor = bare metal, IS the OS, used in production/data centers. Type 2 hypervisor = hosted, runs on top of an existing OS,
+  used for testing/training on client machines.
+- A VM is a complete OS + virtual hardware via the hypervisor; a container shares the host OS kernel and only packages the app + its
+  dependencies — containers start in seconds, VMs take minutes.
+- Kubernetes = container orchestration; Docker = presents a consistent kernel environment across hosts for containers.
+- VDI persistent = settings saved between sessions; non-persistent = resets each session (kiosks, labs).
+- VM escape attack = an attacker breaks out of a VM's isolation via a hypervisor flaw — the top hypervisor-specific security risk.
+- RBAC (Role-Based Access Control) and least privilege are the core access-control principles for hypervisor management.
+- SDN separates the control plane (configuration logic) from the data plane (actual traffic forwarding); NFV virtualizes network devices
+  in software.
+- SAN = high-performance block storage over network (databases); NAS = file-sharing network storage.
+- Block, file, and object storage virtualization are the three storage virtualization methods — object storage is flat/non-hierarchical,
+  ideal for large-scale cloud/media data.
+- Hyper-V install methods: PowerShell (Enable-WindowsOptionalFeature), DISM, or the GUI ("Turn Windows features on or off") — all require a
+  reboot.
