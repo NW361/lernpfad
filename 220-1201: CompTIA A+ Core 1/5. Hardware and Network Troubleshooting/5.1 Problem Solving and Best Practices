@@ -1,0 +1,142 @@
+Troubleshooting Methodologies
+
+Troubleshooting is a systematic approach to identifying, diagnosing, and resolving IT issues. Core principles: logical thinking (interpreting symptoms using experience/documentation), root cause analysis (RCA) (targeting causes, not just symptoms), and iterative testing (apply a solution, test it, roll back and retry if it fails — documenting every attempt).
+
+Standard troubleshooting steps: gather information (interview users, check error messages), define symptoms and scope (local vs. widespread issue), attempt to reproduce the issue, form a probable-cause theory (check recent changes first — most issues stem from changes, not random hardware failure), use process of elimination (swap known-good for suspected-bad), test the theory systematically, and — once confirmed — implement the fix following change management procedures, monitor results, verify with users, and document everything (including failed theories) to prevent recurrence and build a knowledge base.
+
+Problem Identification
+
+The first troubleshooting step: gathering relevant data to accurately diagnose the issue.
+
+Key considerations: compare current behavior to baselines (monitoring data collected when systems worked correctly); determine if the problem is local (points to one workstation/user) or widespread (points to a shared resource like the network); look for patterns/trends in failures (e.g., recurring failures tied to a schedule or specific equipment).
+
+Sources of information: user reports/interviews, and system/application logs (increase logging detail if errors aren't being captured).
+
+Reproducing the issue: try different user accounts (rules out permissions), different devices (rules out local hardware/software), different network environments, and controlled/isolated conditions.
+
+Common pitfalls: assuming a cause without testing (jumping to conclusions), overlooking environmental factors (power, network congestion, recent software updates), and dismissing intermittent issues that "went away on their own" without investigation.
+
+Establish scope and severity to prioritize response, considering downstream impact (e.g., a misconfigured router can affect many dependent devices), then document findings and escalate if needed.
+
+Establishing a Probable Cause
+
+Forming an educated hypothesis based on gathered data. Involves identifying patterns (e.g., congestion tied to specific hours) and using logic to eliminate unlikely causes.
+
+Data sources: system logs/event records (Windows Event Viewer, Linux Syslog), network tools (Wireshark for packet capture, ping/traceroute using ICMP for connectivity, SNMP with its MIB — Management Information Base for device configuration/traffic data), and consistent user reporting.
+
+Logical techniques: process of elimination (swap suspected-bad for known-good — and always test the "known good" component itself first), divide and conquer (segment the network, or isolate by OSI layer — e.g., a successful ping confirms lower layers are working, redirecting focus to upper/software layers), and distinguishing correlation from causation (two symptoms occurring together doesn't mean one caused the other).
+
+Diagnostic tools: Task Manager and Resource Monitor (running programs/resource usage), System File Checker (verifies/repairs OS file integrity), Disk Cleanup, SMART monitoring (drive health), POST (Power-On Self-Test, runs at every boot), memory testing utilities, and temperature sensors. Controlled/isolated environments (a known-working reference system, or an isolated network segment) reduce risk while testing live.
+
+Testing a Theory to Determine Cause
+
+Implement controlled steps to verify whether the probable cause is actually responsible — without creating new problems.
+
+Approach: develop a clear hypothesis from the evidence (not external pressure to "just fix it"); make incremental changes, testing each before the next, and roll back anything that doesn't help; define clear, targeted testing criteria; use a layered approach (e.g., ping to isolate hardware vs. software layers); minimize disruption and get permission before testing on live/production systems.
+
+Common diagnostic tools: POST (hardware), memory testing tools, disk utilities (Check Disk for directory table errors, SMART for preventive monitoring), Task Manager, Performance Monitor, Event Viewer, Wireshark.
+
+Additional tips: use a known-working system to test suspect components (swap in/out), try to reliably reproduce the issue (if you can't, something is likely missing from the reported steps), and compare against historical service data (recurring incidents on the same device/location often point to an environmental root cause, e.g., vibration or interference). After a fix, verify the solution, follow up with the user, and document/escalate as needed.
+
+Establishing an Action Plan
+
+A structured, consistent approach for resolving identified problems, minimizing downtime and enabling reliable rollback if needed.
+
+Core elements: clear objectives and expected outcomes, assigned tasks/responsibilities with completion deadlines and validation, and a contingency/rollback plan defined before work begins (e.g., back up a device's current configuration before changing it; be ready to isolate an affected network segment).
+
+Structure: define the problem clearly, identify potential solutions, assign roles/responsibilities, implement the fix (making only the prescribed changes), monitor continuously during and after the change, and test that the fix achieved the intended outcome.
+
+If the fix doesn't work as expected, execute the rollback and inform stakeholders (technicians, affected users/clients — communicated via IT department announcements for large-scale impact). Finally, document the entire process (omitted details reduce the documentation's future value) and conduct a postmortem analysis once things have calmed down — this often surfaces preventive measures missed in the heat of the moment.
+
+System Functionality Verification
+
+After a fix, confirm the system works correctly without introducing new problems — and that the fix didn't just make symptoms disappear temporarily.
+
+Core aspects: performance verification (compare against a pre-collected baseline), application/service validation (test that the app or service actually functions as expected — e.g., open a webpage to confirm network service), and User Acceptance Testing (UAT) — have the user operate the system, observe without interfering, and record any concerns.
+
+Also check: whether the fix changed the system's security posture (new component, altered configuration might open or close access unexpectedly), hardware resource utilization against benchmarks, and — for network-related fixes — ongoing monitoring, since network traffic behavior may not stabilize immediately.
+
+Round out verification with a security/compliance check (firewall settings, update status, vulnerability scans) and confirming backup integrity (data is being backed up and the backup strategy is functioning).
+
+Documenting Findings
+
+Recording the steps taken, results, and final resolution for future reference — building institutional knowledge and preventing recurring issues.
+
+Key documentation components: an accurate, complete problem description (including all symptoms, useful as future search terms); the diagnostic steps taken; every attempted fix and its effect (even failed ones — they may explain later side effects); and recommendations for prevention, ideally recorded while the details are still fresh.
+
+Best practices: use standardized templates to keep entries consistent and complete; be specific rather than vague (e.g., record the actual incorrect IP address, not just "wrong IP"); use diagrams for complex topics like network topology; and feed findings into a searchable knowledge base, usually part of help desk software.
+
+Documentation should also be kept current — troubleshooting sometimes reveals that existing documentation is outdated or missing a preventive step. Because service documentation often contains sensitive network details, apply least privilege to who can access it. Finally, integrate lessons learned into the organization's incident response plan.
+
+Motherboard, RAM, CPU, and Power Issues
+
+Common symptoms of hardware failure: random crashes, failed POST (Power-On Self-Test — checks storage, keyboard, processor, RAM at every boot), and unexpected shutdowns often caused by overheating (most systems have thermal sensors that shut down proactively) or electrical issues, including static electricity.
+
+Motherboard troubleshooting: listen for beep codes from the internal speaker (look up the sequence on the manufacturer's site) if a failure occurs before video is initialized; check power/HDD LEDs and any onboard diagnostic LEDs; reset the CMOS (via a jumper) if system settings appear corrupted; update BIOS/firmware as needed; visually inspect for physical/heat damage; always use a grounding strap to prevent static discharge damage.
+
+RAM troubleshooting: RAM failures are often intermittent — use a tool like MemTest86 (bootable from USB) for thorough testing. Check that modules are properly seated and compatible (capacity and speed must match motherboard requirements). Swap known-good modules to isolate a bad one (must be an exact match). Dual/quad-channel configurations require identical, correctly paired modules in the right slots. RAM is highly static-sensitive when out of the system — always use anti-static precautions.
+
+CPU troubleshooting: failures are rare, usually tied to installation errors, overheating, or power issues. Diagnostic tools include Intel Processor Diagnostics and AMD Ryzen Master (check operating frequency, run stress tests). Check thermal paste application (too little or too much impairs heat transfer) and cooling (fans/liquid cooling). Monitor CPU temperature via BIOS or utilities like HW Monitor. Dust buildup insulates components — regular cleaning (ideally with an anti-static vacuum) is a key preventive measure. Overclocking increases performance but also heat and error risk if pushed beyond the processor's design limits.
+
+Power troubleshooting: the power supply unit (PSU) converts AC (wall power) to DC (component power) — any failure here can damage the whole system. Use a multimeter to check voltages (requires training). Substitution (swap in a known-good PSU) is a simple diagnostic approach. Check all connectors are properly seated for intermittent power issues. Use surge protectors, invest in higher-quality PSUs, and avoid daisy-chaining power strips to prevent electrical overload.
+
+Storage Drives and RAID Array Symptoms
+
+RAID (Redundant Array of Independent/Inexpensive Disks) combines multiple drives into a single logical unit, improving performance and/or fault tolerance.
+
+Common storage symptoms: slow performance/long read-write times, clicking or beeping noises (read/write head issues or relocation of data away from failing sectors), missing or corrupted data, and unexpected freezes or application timeouts.
+
+Maintenance: run regular disk health checks (manufacturer tools, e.g., Western Digital Data Lifeguard, Seagate SeaTools), keep firmware/drivers updated, and avoid excessive heat and physical shock (especially for magnetic drives, where head contact with the platter causes damage).
+
+RAID-specific issues: a drive marked "offline" has failed and must be replaced promptly — depending on RAID level, losing a second drive can destroy the whole array. Rebuilding after a drive replacement is a vulnerable, slower period. A hot spare is a standby drive ready to be automatically swapped in on failure. RAID controller failure takes the entire array offline (some systems use redundant controllers).
+
+RAID levels to know: RAID 0 = striping for performance, no fault tolerance (one drive failure = total data loss). RAID 1 = mirroring, fully fault-tolerant but only 50% storage efficient. RAID 5 = striping with parity, tolerates a single drive failure. RAID 10 (1+0) = mirrored stripes, combining performance and redundancy.
+
+Diagnostic tools: Windows Disk Management, SMART technology (continuous error/health monitoring), and manufacturer-specific utilities. Data recovery tools (EaseUS, Recuva) can help if the drive is still spinning and mechanically intact; professional recovery services are an option (expensive, not guaranteed) for physically damaged drives.
+
+Preventive best practices: regular, scheduled, off-site backups (the only real protection against total failure); proactive monitoring; scheduled firmware/driver updates; and choosing the correct RAID level for the application's performance/fault-tolerance needs.
+
+Video, Projector, and Display Issues
+
+Covers hardware/software faults in screen output, resolution, and connectivity.
+
+Common symptoms: flickering or blank screens (often an unsupported resolution setting), "no signal detected" (disabled port, disconnected/wrong cable), color distortion or low resolution (misconfiguration or driver issues), and artifacts/dead pixels/burn-in (physical display damage).
+
+Display troubleshooting: check the power connection and cable seating first (often overlooked); check power LED color/state; check brightness/contrast settings aren't at minimum; swap in a known-working display to isolate the fault. CRT displays are susceptible to burn-in (phosphor coating damage from static images); LCD displays develop dead pixels when an individual cell/connection fails.
+
+Projector-specific: verify the correct input is selected; image distortion may need orientation settings adjusted (e.g., ceiling-mount flip) or tombstoning correction (image narrower near the projector, wider at the far edge); clean the lens; ensure ventilation is unobstructed and filters are clean to prevent overheating shutdowns.
+
+Video controller (graphics/video card): can be integrated on the motherboard or a discrete expansion card — disable the integrated GPU if conflicts arise when installing a discrete card, and uninstall old drivers before installing new ones. High-end cards have their own GPU, RAM, and cooling — ensure adequate case airflow and use anti-static precautions during installation (video RAM is vulnerable to static and heat damage).
+
+Best practices: keep drivers/software updated, maintain proper ventilation/dust control, use quality cabling (reduces interference/artifacts) and stable power, and calibrate display settings (contrast, brightness, saturation, hue) to the environment.
+
+Mobile Device Issues
+
+Mobile devices are self-contained computers (CPU, RAM, storage, display, OS) but have unique troubleshooting considerations.
+
+Common symptoms and fixes:
+
+Slow performance/freezing: often caused by a problematic app/update or low storage space.
+Fast battery drain: gradual decline suggests battery aging; sudden onset suggests a new app or update misbehaving (check battery usage stats by app).
+Connectivity issues (Wi-Fi/Bluetooth/cellular): toggle Airplane Mode to reset radios; reset network settings; restart the router; check for OS updates.
+Screen issues (flickering, unresponsive touch, dead pixels): try removing a screen protector, cleaning the screen, or restarting the device; hardware issues typically need professional repair, while software issues can often be resolved by the user. Safe Mode (runs only critical system processes) helps determine whether a third-party app is the cause.
+Charging problems: inspect and clean the charging port of lint/debris; use manufacturer-approved chargers.
+
+Software/performance fixes: clear app cache/data, uninstall and reinstall or update problematic apps, and — as a last resort — perform a factory reset (back up data first; a reset resolves software issues but not hardware ones).
+
+Quick Exam-Focus Reminders
+Troubleshooting order: identify the problem → establish a theory of probable cause → test the theory → establish an action plan → implement the fix → verify full system functionality → document findings.
+Root Cause Analysis (RCA) targets the underlying cause, not just the symptom.
+Process of elimination = swap known-good for suspected-bad (and test the "known good" item first).
+Divide and conquer = isolate by network segment or OSI layer; a successful ping confirms lower-layer connectivity.
+Always distinguish correlation from causation when two symptoms appear together.
+POST (Power-On Self-Test) runs at every boot and checks core components (storage, keyboard, CPU, RAM) — failures may show as beep codes or LED codes.
+CMOS reset (via jumper) restores default hardware settings; BIOS/firmware updates fix bugs or add hardware support.
+RAM and video RAM are highly static-sensitive — always use a grounding strap.
+RAID 0 = performance, no redundancy. RAID 1 = mirroring, full redundancy, 50% efficiency. RAID 5 = striping + parity, tolerates 1 drive loss. RAID 10 = mirrored stripes.
+A hot spare drive stands ready to replace a failed RAID member automatically.
+SMART = continuous drive health monitoring built into modern disks.
+CRT displays risk burn-in; LCD displays risk dead pixels.
+Tombstoning = projector image distortion from off-center placement, correctable via projector settings.
+User Acceptance Testing (UAT) = have the user test the fix themselves, observing without interfering.
+Documentation should be specific (exact values, not vague descriptions) and access should follow least privilege due to sensitive network details.
