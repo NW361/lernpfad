@@ -1,0 +1,123 @@
+Symptoms of Failing Storage Devices
+
+Storage failures occur in HDDs, SSDs, or any external device, potentially causing data loss. Common causes: mechanical wear and tear (HDDs only — moving parts), overheating, excessive vibration, power surges/sudden shutdowns, and firmware corruption or logical errors (apply to all drive types).
+
+Common symptoms: performance issues (slow file loads), unusual sounds (HDDs only — SSDs are silent), file system errors/data corruption, and frequent bad sectors found during maintenance.
+
+S.M.A.R.T. (Self-Monitoring, Analysis, and Reporting Technology): a built-in feature on most modern drives that reports health data through OS utilities (Disk Management, Device Manager) — including reallocated sectors (bad sectors swapped for spares), read/write error rate, spin-up time (HDD only), and temperature.
+
+Tools: third-party HDD/SSD health monitors, CHKDSK (Windows) and fsck (Linux) for file system integrity, and manufacturer utilities (Western Digital Dashboard, Seagate SeaTools).
+
+Preventive measures: back up data, run regular maintenance utilities, use surge protection, and perform routine health checks. Recovery options: data recovery software (works best on logical issues), RAID redundancy (if implemented — though RAID is mainly used on servers, not desktops), or professional data recovery services (expensive, last resort).
+
+Rebuilding a Failing RAID Array
+
+RAID (Redundant Array of Independent/Inexpensive Disks) improves redundancy and/or performance using multiple disks. RAID levels:
+
+RAID 0: striping only, no redundancy — best performance, but total data loss if one disk fails.
+RAID 1 (mirroring): exactly 2 disks, data duplicated on both — survives 1 disk failure.
+RAID 5: striping with parity, minimum 3 disks — survives 1 disk failure.
+RAID 6: striping with double parity — survives 2 disk failures.
+RAID 10 (1+0): mirrored stripes (a striped array fully duplicated) — survives loss of an entire sub-array.
+
+More disks = higher overall failure probability, and RAID adds extra read/write overhead (double writes for RAID 1, parity calculations for RAID 5/6, full duplication for RAID 10).
+
+Rebuild process is consistent across levels: identify the failed drive (via management software — hardware controller software, or OS tools like Windows Disk Management), replace it, and initiate the rebuild. RAID 1/10 simply copies from the surviving mirror; RAID 5/6 mathematically regenerates missing data from parity information and surviving disks.
+
+Challenges: rebuilds take time (proportional to data volume); a second failure during rebuild can be catastrophic; data corruption risk if bad data was written before the failure was caught. Critical: RAID is not a substitute for backups — it only protects against individual disk failure, not against losing the entire server/system.
+
+Prevention: regular health checks, scheduled RAID integrity checks, firmware/driver updates, using hot spares (pre-installed standby drives that speed up recovery), and proper cooling/power management (more drives = more heat).
+
+Troubleshooting External Drives
+
+External drives (USB flash, external HDD/SSD) have the same underlying storage issues as internal drives — the main difference is the connection (almost always USB).
+
+Common issues: drive not detected, frequent disconnects, slow transfer speeds, corrupted/unreadable data, and power/connectivity failures.
+
+Causes: damaged/faulty USB cable or port; insufficient power (larger external drives need their own power supply — a hub or port replicator can sometimes provide inconsistent power); file system corruption/bad sectors; and outdated drivers or OS compatibility conflicts (e.g., after a major OS upgrade).
+
+Diagnosis: inspect physical connections, use OS/manufacturer/third-party diagnostic software, and test the drive on another computer to isolate whether the problem is the drive or the host system.
+
+Repair/recovery: CHKDSK (file system repair), data recovery software (can often bypass a corrupted file system to reach raw data), and RAID/NAS-specific recovery tools if applicable (uncommon for external consumer drives).
+
+Prevention: always use safe removal/eject before disconnecting, perform regular backups, store drives in stable environmental conditions (avoid heat/cold/humidity), use the correct dedicated power supply when provided, connect directly to the computer rather than through hubs/replicators when possible, and keep firmware/drivers updated.
+
+Recovering Data from Failed or Failing Drives
+
+Relevant when a drive is inaccessible or failing and no current backup exists (e.g., the failure occurs before a scheduled backup runs).
+
+Failure types: logical failures (file system/software-level issues), mechanical failures (physical damage — applies to both HDDs and, differently, SSDs, e.g., overheating chips or cracked logic boards), and firmware corruption (in between software and hardware).
+
+Preliminary diagnostics: check S.M.A.R.T. data, use OS health utilities (CHKDSK), and test the drive in a different computer to isolate the fault.
+
+Recovery methods:
+
+Software-based recovery: bypasses the file system to read raw sectors directly — effective when data was only logically "deleted" (formatting marks sectors as available but doesn't erase data until overwritten).
+Hardware recovery: for physically damaged drives — e.g., removing HDD platters and placing them in a new housing (expensive, specialized).
+RAID recovery: depends on RAID type and severity — a single-disk RAID 1/5 failure is fully recoverable from the surviving disk(s); losing multiple disks (e.g., from a power surge) may mean total loss.
+
+Best practices: clone the failing drive first (e.g., with ddrescue on Linux or Macrium Reflect on Windows) and work from the clone rather than risking further damage to the original; avoid writing any new data to a failing drive (this can overwrite recoverable data, since formatting/deletion doesn't actually erase data — new writes do).
+
+Use professional data recovery services when there's physical damage or multiple drive failures in a RAID array, or when DIY attempts risk further corruption — effective but expensive.
+
+Prevention: quality surge protectors and a UPS (uninterruptible power supply, which also provides power conditioning), and regular automated backups (cloud and/or local). Key takeaway: RAID is not a backup substitute — always monitor for early warning signs (slow performance, S.M.A.R.T. errors, read/write errors) and maintain real backups alongside any RAID redundancy.
+
+Diagnosing RAID Controller Problems
+
+A RAID controller manages multiple drives for performance, redundancy, and fault tolerance — enabling RAID array creation.
+
+Hardware-based RAID: a physical expansion card with its own ports and proprietary management software — generally better performance.
+Software-based RAID: uses native motherboard connectors and OS tools (e.g., Windows Disk Manager) — more accessible/cheaper, but lower performance.
+
+Common controller issues: RAID array not detected, slow read/write performance, inconsistent drive statuses (drives shown as failed/missing when they're actually fine), and BIOS/firmware/configuration-related issues.
+
+Causes: hardware failure (including the controller's own memory cache, which speeds up read/write by temporarily storing data), firmware/driver issues, and configuration errors.
+
+Diagnosis: check BIOS/UEFI settings, use the controller's included management software, OS tools (e.g., Windows Device Manager for driver/config status), and third-party RAID monitoring software.
+
+Troubleshooting steps: verify the card is properly seated in its expansion slot, update firmware/drivers (ensure OS-version compatibility), attempt to rebuild/reinitialize the array, and replace faulty hardware (including the controller card itself) if needed.
+
+Prevention: regular maintenance/monitoring, adequate cooling and power planning (RAID arrays run hotter due to more drives), and — as always — maintaining backups since RAID does not protect against total system/server loss (e.g., natural disaster).
+
+Testing Storage Device Performance
+
+Built-in Windows tools for basic performance testing:
+
+Task Manager → Performance tab: shows real-time disk metrics (active time, average response time, capacity, read speed, write speed) per drive.
+Performance Monitor: offers more detailed, specific counters under the LogicalDisk category (e.g., Avg. Disk Bytes/Read, /Write, /Transfer, % Disk Time, % Idle Time). Counters can be added via the "+" icon, with descriptions available to clarify what each measures.
+Data Collector Sets: allow performance counters to be recorded over an extended period for later review, rather than only viewed in real time.
+
+For frequent or in-depth performance testing, dedicated third-party utilities are recommended over these built-in tools. Key metrics referenced across the course: read/write speed and IOPS (I/O operations per second).
+
+Preventing Data Loss
+
+Data Loss Prevention (DLP) covers both accidental data loss (hardware failure, corruption, user error) and, as a distinct concept, DLP policies — security controls that intentionally block unauthorized data exfiltration (e.g., preventing copying to USB, emailing, or printing sensitive data). This section focuses mainly on accidental loss.
+
+Common causes of data loss: hardware failure/corruption, accidental deletion/user error, cybersecurity threats (e.g., ransomware), and power surges/physical damage.
+
+Backup types:
+
+Full backup: backs up everything every time — safest but most storage-intensive.
+Incremental backup: backs up only files changed since the last backup (full or incremental) — fastest to back up, but restoring requires the full backup plus every incremental since.
+Differential backup: backs up all files changed since the last full backup — takes more space/time than incremental over time, but restoring only requires the full backup plus the most recent differential (faster restore).
+
+Backup storage strategy: keep at least one copy on-site (fast recovery) and at least one off-site (protects against site-wide disasters) — cloud storage is a common off-site option; ideally use a mix (local + nearby + cloud). Automate backups on a schedule, supplementing with manual backups after major data changes.
+
+Ransomware-specific protections: keep anti-malware up to date; maintain an off-site/isolated backup copy (attackers on the same network can otherwise find and lock local backups too); consider immediate/on-demand backups for freshly written critical data that hasn't yet hit the scheduled backup.
+
+Also apply: access control and permissions, encryption of local data, and physical security (locked rooms, cameras) where relevant.
+
+Disaster recovery/business continuity: have a documented plan, test it regularly to confirm recoverability and minimize downtime, and leverage cloud-based recovery solutions (inherently store multiple copies, providing built-in off-site protection).
+
+Quick Exam-Focus Reminders
+RAID levels: RAID 0 = striping, no redundancy. RAID 1 = mirroring (2 disks), survives 1 failure. RAID 5 = striping + single parity (3+ disks), survives 1 failure. RAID 6 = striping + double parity, survives 2 failures. RAID 10 = mirrored stripes, survives loss of a full sub-array.
+RAID is NEVER a substitute for backups — it protects against individual drive failure only, not total system loss.
+S.M.A.R.T. = built-in drive health monitoring reporting reallocated sectors, error rates, spin-up time, temperature.
+CHKDSK (Windows) / fsck (Linux) = file system integrity checkers.
+Hardware RAID = dedicated controller card with its own cache/software, better performance. Software RAID = OS/motherboard-based, cheaper, lower performance.
+Data recovery order of escalation: software-based recovery (logical failures) → drive cloning before attempting recovery → hardware recovery (physical damage) → professional recovery services (most expensive, last resort).
+Formatting/deletion does not erase data immediately — data is only actually lost when overwritten, which is why avoiding new writes to a failing/formatted drive matters for recovery.
+Full backup = everything, every time. Incremental = changes since last backup (fast backup, slow restore — needs full + all incrementals). Differential = changes since last full backup (slower backup, fast restore — needs only full + latest differential).
+Always keep both an on-site backup (fast recovery) and an off-site/cloud backup (disaster protection) — critical for ransomware resilience too.
+DLP policy (security context) ≠ general data loss prevention — DLP policies specifically block intentional/unauthorized data exfiltration.
+Key performance metrics for storage: read/write speed and IOPS (I/O operations per second).
