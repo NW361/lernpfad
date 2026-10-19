@@ -10,7 +10,7 @@
 - 🔧 **5+ Jahre Berufserfahrung** in der technischen Instandhaltung
 - 💻 **Digital Native** – seit meinem 13. Lebensjahr am Computer
 - 🎯 **Langzeitziel:** Spezialisierung auf **IT-Sicherheit**
-- 📚 **Aktuell:** Codecademy Premium – täglich 8h Lern-Sprint
+- 📚 **Aktuell:** IT-Sicherheit Bachelor Fern-Studium bei der WBH in Teilzeit
 
 ---
 
